@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static CustomExtension;
+using static UnityEngine.GraphicsBuffer;
+
 public class ShootingComponent : MonoBehaviour
 {
     public GameObject bullet;
@@ -44,7 +46,15 @@ public class ShootingComponent : MonoBehaviour
 
     void SpawnBullet()
     {
-        GameObject newBullet = Instantiate(bullet, transform.position + newShootingDirection, Quaternion.identity);
+        
+        GameObject newBullet = ObjectPool.SharedInstance.GetPooledObject();
+        // GameObject newBullet = Instantiate(bullet, transform.position + newShootingDirection, Quaternion.identity);
+        if (newBullet != null)
+        {
+            newBullet.transform.position = transform.position + newShootingDirection;
+            newBullet.transform.rotation = Quaternion.identity;
+            newBullet.SetActive(true);
+        }
         Rigidbody newBulletRb = newBullet.GetComponent<Rigidbody>();
         newBulletRb.velocity = newShootingDirection * bulletSpeed;
     }
