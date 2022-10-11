@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class HealthComponent : MonoBehaviour, IDamageable
 {
-    int Health = 1;
+    [SerializeField] int health = 2;
 
-    int IDamageable.Health { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-
-    // Start is called before the first frame update
-    void Start()
+    public void ApplyDamage(int damageAmount)
     {
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+       
+        health -= damageAmount;
+        Debug.Log("damaged " + damageAmount + " current health " + health);
+        if (health < 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

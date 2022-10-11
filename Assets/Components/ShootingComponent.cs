@@ -18,13 +18,8 @@ public class ShootingComponent : MonoBehaviour
     public float angle;
     const float fourer = 2.0f / Mathf.PI;
     const float antiFourer = 1.0f / fourer;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+
     void FixedUpdate()
     {
         
@@ -46,16 +41,17 @@ public class ShootingComponent : MonoBehaviour
     void SpawnBullet()
     {
         
-        GameObject newBullet = ObjectPool.SharedInstance.GetPooledObject();
-        // GameObject newBullet = Instantiate(bullet, transform.position + newShootingDirection, Quaternion.identity);
+        GameObject newBullet = ForcedRecycleObjectPool.SharedInstance.GetPooledObject();
+ 
         if (newBullet != null)
         {
             newBullet.transform.position = transform.position + newShootingDirection;
             newBullet.transform.rotation = Quaternion.identity;
             newBullet.SetActive(true);
+            Rigidbody newBulletRb = newBullet.GetComponent<Rigidbody>();
+            newBulletRb.velocity = newShootingDirection * bulletSpeed;
         }
-        Rigidbody newBulletRb = newBullet.GetComponent<Rigidbody>();
-        newBulletRb.velocity = newShootingDirection * bulletSpeed;
+
     }
 
 }
