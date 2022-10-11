@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1355990283611780165}
   - component: {fileID: -4270183361374671673}
   m_Layer: 0
-  m_Name: Pools
+  m_Name: PlayerBulletPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,3 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd3c1a981d762141a6ae9ff276fa30d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pooledObjects: []
+  objectToPool: {fileID: 6641427923098496259, guid: f60e99df7df94084d8fc3dbf5db018d2, type: 3}
+  amountToPool: 10

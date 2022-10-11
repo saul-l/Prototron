@@ -30,7 +30,6 @@ public class ShootingComponent : MonoBehaviour
         
                 if (shootingDirection!=Vector3.zero && lastShotTime <= Time.time)
                 {
-                    Debug.Log("trolol");
                     angle = fourer * Mathf.Atan2(shootingDirection.x, shootingDirection.z);
                     angle = Mathf.Round(angle);
                     angle *= antiFourer;

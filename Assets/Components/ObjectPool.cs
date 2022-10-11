@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class ObjectPool : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class ObjectPool : MonoBehaviour
     public List<GameObject> pooledObjects;
     public GameObject objectToPool;
     public int amountToPool;
-
+    public LinkedList<GameObject> pooledObj;
+    
     void Awake()
     {
         SharedInstance = this;
@@ -25,19 +27,33 @@ public class ObjectPool : MonoBehaviour
             tmp.SetActive(false);
             pooledObjects.Add(tmp);
         }
+
+
     }
+
+    // If object is used it goes to the bottom of the list
+    // top of the list is used if no free object
+    // Optimization idea: running number which is current iteration%amountToPool
 
     public GameObject GetPooledObject()
     {
+        GameObject tmp;
+
         for (int i = 0; i < amountToPool; i++)
         {
             if (!pooledObjects[i].activeInHierarchy)
             {
-                
-                return pooledObjects[i];
+                tmp = pooledObjects[i];
+                pooledObjects.RemoveAt(i);
+                pooledObjects.Add(tmp);
+                return tmp;
             }
         }
-        return pooledObjects[0];
+
+        tmp = pooledObjects[0];
+        pooledObjects.RemoveAt(0);
+        pooledObjects.Add(tmp);
+        return tmp;
     }
 
 }
