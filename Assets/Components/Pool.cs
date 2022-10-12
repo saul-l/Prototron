@@ -1,34 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Pool;
 
-public class ObjectPool : MonoBehaviour
+public class Pool : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public static ObjectPool SharedInstance;
     public List<GameObject> pooledObjects;
-    public GameObject objectToPool;
-    public int amountToPool;
 
-    
-    void Awake()
-    {
-        SharedInstance = this;
-    }
+    public int amountToPool;
 
     void Start()
     {
+
+    }
+
+    public void PopulatePool(GameObject objectToPool, int amount)
+    {
+        amountToPool = amount;
         pooledObjects = new List<GameObject>();
         GameObject tmp;
         for (int i = 0; i < amountToPool; i++)
         {
             tmp = Instantiate(objectToPool);
+            tmp.transform.parent = this.transform.parent;
             tmp.SetActive(false);
             pooledObjects.Add(tmp);
         }
     }
-
     public virtual GameObject GetPooledObject()
     {
         for (int i = 0; i < amountToPool; i++)
@@ -39,8 +35,8 @@ public class ObjectPool : MonoBehaviour
             }
         }
 
-
         return null;
     }
+
 
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletComponent : MonoBehaviour
+public class BulletComponent : MonoBehaviour, ISpawnable
 {
     [SerializeField] int damage = 1;
 
@@ -15,4 +15,8 @@ public class BulletComponent : MonoBehaviour
         }
     }
 
+    public void ReturnToPool()
+    {
+
+    }
 }

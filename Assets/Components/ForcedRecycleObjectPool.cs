@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ForcedRecycleObjectPool : ObjectPool
+public class ForcedRecycleObjectPool : Pool
 {
 
     public override GameObject GetPooledObject()
     {
-        Debug.Log("lol");
+
         GameObject tmp;
 
         for (int i = 0; i < amountToPool; i++)
@@ -17,6 +17,7 @@ public class ForcedRecycleObjectPool : ObjectPool
                 tmp = pooledObjects[i];
                 pooledObjects.RemoveAt(i);
                 pooledObjects.Add(tmp);
+                tmp.transform.parent = this.transform.parent;
                 return tmp;
             }
         }
@@ -24,6 +25,7 @@ public class ForcedRecycleObjectPool : ObjectPool
         tmp = pooledObjects[0];
         pooledObjects.RemoveAt(0);
         pooledObjects.Add(tmp);
+        tmp.transform.parent = this.transform.parent;
         return tmp;
     }
 

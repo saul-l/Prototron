@@ -107,14 +107,14 @@ public class PlayerController : MonoBehaviour
         if (aimFireBuffer.returnFirstNodeValue() == Directions.Direction.None)
             shootingComponent.shootingDirection = Vector3.zero;
     }
-    public class Directions
-       {
-        public enum Direction
-        {
-            None, Up, Down, Left, Right
-        }
 
-    }
 }
 
+public class Directions
+{
+    public enum Direction
+    {
+        None, Up, Down, Left, Right
+    }
 
+}

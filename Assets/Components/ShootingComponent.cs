@@ -6,6 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class ShootingComponent : MonoBehaviour
 {
+    [SerializeField] public Pool myPool;
     public GameObject bullet;
     public Vector3 shootingDirection;
     public Vector3 newShootingDirection;
@@ -19,7 +20,11 @@ public class ShootingComponent : MonoBehaviour
     const float fourer = 2.0f / Mathf.PI;
     const float antiFourer = 1.0f / fourer;
 
-
+    void Start()
+    {
+       myPool = PoolHandler.instance.GetPool(this.gameObject.name, PoolTypes.PoolType.ForcedRecycleObjectPool);
+       myPool.PopulatePool(bullet, 20);
+    }
     void FixedUpdate()
     {
         
@@ -41,8 +46,9 @@ public class ShootingComponent : MonoBehaviour
     void SpawnBullet()
     {
         
-        GameObject newBullet = ForcedRecycleObjectPool.SharedInstance.GetPooledObject();
- 
+        //GameObject newBullet = ForcedRecycleObjectPool.SharedInstance.GetPooledObject();
+        GameObject newBullet = myPool.GetPooledObject();
+
         if (newBullet != null)
         {
             newBullet.transform.position = transform.position + newShootingDirection;
