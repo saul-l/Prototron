@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f010b605635e1f146a44929b5dbca635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pool: {fileID: 7143939643385650691, guid: c92a291372a7638459d2fa8960179b55, type: 3}
-  enemyTypes:
-  - {fileID: 7388946379816542528}
+  enemyType:
+  - {fileID: 5993817333502248022, guid: 8b9c9eaba5936bc4cae404d6822ba30d, type: 3}
+  interval: 3
   enemyAmounts: 01000000
   randomPositions: 1

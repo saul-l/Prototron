@@ -6,47 +6,50 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     
-    public GameObject pool;
-    public GameObject[] enemyTypes;
+    public Pool[] myPool;
+    
+    public GameObject[] enemyType;
+    public float interval = 3.0f;
     public int[] enemyAmounts;
     public bool randomPositions = true;
-
+    private float prevTime = 0.0f;
+    
     private void OnValidate()
     {
      // Only allow ISpawnables to be spawned
-        for (int i = 0; i < enemyTypes.Length; i++)
+     /*   for (int i = 0; i < enemyType.Length; i++)
         {        
-            if (!enemyTypes[i].TryGetComponent(typeof(ISpawnable), out var component))
-                enemyTypes[i] = null;
+            if (!enemyType[i].TryGetComponent(typeof(ISpawnable), out var component))
+                enemyType[i] = null;
         }
+        */
     }
     void Start()
     {
-       for(int i = 0; i < enemyTypes.Length; i++)
+        myPool = new Pool[enemyType.Length];
+        for(int i=0; i<enemyType.Length;i++)
         {
-            GameObject tmpGO = GameObject.Find(pool.name);
+      
+            
+            myPool[i] = PoolHandler.instance.GetPool(enemyType[i].gameObject.name, PoolTypes.PoolType.ForcedRecycleObjectPool);
+            myPool[i].PopulatePool(enemyType[i], enemyAmounts[i]);
+        }
+        Debug.Log("enemyType length " + enemyType.Length);
+    }
 
-            if (tmpGO = null)
-            { 
-                tmpGO = Instantiate(pool);
-                ObjectPool tmpOP = tmpGO.GetComponent<ObjectPool>();
-                tmpOP.objectToPool = enemyTypes[i];
-                tmpOP.amountToPool = enemyAmounts[i];
-               
-            }
-            else
-            {
-                
-            }
+    void Update()
+    {
 
-
+        if(Time.time>=prevTime+interval)
+        {
+            prevTime=Time.time;
             testSpawn();
         }
     }
-
+   
     void testSpawn()
     {
-        GameObject newEnemy = ObjectPool.SharedInstance.GetPooledObject();
+        GameObject newEnemy = myPool[0].GetPooledObject();
         
             if (newEnemy!= null)
             {
