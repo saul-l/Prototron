@@ -12,11 +12,12 @@ public class BulletComponent : MonoBehaviour, ISpawnable
         if(collision.gameObject.GetComponent<IDamageable>() != null)
         {
             collision.gameObject.GetComponent<IDamageable>().ApplyDamage(damage);
+            ReturnToPool();
         }
     }
 
     public void ReturnToPool()
     {
-
+        gameObject.SetActive(false);
     }
 }

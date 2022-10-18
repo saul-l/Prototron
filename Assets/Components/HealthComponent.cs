@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthComponent : MonoBehaviour, IDamageable
+public class HealthComponent : MonoBehaviour, IDamageable, ISpawnable
 {
     [SerializeField] int health = 2;
 
@@ -14,7 +14,12 @@ public class HealthComponent : MonoBehaviour, IDamageable
         Debug.Log("damaged " + damageAmount + " current health " + health);
         if (health < 0)
         {
-            Destroy(gameObject);
+            ReturnToPool();
         }
+    }
+
+    public void ReturnToPool()
+    {
+        gameObject.SetActive(false);
     }
 }
