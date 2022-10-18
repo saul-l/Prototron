@@ -7,8 +7,7 @@ public class MovementComponent : MonoBehaviour
 {
     // these define character actions
     public Vector3 movementDirection;
-    public Vector2 aimDirection;
-    public bool firing = false;
+
 
     Vector3 targetVelocity;
     Vector3 velocityChange;
@@ -46,14 +45,6 @@ public class MovementComponent : MonoBehaviour
             rb.AddForce(velocityChange,ForceMode.VelocityChange);
         }
 
-        if (aimDirection!=Vector2.zero)
-        {
 
-        }
-
-        if (firing)
-        {
-            
-        }
     }
 }

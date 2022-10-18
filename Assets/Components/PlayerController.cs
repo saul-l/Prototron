@@ -22,13 +22,7 @@ public class PlayerController : MonoBehaviour
         shootingComponent = this.GetComponent<ShootingComponent>();
     }
 	
-	public void OnFire(InputAction.CallbackContext context)
-    {
-        if(context.performed)
-            movementComponent.firing=true;
-        else
-            movementComponent.firing=false;
-    }
+
 
     public void SetMovingDirection(InputAction.CallbackContext context)
     {
