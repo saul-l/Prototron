@@ -4,20 +4,42 @@ using UnityEngine;
 
 public class BulletComponent : MonoBehaviour, ISpawnable
 {
+    
     [SerializeField] int damage = 1;
+    private Vector3 newPosition;
+    private RaycastHit hit;
+    public Vector3 velocity;
+    private TrailRenderer trailRenderer;
 
-    private void OnCollisionEnter(Collision collision)
+    void Start()
     {
- 
-        if(collision.gameObject.GetComponent<IDamageable>() != null)
-        {
-            collision.gameObject.GetComponent<IDamageable>().ApplyDamage(damage);
-            ReturnToPool();
-        }
+        trailRenderer = this.GetComponent<TrailRenderer>();
+    }
+    void FixedUpdate()
+    {
+        TraceToNewPosition();
+    }
+    public void ReturnToPool()
+    {   
+        gameObject.SetActive(false);
+        trailRenderer.Clear();
     }
 
-    public void ReturnToPool()
+    private void TraceToNewPosition()
     {
-        gameObject.SetActive(false);
+        newPosition = transform.position+velocity;
+        if(Physics.Linecast(transform.position,newPosition,out hit))
+        {
+            transform.position = hit.point;
+            if(hit.collider.gameObject.GetComponent<IDamageable>() != null)
+            {
+                hit.collider.gameObject.GetComponent<IDamageable>().ApplyDamage(damage);
+            }
+            ReturnToPool();
+        }
+        else
+        {
+            transform.position = newPosition;
+        }
     }
 }
