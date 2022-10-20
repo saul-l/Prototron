@@ -11,15 +11,14 @@ public class ShootingComponent : MonoBehaviour
     public Vector3 shootingDirection;
     public Vector3 newShootingDirection;
     public Vector3 prevShootingDirection = Vector3.zero;
-    [SerializeField] public float totalShootingDirectionValue;
-    Vector3 zeroVector = new Vector3(1.0f, 0.0f, 0.0f);
-    float rateOfFire = 0.2f;
-    float lastShotTime = 0.0f;
-    float bulletSpeed = 14.0f;
+    public float totalShootingDirectionValue;
+    private float rateOfFire = 0.2f;
+    private float lastShotTime = 0.0f;
+    private float bulletSpeed = 1.0f;
     public float angle;
     const float fourer = 2.0f / Mathf.PI;
     const float antiFourer = 1.0f / fourer;
-
+    private Vector3 weaponPosition = new Vector3(0,0.15f,0);
     void Start()
     {
        myPool = PoolHandler.instance.GetPool(this.gameObject.name, PoolTypes.PoolType.ForcedRecycleObjectPool);
@@ -27,7 +26,10 @@ public class ShootingComponent : MonoBehaviour
     }
     void FixedUpdate()
     {
-        
+        /*  Start shooting based on shootingDirection and force it to 4 angles
+            This is stupid. No need to be check this every frame. Should be 
+            a coroutine started by input or ai component */
+
                 if (shootingDirection!=Vector3.zero && lastShotTime <= Time.time)
                 {
                     angle = fourer * Mathf.Atan2(shootingDirection.x, shootingDirection.z);
@@ -45,17 +47,17 @@ public class ShootingComponent : MonoBehaviour
 
     void SpawnBullet()
     {
-        
-        //GameObject newBullet = ForcedRecycleObjectPool.SharedInstance.GetPooledObject();
+    
         GameObject newBullet = myPool.GetPooledObject();
 
         if (newBullet != null)
         {
-            newBullet.transform.position = transform.position + newShootingDirection;
+            // Weapon position should come from weapon bone position eventually)
+            newBullet.transform.position = weaponPosition + transform.position + newShootingDirection;
             newBullet.transform.rotation = Quaternion.identity;
             newBullet.SetActive(true);
-            Rigidbody newBulletRb = newBullet.GetComponent<Rigidbody>();
-            newBulletRb.velocity = newShootingDirection * bulletSpeed;
+            newBullet.GetComponent<BulletComponent>().velocity = newShootingDirection*bulletSpeed;
+       
         }
 
     }
