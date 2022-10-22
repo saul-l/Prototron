@@ -6,7 +6,7 @@ AvatarMask:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Aim
+  m_Name: basic_characterAim
   m_Mask: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   m_Elements:
   - m_Path: 
@@ -28,24 +28,24 @@ AvatarMask:
   - m_Path: Armature/body/butt_r/leg_r/leg_r_end
     m_Weight: 0
   - m_Path: Armature/body/shoulder_l
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature/body/shoulder_l/arm_l
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature/body/shoulder_l/arm_l/hand_l
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature/body/shoulder_l/arm_l/hand_l/hand_l_end
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature/body/shoulder_r
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/body/shoulder_r/arm_r
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/body/shoulder_r/arm_r/hand_r
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/body/shoulder_r/arm_r/hand_r/hand_r_end
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/head
     m_Weight: 0
   - m_Path: Armature/head/head_end
     m_Weight: 0
-  - m_Path: Cube
+  - m_Path: character
     m_Weight: 0

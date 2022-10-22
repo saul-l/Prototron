@@ -23,7 +23,7 @@ public class PoolHandler : MonoBehaviour
     public Pool GetPool(string tmpGameObject, PoolTypes.PoolType poolType)
     {
 
-        Debug.Log(tmpGameObject + " wants pool");
+
         if (poolDictionary.TryGetValue(tmpGameObject, out Pool tmpPool))
         {
             return poolDictionary[tmpGameObject];

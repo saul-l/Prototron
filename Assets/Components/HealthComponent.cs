@@ -11,7 +11,7 @@ public class HealthComponent : MonoBehaviour, IDamageable, ISpawnable
         
        
         health -= damageAmount;
-        Debug.Log("damaged " + damageAmount + " current health " + health);
+
         if (health < 0)
         {
             ReturnToPool();
@@ -21,5 +21,10 @@ public class HealthComponent : MonoBehaviour, IDamageable, ISpawnable
     public void ReturnToPool()
     {
         gameObject.SetActive(false);
+    }
+
+    public void SpawnFromPool()
+    {
+        health = 2;
     }
 }

@@ -9,20 +9,28 @@ public class BulletComponent : MonoBehaviour, ISpawnable
     private Vector3 newPosition;
     private RaycastHit hit;
     public Vector3 velocity;
-    private TrailRenderer trailRenderer;
+    public float bulletForce = 10.0f;
+    [SerializeField] private TrailRenderer trailRenderer;
 
     void Start()
     {
-        trailRenderer = this.GetComponent<TrailRenderer>();
+      
     }
     void FixedUpdate()
     {
         TraceToNewPosition();
     }
     public void ReturnToPool()
-    {   
+    {
+  
         gameObject.SetActive(false);
+        
+    }
+
+    public void SpawnFromPool()
+    {
         trailRenderer.Clear();
+
     }
 
     private void TraceToNewPosition()
@@ -30,10 +38,20 @@ public class BulletComponent : MonoBehaviour, ISpawnable
         newPosition = transform.position+velocity;
         if(Physics.Linecast(transform.position,newPosition,out hit))
         {
+
             transform.position = hit.point;
-            if(hit.collider.gameObject.GetComponent<IDamageable>() != null)
+            
+            if(hit.collider.attachedRigidbody!=null)
             {
+              
+                hit.collider.attachedRigidbody.AddForce(velocity * bulletForce, ForceMode.VelocityChange);
+            }
+
+            if (hit.collider.gameObject.GetComponent<IDamageable>() != null)
+            {
+
                 hit.collider.gameObject.GetComponent<IDamageable>().ApplyDamage(damage);
+                
             }
             ReturnToPool();
         }

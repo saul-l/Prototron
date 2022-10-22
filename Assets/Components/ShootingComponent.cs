@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using static CustomExtension;
 using static UnityEngine.GraphicsBuffer;
 
@@ -18,6 +19,8 @@ public class ShootingComponent : MonoBehaviour
     public float angle;
     const float fourer = 2.0f / Mathf.PI;
     const float antiFourer = 1.0f / fourer;
+   
+    public UnityEvent hasShot;
     private Vector3 weaponPosition = new Vector3(0,0.15f,0);
     void Start()
     {
@@ -47,17 +50,22 @@ public class ShootingComponent : MonoBehaviour
 
     void SpawnBullet()
     {
-    
+   
         GameObject newBullet = myPool.GetPooledObject();
 
         if (newBullet != null)
         {
+            hasShot.Invoke();
+            BulletComponent newBulletBulletComponent = newBullet.GetComponent<BulletComponent>();
+
             // Weapon position should come from weapon bone position eventually)
             newBullet.transform.position = weaponPosition + transform.position + newShootingDirection;
             newBullet.transform.rotation = Quaternion.identity;
             newBullet.SetActive(true);
-            newBullet.GetComponent<BulletComponent>().velocity = newShootingDirection*bulletSpeed;
-       
+            newBulletBulletComponent.SpawnFromPool();
+            newBulletBulletComponent.velocity = newShootingDirection * bulletSpeed;
+            
+
         }
 
     }

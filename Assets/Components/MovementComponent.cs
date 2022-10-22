@@ -25,6 +25,8 @@ public class MovementComponent : MonoBehaviour
 
     void FixedUpdate()
     {
+
+        // Get rid of this by starting a coroutine with either player controller or ai component.
         if (movementDirection!=Vector3.zero)
         {
             

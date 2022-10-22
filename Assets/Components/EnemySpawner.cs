@@ -34,7 +34,7 @@ public class EnemySpawner : MonoBehaviour
             myPool[i] = PoolHandler.instance.GetPool(enemyType[i].gameObject.name, PoolTypes.PoolType.ForcedRecycleObjectPool);
             myPool[i].PopulatePool(enemyType[i], enemyAmounts[i]);
         }
-        Debug.Log("enemyType length " + enemyType.Length);
+   
     }
 
     void Update()

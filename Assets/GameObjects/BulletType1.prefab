@@ -47,6 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   velocity: {x: 0, y: 0, z: 0}
+  bulletForce: 10
+  trailRenderer: {fileID: 6542828064422459682}
 --- !u!96 &6542828064422459682
 TrailRenderer:
   serializedVersion: 2
