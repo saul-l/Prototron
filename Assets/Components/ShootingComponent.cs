@@ -19,7 +19,7 @@ public class ShootingComponent : MonoBehaviour
     public float angle;
     const float fourer = 2.0f / Mathf.PI;
     const float antiFourer = 1.0f / fourer;
-   
+    public bool fire;
     public UnityEvent hasShot;
     private Vector3 weaponPosition = new Vector3(0,0.15f,0);
     void Start()
@@ -29,24 +29,26 @@ public class ShootingComponent : MonoBehaviour
     }
     void FixedUpdate()
     {
-        /*  Start shooting based on shootingDirection and force it to 4 angles
-            This is stupid. No need to be check this every frame. Should be 
-            a coroutine started by input or ai component */
 
-                if (shootingDirection!=Vector3.zero && lastShotTime <= Time.time)
-                {
-                    angle = fourer * Mathf.Atan2(shootingDirection.x, shootingDirection.z);
-                    angle = Mathf.Round(angle);
-                    angle *= antiFourer;
-                    newShootingDirection.z = Mathf.Cos(angle);
-                    newShootingDirection.x = Mathf.Sin(angle);
+        if (fire && lastShotTime <= Time.time)
+        {
 
-                    lastShotTime = Time.time + rateOfFire;
+                // Analog controller forced to four directions. Should be in PlayerController
+                angle = fourer * Mathf.Atan2(shootingDirection.x, shootingDirection.z);
+                angle = Mathf.Round(angle);
+                angle *= antiFourer;
+                newShootingDirection.z = Mathf.Cos(angle);
+                newShootingDirection.x = Mathf.Sin(angle);
 
-                    SpawnBullet();           
-                  }
-       
+                lastShotTime = Time.time + rateOfFire;
+
+                SpawnBullet();
+        }
+
+
+
     }
+
 
     void SpawnBullet()
     {

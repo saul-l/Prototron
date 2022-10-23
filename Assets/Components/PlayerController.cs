@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.InputSystem.Interactions;
@@ -13,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 shootingDirection;
     public ButtonControl pressedButton;
     Directions.Direction aimingDirection;
-    
+    [SerializeField] UnityEvent FireEvent;
 
     public UniqueStack<Directions.Direction> aimFireBuffer = new UniqueStack<Directions.Direction>();
     void Start()
@@ -47,62 +48,73 @@ public class PlayerController : MonoBehaviour
 
     public void FireLeft(InputAction.CallbackContext context)
     {
-      if(context.started)
-            aimFireBuffer.AddNode(Directions.Direction.Left);
-      if (context.canceled)
-            aimFireBuffer.RemoveNode(Directions.Direction.Left);
+      if(context.started) aimFireBuffer.AddNode(Directions.Direction.Left);
+      if (context.canceled) aimFireBuffer.RemoveNode(Directions.Direction.Left);
 
-      CalculateShootingDirectionFromEnumDirection();
+      CalculateShootingDirectionAndFire();
     }
 
     public void FireRight(InputAction.CallbackContext context)
     {
-        if (context.started)
-            aimFireBuffer.AddNode(Directions.Direction.Right);
-        if (context.canceled)
-            aimFireBuffer.RemoveNode(Directions.Direction.Right);
+        if (context.started) aimFireBuffer.AddNode(Directions.Direction.Right);
+        if (context.canceled) aimFireBuffer.RemoveNode(Directions.Direction.Right);
 
-        CalculateShootingDirectionFromEnumDirection();
+        CalculateShootingDirectionAndFire();
     }
 
     public void FireUp(InputAction.CallbackContext context)
     {
         shootingComponent.shootingDirection = Vector3.up;
-        if (context.started)
-            aimFireBuffer.AddNode(Directions.Direction.Up);
-        if (context.canceled)
-            aimFireBuffer.RemoveNode(Directions.Direction.Up);
+        if (context.started) aimFireBuffer.AddNode(Directions.Direction.Up);
+        if (context.canceled) aimFireBuffer.RemoveNode(Directions.Direction.Up);
 
-        CalculateShootingDirectionFromEnumDirection();
+        CalculateShootingDirectionAndFire();
     }
 
     public void FireDown(InputAction.CallbackContext context)
     {
-        if (context.started)
-            aimFireBuffer.AddNode(Directions.Direction.Down);
-        if (context.canceled)
-            aimFireBuffer.RemoveNode(Directions.Direction.Down);
+        if (context.started) aimFireBuffer.AddNode(Directions.Direction.Down);
+        if (context.canceled) aimFireBuffer.RemoveNode(Directions.Direction.Down);
 
-        CalculateShootingDirectionFromEnumDirection();
+        CalculateShootingDirectionAndFire();
     }
 
-    public void CalculateShootingDirectionFromEnumDirection()
+    public void CalculateShootingDirectionAndFire()
     {
 
         if (aimFireBuffer.returnFirstNodeValue() == Directions.Direction.Up)
+        {
             shootingComponent.shootingDirection = Vector3.forward;
+        }
 
         if (aimFireBuffer.returnFirstNodeValue() == Directions.Direction.Down)
+        {
             shootingComponent.shootingDirection = Vector3.back;
+        }
 
         if (aimFireBuffer.returnFirstNodeValue() == Directions.Direction.Left)
+        {
             shootingComponent.shootingDirection = Vector3.left;
-
+        }
+        
         if (aimFireBuffer.returnFirstNodeValue() == Directions.Direction.Right)
+        {
             shootingComponent.shootingDirection = Vector3.right;
-
+        }
+        
         if (aimFireBuffer.returnFirstNodeValue() == Directions.Direction.None)
+        {
             shootingComponent.shootingDirection = Vector3.zero;
+            shootingComponent.fire = false;
+        }
+        else
+        {
+            shootingComponent.fire = true;
+        }
+
+
+
+
     }
 
 }

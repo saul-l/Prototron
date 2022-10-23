@@ -660,6 +660,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementComponent: {fileID: 103913049835960774}
   shootingComponent: {fileID: -3888252133575931285}
+  FireEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &103913049835960774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -673,7 +676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementDirection: {x: 0, y: 0, z: 0}
-  movementSpeed: 4
+  movementSpeed: 6
   movementChangeSpeed: 8
   rb: {fileID: 0}
 --- !u!114 &-5811726607277540040
@@ -841,6 +844,10 @@ MonoBehaviour:
   prevShootingDirection: {x: 0, y: 0, z: 0}
   totalShootingDirectionValue: 0
   angle: 0
+  fire: 0
+  hasShot:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!95 &8241060102195771655
 Animator:
   serializedVersion: 4
@@ -890,6 +897,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   movementComponent: {fileID: 103913049835960774}
+  shootingComponent: {fileID: 0}
   debugValue: 0
 --- !u!1 &8420002676803375537
 GameObject:

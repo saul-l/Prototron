@@ -13,7 +13,7 @@ public class EnemySpawner : MonoBehaviour
     public int[] enemyAmounts;
     public bool randomPositions = true;
     private float prevTime = 0.0f;
-    
+    public Vector2 worldSize = Vector2.one;
     private void OnValidate()
     {
      // Only allow ISpawnables to be spawned
@@ -54,7 +54,7 @@ public class EnemySpawner : MonoBehaviour
             if (newEnemy!= null)
             {
                 Vector3 pos = new Vector3(1.0f, 1.0f, 1.0f);
-                newEnemy.transform.position = new Vector3(Random.Range(-1.0f,1.0f), 0, Random.Range(-1.0f, 1.0f));
+                newEnemy.transform.position = new Vector3(Random.Range(-worldSize.x, worldSize.x), 0, Random.Range(-worldSize.y, worldSize.y));
                 newEnemy.transform.rotation = Quaternion.identity;
                 newEnemy.SetActive(true);
 

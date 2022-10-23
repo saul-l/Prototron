@@ -423,9 +423,9 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 20
-  orthographic: 0
-  orthographic size: 5
+  field of view: 15
+  orthographic: 1
+  orthographic size: 16
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -449,7 +449,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 637919624}
   m_LocalRotation: {x: 0.4243574, y: 0, z: 0, w: 0.9054948}
-  m_LocalPosition: {x: 0, y: 51.43, z: -44.23}
+  m_LocalPosition: {x: 0, y: 28.98, z: -21.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -678,9 +678,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 994025248}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1.9084, z: 0}
-  m_LocalScale: {x: 26.616169, y: 0.29573524, z: 47.317635}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -4.1002, z: 0}
+  m_LocalScale: {x: 56.3232, y: 0.5205236, z: 41.683746}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 944841202}
@@ -689,7 +689,7 @@ Transform:
   - {fileID: 1637237683}
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1214941124
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,6 +878,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2406289660876974039, guid: 9c38d1cf8e71687428f4a4bc322d47da, type: 3}
+      propertyPath: interval
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2406289660876974039, guid: 9c38d1cf8e71687428f4a4bc322d47da, type: 3}
+      propertyPath: worldSize.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: -2406289660876974039, guid: 9c38d1cf8e71687428f4a4bc322d47da, type: 3}
+      propertyPath: worldSize.y
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: -2406289660876974039, guid: 9c38d1cf8e71687428f4a4bc322d47da, type: 3}
+      propertyPath: enemyAmounts.Array.data[0]
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1075278643054502735, guid: 9c38d1cf8e71687428f4a4bc322d47da, type: 3}
       propertyPath: m_RootOrder
       value: 6

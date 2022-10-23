@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementDirection: {x: 0, y: 0, z: 0}
-  movementSpeed: 3
+  movementSpeed: 4
   movementChangeSpeed: 3
   rb: {fileID: 0}
 --- !u!54 &6935448203046852442

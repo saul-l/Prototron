@@ -33,7 +33,6 @@ public class CharacterAnimationComponent : MonoBehaviour
 
     public void Shoot()
     { 
-      
         animator.SetTrigger("shoot");
     }
 }
