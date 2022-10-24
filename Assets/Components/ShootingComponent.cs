@@ -20,6 +20,7 @@ public class ShootingComponent : MonoBehaviour
     const float fourer = 2.0f / Mathf.PI;
     const float antiFourer = 1.0f / fourer;
     public bool fire;
+    
     public UnityEvent hasShot;
     private Vector3 weaponPosition = new Vector3(0,0.15f,0);
     void Start()

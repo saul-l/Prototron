@@ -57,7 +57,7 @@ public class EnemySpawner : MonoBehaviour
                 newEnemy.transform.position = new Vector3(Random.Range(-worldSize.x, worldSize.x), 0, Random.Range(-worldSize.y, worldSize.y));
                 newEnemy.transform.rotation = Quaternion.identity;
                 newEnemy.SetActive(true);
-
+                
             }
     }
 

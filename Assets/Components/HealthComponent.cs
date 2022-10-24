@@ -7,11 +7,8 @@ public class HealthComponent : MonoBehaviour, IDamageable, ISpawnable
     [SerializeField] int health = 2;
 
     public void ApplyDamage(int damageAmount)
-    {
-        
-       
+    {    
         health -= damageAmount;
-
         if (health < 0)
         {
             ReturnToPool();
@@ -23,6 +20,10 @@ public class HealthComponent : MonoBehaviour, IDamageable, ISpawnable
         gameObject.SetActive(false);
     }
 
+    private void OnEnable()
+    {
+        SpawnFromPool();
+    }
     public void SpawnFromPool()
     {
         health = 2;
