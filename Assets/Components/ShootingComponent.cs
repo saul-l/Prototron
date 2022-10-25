@@ -23,6 +23,7 @@ public class ShootingComponent : MonoBehaviour
     
     public UnityEvent hasShot;
     private Vector3 weaponPosition = new Vector3(0,0.15f,0);
+    private float weaponDistance = 0.2f;
     void Start()
     {
        myPool = PoolHandler.instance.GetPool(this.gameObject.name, PoolTypes.PoolType.ForcedRecycleObjectPool);
@@ -62,7 +63,7 @@ public class ShootingComponent : MonoBehaviour
             BulletComponent newBulletBulletComponent = newBullet.GetComponent<BulletComponent>();
 
             // Weapon position should come from weapon bone position eventually)
-            newBullet.transform.position = weaponPosition + transform.position + newShootingDirection;
+            newBullet.transform.position = weaponPosition + transform.position + newShootingDirection*weaponDistance;
             newBullet.transform.rotation = Quaternion.identity;
             newBullet.SetActive(true);
             newBulletBulletComponent.SpawnFromPool();

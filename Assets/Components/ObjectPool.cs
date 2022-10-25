@@ -6,16 +6,13 @@ using UnityEngine.Pool;
 public class ObjectPool : MonoBehaviour
 {
     // Start is called before the first frame update
-    public static ObjectPool SharedInstance;
+
     public List<GameObject> pooledObjects;
     public GameObject objectToPool;
     public int amountToPool;
 
     
-    void Awake()
-    {
-        SharedInstance = this;
-    }
+
 
     void Start()
     {

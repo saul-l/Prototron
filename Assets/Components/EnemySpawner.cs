@@ -31,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
         {
       
             
-            myPool[i] = PoolHandler.instance.GetPool(enemyType[i].gameObject.name, PoolTypes.PoolType.ForcedRecycleObjectPool);
+            myPool[i] = PoolHandler.instance.GetPool(enemyType[i].gameObject.name, PoolTypes.PoolType.NormalPool);
             myPool[i].PopulatePool(enemyType[i], enemyAmounts[i]);
         }
    

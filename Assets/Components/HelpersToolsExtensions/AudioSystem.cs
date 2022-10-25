@@ -5,10 +5,8 @@ using UnityEngine;
 
 public static class AudioSystem
 {
-    // Start is called before the first frame update
+    // This will one day be a wrapper/facade so that I can easily switch between Wwise and Unity native audio
 
-
-    // Update is called once per frame
 #if WWISE
     public static void PlayAudioEvent(string AudioEvent)
     {
