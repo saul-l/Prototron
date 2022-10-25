@@ -22,14 +22,14 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DebugText.debugTextInstance.PrintText("lol");
+       
         movementComponent.movementDirection = (playerTransform.position-myTransform.position).normalized;
         
         //temp melee attack. proper one will use child collider an some weapon system
-        if(meleeComponent!=null && Vector3.Distance(playerTransform.position, myTransform.position) < .5f)
+        if(Vector3.Distance(playerTransform.position, myTransform.position) < 1.5f)
         {
-   
-         player.GetComponent<IPlayerDamageable>().ApplyDamage(2);
+            DebugText.instance.PrintText("lol");
+            player.GetComponent<IPlayerDamageable>().ApplyDamage(2);
         }
 
     }

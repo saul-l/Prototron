@@ -7,19 +7,19 @@ using UnityEngine.UI;
 
 public class DebugText : MonoBehaviour
 {
-    public static DebugText debugTextInstance;
+    public static DebugText instance;
 
 
     public TextMeshProUGUI debugText;
 
-    private string testString = "trololol";
+   
 
     void Awake()
     {
-        if (debugTextInstance != null && debugTextInstance != this)
+        if (instance != null && instance != this)
             Destroy(this);
         else
-            debugTextInstance = this;
+            instance = this;
     }
 
     void Start()
@@ -27,9 +27,9 @@ public class DebugText : MonoBehaviour
         debugText = GetComponent<TextMeshProUGUI>();
     }
 
-    public void PrintText(string testToPrint)
+    public void PrintText(string textToPrint)
     {
-        debugText.text = testToPrint;
+        debugText.text = textToPrint;
     }
 
 }
