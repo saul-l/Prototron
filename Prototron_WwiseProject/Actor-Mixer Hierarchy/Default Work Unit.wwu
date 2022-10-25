@@ -40,7 +40,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<SourcePlugin Name="Synth One" ID="{12919699-975D-4A58-856F-8B8C6F751B51}" ShortID="884056763" PluginName="Wwise Synth One" CompanyID="0" PluginID="148">
+										<SourcePlugin Name="asdfg" ID="{12919699-975D-4A58-856F-8B8C6F751B51}" ShortID="884056763" PluginName="Wwise Synth One" CompanyID="0" PluginID="148">
 											<PropertyList>
 												<Property Name="BaseFrequency" Type="Real32" Value="194"/>
 												<Property Name="OperationMode" Type="int32" Value="1"/>
@@ -146,7 +146,7 @@
 										</SourcePlugin>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="Synth One" ID="{12919699-975D-4A58-856F-8B8C6F751B51}" Platform="Linked"/>
+										<ActiveSource Name="asdfg" ID="{12919699-975D-4A58-856F-8B8C6F751B51}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>

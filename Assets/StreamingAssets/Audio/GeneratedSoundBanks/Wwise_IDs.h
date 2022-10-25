@@ -16,6 +16,12 @@ namespace AK
         static const AkUniqueID PLAY_PISTOL_SHOOT = 2955138351U;
     } // namespace EVENTS
 
+    namespace BANKS
+    {
+        static const AkUniqueID INIT = 1355168291U;
+        static const AkUniqueID TEST = 3157003241U;
+    } // namespace BANKS
+
     namespace BUSSES
     {
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;

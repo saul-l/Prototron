@@ -5,34 +5,28 @@ using UnityEngine;
 public class BulletComponent : MonoBehaviour, ISpawnable
 {
     
-    [SerializeField] int damage = 1;
+    [SerializeField] private int damage = 1;
+    [SerializeField] private TrailRenderer trailRenderer;
+
     private Vector3 newPosition;
     private RaycastHit hit;
+
+    public float trailRendererTime;
     public Vector3 velocity;
     public bool explosive;
     public float explosionRadius;
     public float bulletForce = 10.0f;
-    [SerializeField] private TrailRenderer trailRenderer;
+    public bool alive = true;
 
-    void Start()
+    void Awake()
     {
-      
+        trailRendererTime = trailRenderer.time;
+
     }
+
     void FixedUpdate()
     {
-        TraceToNewPosition();
-    }
-    public void ReturnToPool()
-    {
-  
-        gameObject.SetActive(false);
-        
-    }
-
-    public void SpawnFromPool()
-    {
-        trailRenderer.Clear();
-
+        if(alive)TraceToNewPosition();
     }
 
     private void TraceToNewPosition()
@@ -60,6 +54,21 @@ public class BulletComponent : MonoBehaviour, ISpawnable
         }
     }
 
+    public void ReturnToPool()
+    {
+        trailRenderer.time = trailRendererTime * .20f;
+        alive = false;
+        StartCoroutine(waitAndDeactivateCoroutine());
+    }
+
+    public void SpawnFromPool()
+    {
+        alive = true;
+        trailRenderer.time = trailRendererTime;
+        trailRenderer.Clear();
+
+    }
+
     private void explode(RaycastHit hit)
     {
 
@@ -68,5 +77,11 @@ public class BulletComponent : MonoBehaviour, ISpawnable
     private void kineticBulletHit(RaycastHit hit)
     {
 
+    }
+
+    IEnumerator waitAndDeactivateCoroutine()
+    {
+        yield return new WaitForSeconds(1);
+        gameObject.SetActive(false);
     }
 }

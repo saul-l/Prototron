@@ -10,7 +10,6 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 /NuGet/
-/Assets/Wwise/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
@@ -74,3 +73,11 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Wwise integration and local project files
+/Assets/Wwise/
+/Prototron_WwiseProject/.cache/
+/Prototron_WwiseProject/GeneratedSoundBanks/
+.*.wsettings
+.*.validationcache
+.prof
