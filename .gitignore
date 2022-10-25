@@ -81,3 +81,8 @@ crashlytics-build.properties
 .*.wsettings
 .*.validationcache
 .prof
+
+#misc
+logRunSetup.txt
+WwiseUnityIntegration_Mac_Src.zip
+WwiseUnityIntegration_Windows_Src.zip
