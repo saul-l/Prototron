@@ -30,6 +30,7 @@
 												<Value>46</Value>
 											</ValueList>
 										</Property>
+										<Property Name="OverrideVirtualVoice" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">

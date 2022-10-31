@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
     public MovementComponent movementComponent;
     public MeleeComponent meleeComponent;
     public GameObject player;
+    public Object weapon;
     Vector3 ThrowDirection;
     private Transform myTransform;
     private Transform playerTransform;
@@ -33,4 +34,6 @@ public class EnemyController : MonoBehaviour
         }
 
     }
+
+
 }

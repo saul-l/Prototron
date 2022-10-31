@@ -35,12 +35,12 @@ public class ShootingComponent : MonoBehaviour
         if (fire && lastShotTime <= Time.time)
         {
 
-                // Analog controller forced to four directions. Should be in PlayerController
-                angle = fourer * Mathf.Atan2(shootingDirection.x, shootingDirection.z);
-                angle = Mathf.Round(angle);
-                angle *= antiFourer;
-                newShootingDirection.z = Mathf.Cos(angle);
-                newShootingDirection.x = Mathf.Sin(angle);
+               // Analog controller forced to four directions. Should be in PlayerController
+              //  angle = fourer * Mathf.Atan2(shootingDirection.x, shootingDirection.z);
+              // angle = Mathf.Round(angle);
+              //  angle *= antiFourer;
+              //  newShootingDirection.z = Mathf.Cos(angle);
+              //  newShootingDirection.x = Mathf.Sin(angle);
 
                 lastShotTime = Time.time + rateOfFire;
 
@@ -63,11 +63,11 @@ public class ShootingComponent : MonoBehaviour
             BulletComponent newBulletBulletComponent = newBullet.GetComponent<BulletComponent>();
 
             // Weapon position should come from weapon bone position eventually)
-            newBullet.transform.position = weaponPosition + transform.position + newShootingDirection*weaponDistance;
+            newBullet.transform.position = weaponPosition + transform.position + shootingDirection*weaponDistance;
             newBullet.transform.rotation = Quaternion.identity;
             newBullet.SetActive(true);
             newBulletBulletComponent.SpawnFromPool();
-            newBulletBulletComponent.velocity = newShootingDirection * bulletSpeed;
+            newBulletBulletComponent.velocity = shootingDirection * bulletSpeed;
             
 
         }

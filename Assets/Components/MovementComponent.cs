@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MovementComponent : MonoBehaviour
 {
-    // these define character actions
+    // movementDirection controlled by PlayerController or EnemyController
     public Vector3 movementDirection;
 
 
@@ -40,13 +40,13 @@ public class MovementComponent : MonoBehaviour
             
             velocityChange = targetVelocity-rb.velocity;
 
-            velocityChange.x=Mathf.Clamp(velocityChange.x,-movementChangeSpeed,movementChangeSpeed);
-            velocityChange.z=Mathf.Clamp(velocityChange.z,-movementChangeSpeed,movementChangeSpeed);
-            velocityChange.y=0.0f;
+            velocityChange.x = Mathf.Clamp(velocityChange.x,-movementChangeSpeed,movementChangeSpeed);
+            velocityChange.z = Mathf.Clamp(velocityChange.z,-movementChangeSpeed,movementChangeSpeed);
+            velocityChange.y = 0.0f;
 
             rb.AddForce(velocityChange,ForceMode.VelocityChange);
         }
 
-
+        rb.AddForce(Physics.gravity * rb.mass * 2.0f) ;
     }
 }

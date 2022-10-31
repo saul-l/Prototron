@@ -20,7 +20,7 @@ public class Pool : MonoBehaviour
         for (int i = 0; i < amountToPool; i++)
         {
             tmp = Instantiate(objectToPool);
-            tmp.transform.parent = this.transform.parent;
+            tmp.transform.parent = this.transform;
             tmp.SetActive(false);
             pooledObjects.Add(tmp);
         }
