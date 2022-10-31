@@ -15,9 +15,9 @@ TagManager:
   - IgnoreEnemies
   - IgnoreAll
   - Enemies
-  - 
-  - 
-  - 
+  - IgnoreAllExceptPlayer
+  - IgnoreAllExcteptEnemies
+  - IgnocreAllExceptCharacters
   - 
   - 
   - 

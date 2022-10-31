@@ -182,13 +182,17 @@ PrefabInstance:
       propertyPath: hasShot.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: -707190230888361410, guid: 536787e5f32b4da4bb11d1d3e3933686, type: 3}
+      propertyPath: m_Drag
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 103913049835960774, guid: 536787e5f32b4da4bb11d1d3e3933686, type: 3}
       propertyPath: movementSpeed
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 103913049835960774, guid: 536787e5f32b4da4bb11d1d3e3933686, type: 3}
       propertyPath: movementChangeSpeed
-      value: 8
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1815517575145660383, guid: 536787e5f32b4da4bb11d1d3e3933686, type: 3}
       propertyPath: m_RootOrder
