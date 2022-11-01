@@ -43,8 +43,7 @@ public class BulletComponent : MonoBehaviour, ISpawnable
 
             if (hit.collider.gameObject.GetComponent<IDamageable>() != null)
             {
-                hit.collider.gameObject.GetComponent<IDamageable>().ApplyDamage(damage);
-                
+                hit.collider.gameObject.GetComponent<IDamageable>().ApplyDamage(damage);             
             }
             ReturnToPool();
         }

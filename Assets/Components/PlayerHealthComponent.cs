@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealthComponent : MonoBehaviour, IPlayerDamageable
+public class PlayerHealthComponent : MonoBehaviour, IDamageable
 {
     public float health = 10;
 

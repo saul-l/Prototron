@@ -6,14 +6,16 @@ public class EnemyController : MonoBehaviour
 {
        
     public MovementComponent movementComponent;
-    public MeleeComponent meleeComponent;
+    public GameObject meleeWeapon;
     public GameObject player;
     public Object weapon;
-    Vector3 ThrowDirection;
+    private MeleeComponent meleeWeaponComponent;
     private Transform myTransform;
     private Transform playerTransform;
+    private float lastAttackTime = 0.0f;
     void Awake()
     {
+        meleeWeaponComponent = meleeWeapon.GetComponent<MeleeComponent>();
         movementComponent = this.GetComponent<MovementComponent>();
         player = GameObject.Find("Player");      
         playerTransform = player.transform;
@@ -27,10 +29,16 @@ public class EnemyController : MonoBehaviour
         movementComponent.movementDirection = (playerTransform.position-myTransform.position).normalized;
         
         //temp melee attack. proper one will use child collider an some weapon system
-        if(Vector3.Distance(playerTransform.position, myTransform.position) < 1.5f)
+        if(meleeWeapon!=null && Time.time >= lastAttackTime+meleeWeaponComponent.RateOfFire)
         {
-            DebugText.instance.PrintText("lol");
-            player.GetComponent<IPlayerDamageable>().ApplyDamage(2);
+
+
+            if(Vector3.Distance(playerTransform.position, myTransform.position) < meleeWeaponComponent.attackDistance)
+            {
+                Debug.Log("attack");
+                lastAttackTime = Time.time;
+                meleeWeaponComponent.Attack(playerTransform.position - transform.position);
+            }
         }
 
     }

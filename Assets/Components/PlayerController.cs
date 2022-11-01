@@ -42,6 +42,16 @@ public class PlayerController : MonoBehaviour
         shootingDirection.z=shootingDirection.y;
         shootingDirection.y=0;
         shootingComponent.shootingDirection=this.shootingDirection;
+
+        // Analog controller shooting direction logic, which used to be in ShootingComponent
+        // const float fourer = 2.0f / Mathf.PI;
+        // const float antiFourer = 1.0f / fourer;
+        //  angle = fourer * Mathf.Atan2(shootingDirection.x, shootingDirection.z);
+        // angle = Mathf.Round(angle);
+        //  angle *= antiFourer;
+        //  newShootingDirection.z = Mathf.Cos(angle);
+        //  newShootingDirection.x = Mathf.Sin(angle);
+
     }
 
 

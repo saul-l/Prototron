@@ -17,8 +17,7 @@ public class ShootingComponent : MonoBehaviour
     private float lastShotTime = 0.0f;
     private float bulletSpeed = 1.0f;
     public float angle;
-    const float fourer = 2.0f / Mathf.PI;
-    const float antiFourer = 1.0f / fourer;
+
     public bool fire;
     
     public UnityEvent hasShot;
@@ -34,16 +33,7 @@ public class ShootingComponent : MonoBehaviour
 
         if (fire && lastShotTime <= Time.time)
         {
-
-               // Analog controller forced to four directions. Should be in PlayerController
-              //  angle = fourer * Mathf.Atan2(shootingDirection.x, shootingDirection.z);
-              // angle = Mathf.Round(angle);
-              //  angle *= antiFourer;
-              //  newShootingDirection.z = Mathf.Cos(angle);
-              //  newShootingDirection.x = Mathf.Sin(angle);
-
                 lastShotTime = Time.time + rateOfFire;
-
                 SpawnBullet();
         }
 

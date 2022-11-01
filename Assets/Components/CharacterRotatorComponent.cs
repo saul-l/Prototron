@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Rotates character towards shooting direction and if shooting direction is zero, rotates towards movement direction
+// movementComponent and/or shootingComponent should be configured in inspector
 public class CharacterRotatorComponent : MonoBehaviour
 {
 
@@ -10,20 +12,26 @@ public class CharacterRotatorComponent : MonoBehaviour
     [SerializeField] private ShootingComponent shootingComponent;
     [SerializeField] private float rotationSpeed = 1.0f;
     private Quaternion lookAtTarget;
-    
-    // Start is called before the first frame update
+    private Vector3 lookAtDirection = Vector3.zero;
 
+    private void Start()
+    {
+        rotationSpeed = rotationSpeed * 100.0f;
+    }
     // Update is called once per frame
     void Update()
     {
         if(shootingComponent != null && shootingComponent.shootingDirection != Vector3.zero)
         {
-            lookAtTarget=Quaternion.LookRotation(shootingComponent.shootingDirection);
-            
+            lookAtDirection = shootingComponent.shootingDirection;
+            lookAtDirection.y = 0.0f;
+            lookAtTarget = Quaternion.LookRotation(lookAtDirection);            
         }
         else if(movementComponent != null && movementComponent.movementDirection != Vector3.zero)
         {
-            lookAtTarget=Quaternion.LookRotation(movementComponent.movementDirection);
+            lookAtDirection = movementComponent.movementDirection;
+            lookAtDirection.y = 0.0f;
+            lookAtTarget =Quaternion.LookRotation(lookAtDirection);
         }
             
         transform.rotation=Quaternion.RotateTowards(transform.rotation, lookAtTarget, rotationSpeed*Time.deltaTime);
