@@ -396,7 +396,6 @@ GameObject:
   - component: {fileID: 2716087295675000469}
   - component: {fileID: 1604578956}
   - component: {fileID: 6935448203046852442}
-  - component: {fileID: -86747623166692378}
   - component: {fileID: -2270477686504272687}
   - component: {fileID: 4067082640400488950}
   - component: {fileID: 3230287304328705790}
@@ -456,8 +455,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementDirection: {x: 0, y: 0, z: 0}
-  movementSpeed: 4
-  movementChangeSpeed: 3
+  movementSpeed: 6
+  movementChangeSpeed: 5
   rb: {fileID: 0}
 --- !u!54 &6935448203046852442
 Rigidbody:
@@ -475,22 +474,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!114 &-86747623166692378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5993817333502248022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3026e6c85603cc240a93063739b37c8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementDirection: {x: 0, y: 0, z: 0}
-  movementSpeed: 0
-  movementChangeSpeed: 0
-  rb: {fileID: 0}
 --- !u!114 &-2270477686504272687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -552,7 +535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementComponent: {fileID: 1604578956}
   shootingComponent: {fileID: 0}
-  rotationSpeed: 1
+  rotationSpeed: 5
 --- !u!1 &6091517831549281873
 GameObject:
   m_ObjectHideFlags: 0
@@ -999,8 +982,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4402158641592955285, guid: 9167ad2dae4873f419ea5bfd26301a9a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4402158641592955285, guid: 9167ad2dae4873f419ea5bfd26301a9a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 4402158641592955286, guid: 9167ad2dae4873f419ea5bfd26301a9a, type: 3}
       propertyPath: m_IsActive
@@ -1008,6 +995,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9167ad2dae4873f419ea5bfd26301a9a, type: 3}
+--- !u!1 &1069165974287358383 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4402158641238887499, guid: 9167ad2dae4873f419ea5bfd26301a9a, type: 3}
+  m_PrefabInstance: {fileID: 3729520609649022436}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5556202345418992618
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1021,11 +1013,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1718505011976748449, guid: 332c9935f97e8a849a8efb23752f1467, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.67854
+      value: 0.528603
+      objectReference: {fileID: 0}
+    - target: {fileID: 1718505011976748449, guid: 332c9935f97e8a849a8efb23752f1467, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.77903
       objectReference: {fileID: 0}
     - target: {fileID: 1718505011976748449, guid: 332c9935f97e8a849a8efb23752f1467, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.41136
+      value: 0.32046178
       objectReference: {fileID: 0}
     - target: {fileID: 1718505011976748449, guid: 332c9935f97e8a849a8efb23752f1467, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1037,7 +1033,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1718505011976748449, guid: 332c9935f97e8a849a8efb23752f1467, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.379
+      value: 0.532
       objectReference: {fileID: 0}
     - target: {fileID: 1718505011976748449, guid: 332c9935f97e8a849a8efb23752f1467, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1102,7 +1098,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2040619230951569406
 MonoBehaviour:
@@ -1116,5 +1112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2621f0e862f92b44a9aaa00c55b2137d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDistance: 2
+  attackDistance: 3
   myCollider: {fileID: 0}
+  effectGameObject: {fileID: 1069165974287358383}

@@ -10,36 +10,56 @@ public class MeleeComponent : MonoBehaviour, IWeapon
     private int damage = 1;
     private float knockBack = 1.0f;
     private float rateOfFire = 0.3f;
-    public float attackDistance = 2.0f;
+    public float attackDistance = 3.0f;
     private float attackDuration=0.4f;
+    private float attackEndtime;
+    private bool attacking = false;
     private bool hasHit = false;
-    [SerializeField] private Collider myCollider;
 
+    [SerializeField] private Collider myCollider;
+    [SerializeField] private GameObject effectGameObject;
     void Start()
     {
         myCollider=GetComponent<Collider>();
         myCollider.enabled = false;
+        if (effectGameObject != null)
+            effectGameObject.SetActive(false);
     }
     public void Attack(Vector3 attackDirection)
     {
-        myCollider.enabled = true;
+        if(!attacking)
+        {
+            hasHit = false;
+            attacking = true;
+            myCollider.enabled = true;
+            if (effectGameObject != null)
+            { 
+                effectGameObject.SetActive(true);
+            }
+            attackEndtime = Time.time + attackDuration;
+            StartCoroutine(AttackActive());
+        }
     }
 
     IEnumerator AttackActive()
     {
-        float attackEndtime = Time.time + attackDuration;
-        while(Time.time < attackEndtime || !hasHit)
+        
+        while(Time.time < attackEndtime)
         {
+         
             yield return null;
         };
+        
+        if (effectGameObject != null)
+            effectGameObject.SetActive(false);
         myCollider.enabled = false;
-        hasHit = false;
+        attacking = false;
     }
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("attack success");
-        if (other.gameObject.GetComponent<IDamageable>() != null)
+    
+        if (!hasHit && other.gameObject.GetComponent<IDamageable>() != null)
         {
             other.gameObject.GetComponent<IDamageable>().ApplyDamage(damage);
             hasHit = true;
