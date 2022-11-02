@@ -12,17 +12,23 @@ public class ActorAudioComponent : MonoBehaviour
 
     public void shootAudio()
     {
+#if !UNITY_WEBGL
         AkSoundEngine.PostEvent(shootAudioEvent, gameObject);
+#endif
     }
 
     public void deathAudio()
     {
+#if !UNITY_WEBGL
         AkSoundEngine.PostEvent(deathAudioEvent, gameObject);
+#endif
     }
 
     public void damageAudio()
     {
+#if !UNITY_WEBGL
         AkSoundEngine.PostEvent(damageAudioEvent, gameObject);
+#endif    
     }
 
 }

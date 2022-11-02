@@ -11,7 +11,7 @@ public class MeleeComponent : MonoBehaviour, IWeapon
     private float knockBack = 1.0f;
     private float rateOfFire = 0.3f;
     public float attackDistance = 3.0f;
-    private float attackDuration=0.4f;
+    public float attackDuration=0.6f;
     private float attackEndtime;
     private bool attacking = false;
     private bool hasHit = false;

@@ -78,9 +78,9 @@ crashlytics-build.properties
 /Assets/Wwise/
 /Prototron_WwiseProject/.cache/
 /Prototron_WwiseProject/GeneratedSoundBanks/
-.*.wsettings
-.*.validationcache
-.prof
+*.*.wsettings
+*.*.validationcache
+*.prof
 
 #misc
 logRunSetup.txt
