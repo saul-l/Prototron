@@ -14,9 +14,7 @@ public class PoolHandler : MonoBehaviour
         if (instance != null && instance != this)
             Destroy(this);
         else
-            instance = this;
-
-        
+            instance = this;      
     }
 
 
