@@ -5,7 +5,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    Dictionary<string, Pool> poolDictionary = new Dictionary<string, Pool>();
 
     void Awake()
     {
