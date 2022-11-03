@@ -8,10 +8,11 @@
  * - Add AudioClips to SimpleAudioWrapperSound AudioClips array. Names must match Wwise events!
  * - When you wish to play audio using wrapper use PlayAudioEvent function. It will automatically
  *   play either Wwise event or audio clip based on active platform.
+ *   Like this: SimpleAudioWrapper.PlayAudioEvent("Play_test_event", gameObject);
  * - Game objects must have audiosources!
  * - Default config assumes only WebGL uses Unity native audio.
  */
- 
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
