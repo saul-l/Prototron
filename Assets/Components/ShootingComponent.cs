@@ -7,40 +7,50 @@ using static UnityEngine.GraphicsBuffer;
 
 public class ShootingComponent : MonoBehaviour
 {
-    [SerializeField] public Pool myPool;
+    [SerializeField] private ScriptableObject weaponType;
+    public Pool myPool;
     public GameObject bullet;
     public Vector3 shootingDirection;
     public Vector3 newShootingDirection;
     public Vector3 prevShootingDirection = Vector3.zero;
     public float totalShootingDirectionValue;
-    private float rateOfFire = 0.2f;
+    private float rateOfFire = 0.1f;
     private float lastShotTime = 0.0f;
     private float bulletSpeed = 1.0f;
     public float angle;
 
     public bool fire;
-    
+    private bool prevFired;
+    private float timingCorrection;
     public UnityEvent hasShot;
-    private Vector3 weaponPosition = new Vector3(0,0.15f,0);
+    private Vector3 weaponPosition = new Vector3(0,0.55f,0);
     private float weaponDistance = 0.2f;
     void Start()
     {
-       myPool = PoolHandler.instance.GetPool(this.gameObject.name, PoolTypes.PoolType.ForcedRecycleObjectPool);
+       myPool = PoolHandler.instance.GetPool(bullet.gameObject.name, PoolTypes.PoolType.ForcedRecycleObjectPool);
        myPool.PopulatePool(bullet, 20);
     }
     void FixedUpdate()
     {
-
-        if (fire && lastShotTime <= Time.time)
+        if (fire)
         {
-                lastShotTime = Time.time + rateOfFire;
+            if (lastShotTime <= Time.time)
+            {
+                //Correct timing if continuously shooting
+                if (prevFired) { 
+                    timingCorrection = Time.time - lastShotTime;
+                }
+                prevFired = true;                
+                lastShotTime = Time.time + rateOfFire - timingCorrection;
                 SpawnBullet();
+            }
         }
-
-
-
+        else if (prevFired)
+        {
+            prevFired = false;
+            timingCorrection = 0.0f;
+        }
     }
-
 
     void SpawnBullet()
     {

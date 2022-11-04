@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="144">
+	<RootPaths>
+		<ProjectRoot>../..</ProjectRoot>
+		<SourceFilesRoot>../../.cache/Mac/</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<SoundBanks>
+		<SoundBank Id="1069431850" Type="User" Language="SFX" Hash="{65BEFBC1-A150-0C9A-0AE3-06627CCF629F}">
+			<ShortName>Player</ShortName>
+			<Path>Player.bnk</Path>
+			<Plugins>
+				<Custom>
+					<Plugin Id="884056763" Name="asdfg" LibName="Wwise Synth One" LibId="9699330"/>
+				</Custom>
+			</Plugins>
+			<Events>
+				<Event Id="2955138351" Name="Play_pistol_shoot" DurationType="Unknown">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="884056763"/>
+						</Custom>
+					</PluginRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{117A1B2B-F6A7-7699-E3A3-2AA4E0DDED56}">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{A2ED172D-D758-40A4-82CD-EAF31ED9A1FB}</FileHash>
+</SoundBanksInfo>

@@ -14,5 +14,7 @@ public class GameManager : MonoBehaviour
             instance = this;
 
         DontDestroyOnLoad(gameObject);
+      
+        Physics.autoSyncTransforms = true;
     }
 }

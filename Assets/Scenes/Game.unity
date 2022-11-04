@@ -535,7 +535,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 497560842}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe8c4921de0829b4993f71e90088f1f2, type: 3}
   m_Name: 
@@ -1866,7 +1866,7 @@ PrefabInstance:
       objectReference: {fileID: 1324693320}
     - target: {fileID: -2406289660876974039, guid: 9c38d1cf8e71687428f4a4bc322d47da, type: 3}
       propertyPath: enemyAmounts.Array.data[0]
-      value: 1
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1075278643054502735, guid: 9c38d1cf8e71687428f4a4bc322d47da, type: 3}
       propertyPath: m_RootOrder

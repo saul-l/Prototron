@@ -19,8 +19,7 @@ public class PlayerController : MonoBehaviour
     public UniqueStack<Directions.Direction> aimFireBuffer = new UniqueStack<Directions.Direction>();
     void Start()
     {
-        //This should be in some general manager, but we don't have one yet, so it's here for now.
-        Physics.autoSyncTransforms = true;
+
 
         movementComponent = this.GetComponent<MovementComponent>();
         shootingComponent = this.GetComponent<ShootingComponent>();

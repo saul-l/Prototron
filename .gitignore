@@ -77,7 +77,6 @@ crashlytics-build.properties
 # Wwise integration and local project files
 /Assets/Wwise/
 /Prototron_WwiseProject/.cache/
-/Prototron_WwiseProject/GeneratedSoundBanks/
 *.*.wsettings
 *.*.validationcache
 *.prof
