@@ -21,8 +21,9 @@ using UnityEngine.PlayerLoop;
 [ExecuteInEditMode]
 public  class AudioSystemSwitcher : MonoBehaviour
 {
+#if NO_WWISE
     [SerializeField] private AkInitializer akInitializer;
-
+#endif
     [SerializeField] private bool usingUnityAudioSystem = false;
     [SerializeField] private bool startUpCheckDone = false;
 
@@ -31,12 +32,12 @@ public  class AudioSystemSwitcher : MonoBehaviour
         // Assign akIinitializer and select proper audio system on "fake init"
         if(!startUpCheckDone)
         {
-           
+#if NO_WWISE
             if (akInitializer == null)
             {
                 akInitializer = GameObject.FindObjectOfType<AkInitializer>();
             }
-            
+#endif            
             SelectAudioSystem();
             startUpCheckDone = true;
         }
@@ -67,8 +68,9 @@ public  class AudioSystemSwitcher : MonoBehaviour
         SerializedProperty m_DisableAudio = audioManager.FindProperty("m_DisableAudio");
         m_DisableAudio.boolValue = false;
         audioManager.ApplyModifiedProperties();
-
-        if(akInitializer!=null) akInitializer.enabled = false;
+#if NO_WWISE
+        if (akInitializer!=null) akInitializer.enabled = false;
+#endif
         usingUnityAudioSystem = true;
 
     }
