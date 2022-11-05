@@ -17,7 +17,7 @@ public class ForcedRecycleObjectPool : Pool
                 tmp = pooledObjects[i];
                 pooledObjects.RemoveAt(i);
                 pooledObjects.Add(tmp);
-                tmp.transform.parent = this.transform.parent;
+                tmp.transform.parent = this.transform;
                 return tmp;
             }
         }
@@ -25,7 +25,8 @@ public class ForcedRecycleObjectPool : Pool
         tmp = pooledObjects[0];
         pooledObjects.RemoveAt(0);
         pooledObjects.Add(tmp);
-        tmp.transform.parent = this.transform.parent;
+        tmp.transform.parent = this.transform;
+
         return tmp;
     }
 

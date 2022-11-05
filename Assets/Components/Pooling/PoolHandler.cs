@@ -1,3 +1,37 @@
+/* Pooling system PoolHandler
+ * 
+ * Required in scene for pooling system to work
+ * 
+ * PoolHandler.instance.GetPool(String GameObject name, PoolTypes.PoolType poolType)
+ * Gives you a pool of GameObject type. If none exists already a new one is created.
+ * PoolTypes:
+ * PoolTypes.PoolType.ForcedRecycleObjectPool - Regular pool, which will give nothing, if there are no inactive objects in pool
+ * PoolTypes.PoolType.ForcedRecycleObjectPool - Pool which will automatically grab oldest active object, if there are no inactive objects in pool
+ * 
+ * In Pool class:
+ * Pool.Populatepool(String GameObject name, int Amount)
+ * Adds Amount objects of type GameObject to pool
+ * 
+ * Pool.GetPooledObject()
+ * Gives object from pool, if one is available
+ * 
+ * InActive pooled objects are automatically considered available.
+ * 
+ * Usage example (in other game object):
+ *       // GameObject used in pool
+ *       public GameObject myPooledGameObject;
+ *       // reference to pool
+ *       public Pool myPool;
+ *       // Create new ForcedRecycleObjectPool for 
+ *       myPool = PoolHandler.instance.GetPool(myPooledGameObject.gameObject.name, PoolTypes.PoolType.ForcedRecycleObjectPool);
+ *       // Add 20 instances of myPooledGameObject to pool
+ *       myPool.PopulatePool(myPooledGameObject, 20);
+ *       // Get one instance of myPooledGameObject from pool
+ *       GameObject myPooledGameObjectInstance = myPool.GetPooledObject();
+ *       // Assign transform position to it
+ *       myPooledGameObjectInstante.transform.position = Vector3.zero;
+ * */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +41,7 @@ using static PlayerController;
 public class PoolHandler : MonoBehaviour
 {
     public static PoolHandler instance;
-    Dictionary<string, Pool> poolDictionary = new Dictionary<string, Pool>();
+    [SerializeField] Dictionary<string, Pool> poolDictionary = new Dictionary<string, Pool>();
 
     void Awake()
     {
@@ -21,20 +55,33 @@ public class PoolHandler : MonoBehaviour
     public Pool GetPool(string tmpGameObject, PoolTypes.PoolType poolType)
     {
 
-
         if (poolDictionary.TryGetValue(tmpGameObject, out Pool tmpPool))
         {
+            Debug.Log("oh yeah!");
             return poolDictionary[tmpGameObject];
         }
+
 
         switch(poolType)
         {
             case PoolTypes.PoolType.ForcedRecycleObjectPool:
-                return this.gameObject.AddComponent<ForcedRecycleObjectPool>();
+                {
+                    Pool tempPool = this.gameObject.AddComponent<ForcedRecycleObjectPool>();
+                    poolDictionary.Add(tmpGameObject, tempPool);
+                    return tempPool;
+                }
             case PoolTypes.PoolType.NormalPool:
-                return this.gameObject.AddComponent<Pool>();
+                {
+                    Pool tempPool = this.gameObject.AddComponent<Pool>();
+                    poolDictionary.Add(tmpGameObject, tempPool);
+                    return tempPool;
+                }
             default:
-                return this.gameObject.AddComponent<Pool>();
+                {
+                    Pool tempPool = this.gameObject.AddComponent<Pool>();
+                    poolDictionary.Add(tmpGameObject, tempPool);
+                    return tempPool;
+                }
         }
         
 

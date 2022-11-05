@@ -6,14 +6,10 @@ using UnityEngine;
 public class ActorAudioComponent : MonoBehaviour
 {
 
-#if UNITY_WEBGL
-    [SerializeField] private AudioSource shootAudioSource;
-    [SerializeField] private string shootAudioEvent;
-#else
+
     [SerializeField] private string shootAudioEvent;
     [SerializeField] private string damageAudioEvent;
-    [SerializeField] private string deathAudioEvent;
-#endif
+
 
 
     public void shootAudio()

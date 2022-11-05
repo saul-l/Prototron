@@ -519,6 +519,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
+  damageEffectPool: {fileID: 0}
+  deathEffectPool: {fileID: 0}
+  deathEffect: {fileID: 8457978493270944543, guid: ba721e7bc9df6064fa6cdf67f272aa42, type: 3}
+  damageEffect: {fileID: 8974671989784390187, guid: 42d562fb7a525fa45adca4edb9cfc943, type: 3}
 --- !u!136 &4067082640400488950
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -529,7 +533,7 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: 133b861ec7828714e83ac47c30f24e1e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.52
+  m_Radius: 0.6
   m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 0.55, z: 0}
@@ -873,7 +877,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
       propertyPath: m_RootOrder
@@ -920,6 +924,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11900000, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11900000, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
       propertyPath: m_FarClipPlane
       value: 1
       objectReference: {fileID: 0}
@@ -955,7 +963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2875971401857921486, guid: 6c4c64158a937614cbf6ace5a90e28e2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3216221508772572020, guid: 6c4c64158a937614cbf6ace5a90e28e2, type: 3}
       propertyPath: m_RootOrder

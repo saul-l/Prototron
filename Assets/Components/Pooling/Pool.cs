@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿
+using System.Collections.Generic;
 using UnityEngine;
+
 
 public class Pool : MonoBehaviour
 {
@@ -15,7 +17,7 @@ public class Pool : MonoBehaviour
     public void PopulatePool(GameObject objectToPool, int amount)
     {
         amountToPool = amount;
-        pooledObjects = new List<GameObject>();
+        if(pooledObjects == null) pooledObjects = new List<GameObject>();
         GameObject tmp;
         for (int i = 0; i < amountToPool; i++)
         {

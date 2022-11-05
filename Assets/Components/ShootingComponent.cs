@@ -14,7 +14,7 @@ public class ShootingComponent : MonoBehaviour
     public Vector3 newShootingDirection;
     public Vector3 prevShootingDirection = Vector3.zero;
     public float totalShootingDirectionValue;
-    private float rateOfFire = 0.1f;
+    private float rateOfFire = (1 / 60f) * 20.0f;
     private float lastShotTime = 0.0f;
     private float bulletSpeed = 1.0f;
     public float angle;
@@ -29,6 +29,8 @@ public class ShootingComponent : MonoBehaviour
     {
        myPool = PoolHandler.instance.GetPool(bullet.gameObject.name, PoolTypes.PoolType.ForcedRecycleObjectPool);
        myPool.PopulatePool(bullet, 20);
+        myPool = PoolHandler.instance.GetPool(bullet.gameObject.name, PoolTypes.PoolType.ForcedRecycleObjectPool);
+        myPool.PopulatePool(bullet, 20);
     }
     void FixedUpdate()
     {

@@ -5,12 +5,13 @@ using UnityEngine;
 public class BulletComponent : MonoBehaviour, ISpawnable
 {
     
-    [SerializeField] private int damage = 1;
+    
     [SerializeField] private TrailRenderer trailRenderer;
+    [SerializeField] private string hitHumanAudioevent;
 
     private Vector3 newPosition;
     private RaycastHit hit;
-
+    public int damage = 1;
     public float trailRendererTime;
     public Vector3 velocity;
     public bool explosive;
@@ -43,6 +44,7 @@ public class BulletComponent : MonoBehaviour, ISpawnable
 
             if (hit.collider.gameObject.GetComponent<IDamageable>() != null)
             {
+                SimpleAudioWrapper.PlayAudioEvent(hitHumanAudioevent, gameObject);
                 hit.collider.gameObject.GetComponent<IDamageable>().ApplyDamage(damage);             
             }
             ReturnToPool();
