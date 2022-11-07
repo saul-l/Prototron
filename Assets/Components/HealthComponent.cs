@@ -28,26 +28,27 @@ public class HealthComponent : MonoBehaviour, IDamageable, ISpawnable
             ReturnToPool();
         }
 
-
-            GameObject newDamageEffect = damageEffectPool.GetPooledObject();
-
-            if (newDamageEffect != null)
-            {
-                newDamageEffect.SetActive(false);
-                newDamageEffect.transform.position = transform.position;
-                newDamageEffect.transform.rotation = Quaternion.identity;
-                newDamageEffect.SetActive(true);
-            //newBulletBulletComponent.SpawnFromPool();
-            //newBulletBulletComponent.velocity = shootingDirection * bulletSpeed;
-
-
-
-
-        }
+        GameObject newDamageEffect = damageEffectPool.GetPooledObject();
+         if (newDamageEffect != null)
+         {
+             newDamageEffect.SetActive(false);
+             newDamageEffect.transform.position = transform.position;
+             newDamageEffect.transform.rotation = Quaternion.identity;
+             newDamageEffect.SetActive(true);    
+         }
     }
 
     public void ReturnToPool()
     {
+        GameObject newDeathEffect = deathEffectPool.GetPooledObject();
+        if (newDeathEffect != null)
+        {
+            newDeathEffect.SetActive(false);
+            newDeathEffect.transform.position = transform.position;
+            newDeathEffect.transform.rotation = Quaternion.identity;
+            newDeathEffect.SetActive(true);
+        }
+
         gameObject.SetActive(false);
     }
 
