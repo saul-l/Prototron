@@ -8,7 +8,7 @@ public class BulletComponent : MonoBehaviour, ISpawnable
     
     [SerializeField] private TrailRenderer trailRenderer;
     [SerializeField] private string hitHumanAudioevent;
-
+    [SerializeField] private LayerMask layermask;
     private Vector3 newPosition;
     private RaycastHit hit;
     public int damage = 1;
@@ -17,8 +17,8 @@ public class BulletComponent : MonoBehaviour, ISpawnable
     public bool explosive;
     public float explosionRadius;
     public float bulletForce = 10.0f;
-    public bool alive = true;
-
+    private  bool alive = true;
+    
     void Awake()
     {
         trailRendererTime = trailRenderer.time;

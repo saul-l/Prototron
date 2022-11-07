@@ -13,6 +13,7 @@ public class HealthComponent : MonoBehaviour, IDamageable, ISpawnable
 
     void Awake ()
     {
+   
         damageEffectPool = PoolHandler.instance.GetPool(damageEffect.gameObject.name, PoolTypes.PoolType.ForcedRecycleObjectPool);
         damageEffectPool.PopulatePool(damageEffect, 1);
 

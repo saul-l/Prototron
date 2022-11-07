@@ -1,3 +1,7 @@
+/* Component for shooting projectiles
+ * Launches GameObject bullet towards shootingDirection when boolean fire is true
+ * */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

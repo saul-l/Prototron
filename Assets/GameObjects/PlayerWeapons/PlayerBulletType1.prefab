@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2268676907624842348}
   - component: {fileID: 1013283143927860268}
   m_Layer: 0
-  m_Name: BulletType1
+  m_Name: PlayerBulletType1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,15 +46,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f7ceb6ec43b154b8361f4a7d0e5bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
   trailRenderer: {fileID: 2268676907624842348}
   hitHumanAudioevent: Play_bullet_hit_human
+  damage: 1
   trailRendererTime: 0
   velocity: {x: 0, y: 0, z: 0}
   explosive: 0
   explosionRadius: 0
   bulletForce: 10
   alive: 1
+  layermask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!96 &2268676907624842348
 TrailRenderer:
   serializedVersion: 2

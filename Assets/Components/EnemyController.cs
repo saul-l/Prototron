@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -9,14 +10,21 @@ public class EnemyController : MonoBehaviour
     public GameObject meleeWeapon;
     public GameObject player;
     public Object weapon;
+    [SerializeField] float attackInterval = 1.0f;
+    [SerializeField] ShootingComponent shootingComponent;
+    [SerializeField] bool shooter;
+    [SerializeField] bool melee;
     private MeleeComponent meleeWeaponComponent;
     private Transform myTransform;
     private Transform playerTransform;
     private float lastAttackTime = 0.0f;
+    private bool canShoot = true;
+    
     void Awake()
     {
         meleeWeaponComponent = meleeWeapon.GetComponent<MeleeComponent>();
         movementComponent = this.GetComponent<MovementComponent>();
+        shootingComponent = this.GetComponent<ShootingComponent>();
         player = GameObject.Find("Player");      
         playerTransform = player.transform;
         myTransform = transform;
@@ -27,14 +35,21 @@ public class EnemyController : MonoBehaviour
     {
        
         MovementLogicFollow();
-        AttackLogicCloseCombatMelee();
+        if(melee) AttackLogicCloseCombatMelee();
+        if (shooter && canShoot) AttackLogicStopAndShoot();
 
 
     }
 
     void AttackLogicStopAndShoot()
     {
-        
+        if(Time.time >= lastAttackTime+attackInterval)
+        {
+            shootingComponent.shootingDirection = (playerTransform.position - myTransform.position).normalized;
+            shootingComponent.fire = true;
+            lastAttackTime = Time.time;
+            canShoot = false;            
+        }
     }
 
     void AttackLogicCloseCombatMelee()
@@ -43,7 +58,7 @@ public class EnemyController : MonoBehaviour
         {
             if(Vector3.Distance(playerTransform.position, myTransform.position) < meleeWeaponComponent.attackDistance)
             {
-                Debug.Log("attack");
+             
                 lastAttackTime = Time.time;
                 meleeWeaponComponent.Attack(playerTransform.position - transform.position);
             }
@@ -54,5 +69,11 @@ public class EnemyController : MonoBehaviour
     {
         movementComponent.movementDirection = (playerTransform.position-myTransform.position).normalized;
        
+    }
+
+    public void HasShot()
+    {
+        shootingComponent.fire = false;
+        canShoot = true;
     }
 }

@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 103913049835960774}
   - component: {fileID: -5811726607277540040}
   - component: {fileID: -3888252133575931285}
+  - component: {fileID: -7702000397160545759}
   - component: {fileID: 6476357762918511915}
   - component: {fileID: 4501438282179230414}
-  - component: {fileID: 9094856792949071564}
   - component: {fileID: 2059973504}
   - component: {fileID: 2059973496}
   - component: {fileID: 2059973495}
@@ -287,6 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b5fd427442472149a0b46f8ce5c0f6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponType: {fileID: 0}
   myPool: {fileID: 0}
   bullet: {fileID: 6641427923098496259, guid: f60e99df7df94084d8fc3dbf5db018d2, type: 3}
   shootingDirection: {x: 0, y: 0, z: 0}
@@ -322,6 +323,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &-7702000397160545759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7569796107671719673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 596b557ab8dbe5a478533c2369ca1ef5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2
+  damageEffectPool: {fileID: 0}
+  deathEffectPool: {fileID: 0}
+  deathEffect: {fileID: 8457978493270944543, guid: ba721e7bc9df6064fa6cdf67f272aa42, type: 3}
+  damageEffect: {fileID: 8974671989784390187, guid: 42d562fb7a525fa45adca4edb9cfc943, type: 3}
 --- !u!114 &6476357762918511915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,19 +371,6 @@ MonoBehaviour:
   movementComponent: {fileID: 103913049835960774}
   shootingComponent: {fileID: -3888252133575931285}
   debugValue: 0
---- !u!114 &9094856792949071564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7569796107671719673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 690473058c02acd488df75eccd8e2bd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 44
 --- !u!82 &2059973504
 AudioSource:
   m_ObjectHideFlags: 0
@@ -496,9 +501,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5763cbe8beab5e840a8d533426bd38ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootAudioEvent: Play_pistol_shoot
-  damageAudioEvent: 
-  deathAudioEvent: 
+  shootAudioEvent: Play_weapon_pistol_shoot
+  damageAudioEvent: Play_bullet_hit_human
 --- !u!1001 &7909715160050154295
 PrefabInstance:
   m_ObjectHideFlags: 0
