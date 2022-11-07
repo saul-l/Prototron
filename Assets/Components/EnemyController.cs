@@ -26,13 +26,21 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
        
-        movementComponent.movementDirection = (playerTransform.position-myTransform.position).normalized;
+        MovementLogicFollow();
+        AttackLogicCloseCombatMelee();
+
+
+    }
+
+    void AttackLogicStopAndShoot()
+    {
         
-        //temp melee attack. proper one will use child collider an some weapon system
-        if(meleeWeapon!=null && Time.time >= lastAttackTime+meleeWeaponComponent.RateOfFire)
+    }
+
+    void AttackLogicCloseCombatMelee()
         {
-
-
+            if(meleeWeapon!=null && Time.time >= lastAttackTime+meleeWeaponComponent.RateOfFire)
+        {
             if(Vector3.Distance(playerTransform.position, myTransform.position) < meleeWeaponComponent.attackDistance)
             {
                 Debug.Log("attack");
@@ -40,8 +48,11 @@ public class EnemyController : MonoBehaviour
                 meleeWeaponComponent.Attack(playerTransform.position - transform.position);
             }
         }
+        }
 
+    void MovementLogicFollow()
+    {
+        movementComponent.movementDirection = (playerTransform.position-myTransform.position).normalized;
+       
     }
-
-
 }
