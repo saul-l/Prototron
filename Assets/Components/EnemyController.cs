@@ -1,3 +1,8 @@
+/* EnemyController
+ * Holds enemy AI logic and related things.
+ * Communicates with MovementComponent, ShootingComponent and MeleeComponent 
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
