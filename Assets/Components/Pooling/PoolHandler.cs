@@ -57,7 +57,6 @@ public class PoolHandler : MonoBehaviour
 
         if (poolDictionary.TryGetValue(tmpGameObject, out Pool tmpPool))
         {
-            Debug.Log("oh yeah!");
             return poolDictionary[tmpGameObject];
         }
 

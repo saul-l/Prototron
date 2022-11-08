@@ -19,7 +19,7 @@ Preset:
   - target: {fileID: 0}
     propertyPath: OutputAudioMixerGroup
     value: 
-    objectReference: {fileID: 0}
+    objectReference: {fileID: 24300002, guid: 67dad89dc592fcc4e92d06a670499dda, type: 2}
   - target: {fileID: 0}
     propertyPath: m_audioClip
     value: 
@@ -58,7 +58,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: DopplerLevel
-    value: 1
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: MinDistance
@@ -78,7 +78,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: BypassEffects
-    value: 0
+    value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: BypassListenerEffects
@@ -86,7 +86,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: BypassReverbZones
-    value: 0
+    value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: rolloffCustomCurve.m_Curve.Array.size
@@ -226,7 +226,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
-    value: 0.25555557
+    value: 0.28611112
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: spreadCustomCurve.m_Curve.Array.data[0].inSlope

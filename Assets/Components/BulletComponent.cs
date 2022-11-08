@@ -8,7 +8,7 @@ public class BulletComponent : MonoBehaviour, ISpawnable
     
     [SerializeField] private TrailRenderer trailRenderer;
     [SerializeField] private string hitHumanAudioevent;
-    [SerializeField] private LayerMask layermask;
+    [SerializeField] private LayerMask layerMask;
     private Vector3 newPosition;
     private RaycastHit hit;
     public int damage = 1;
@@ -33,7 +33,7 @@ public class BulletComponent : MonoBehaviour, ISpawnable
     private void TraceToNewPosition()
     {
         newPosition = transform.position+velocity;
-        if(Physics.Linecast(transform.position,newPosition,out hit))
+        if(Physics.Linecast(transform.position,newPosition, out hit, layerMask))
         {
             transform.position = hit.point;
             

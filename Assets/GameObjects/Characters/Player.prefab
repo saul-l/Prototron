@@ -338,7 +338,7 @@ MonoBehaviour:
   health: 2
   damageEffectPool: {fileID: 0}
   deathEffectPool: {fileID: 0}
-  deathEffect: {fileID: 8457978493270944543, guid: ba721e7bc9df6064fa6cdf67f272aa42, type: 3}
+  deathEffect: {fileID: 2891007673029878220, guid: 36a3ad642d90ee74d911d33156fd4a62, type: 3}
   damageEffect: {fileID: 8974671989784390187, guid: 42d562fb7a525fa45adca4edb9cfc943, type: 3}
 --- !u!114 &6476357762918511915
 MonoBehaviour:

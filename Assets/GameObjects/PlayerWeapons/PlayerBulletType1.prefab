@@ -48,16 +48,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trailRenderer: {fileID: 2268676907624842348}
   hitHumanAudioevent: Play_bullet_hit_human
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 2560
   damage: 1
   trailRendererTime: 0
   velocity: {x: 0, y: 0, z: 0}
   explosive: 0
   explosionRadius: 0
   bulletForce: 10
-  alive: 1
-  layermask:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!96 &2268676907624842348
 TrailRenderer:
   serializedVersion: 2

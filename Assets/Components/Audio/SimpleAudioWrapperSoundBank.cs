@@ -28,7 +28,7 @@ public class SimpleAudioWrapperSoundBank : MonoBehaviour
         for (int i = 0; i < audioClips.Length; i++)
         {
             audioClipDictionary.Add(audioClips[i].name, audioClips[i]);
-            Debug.Log("Audio clip name" + audioClips[i].name);
+
         }
 
     }
