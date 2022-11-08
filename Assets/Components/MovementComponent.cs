@@ -1,3 +1,12 @@
+/* MovementComponent handless character moving
+ * 
+ * Aims to provide both arcade style tight controls and ability to react to physics forces
+ *
+ * movementDirection determines direction.
+ * movementSpeed determines speed.
+ * movementChangeSpeed determines how quickly the change in direction happens. 
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +14,6 @@ using UnityEngine;
 
 public class MovementComponent : MonoBehaviour
 {
-    // movementDirection controlled by PlayerController or EnemyController
     public Vector3 movementDirection;
 
 
@@ -14,39 +22,40 @@ public class MovementComponent : MonoBehaviour
     public float movementSpeed;
     public float movementChangeSpeed;
     public Rigidbody rb;
-    // Start is called before the first frame update
+    
     void Start()
     {
         rb=this.GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-
+    
 
     void FixedUpdate()
     {
-
-        // Get rid of this by starting a coroutine with either player controller or ai component.
         if (movementDirection!=Vector3.zero)
-        {
-            
+        {            
             targetVelocity=movementDirection*movementSpeed;
-            
-            
+
+            // If we are already moving towards target direction with higher velocity, we can just keep that velocity.
+            // Attempt to move towards direction should never slow us down.            
             if ((rb.velocity.x>0 && targetVelocity.x>0 && targetVelocity.x<rb.velocity.x) || (rb.velocity.x<0 && targetVelocity.x<0 && targetVelocity.x>rb.velocity.x))
+            {
                 targetVelocity.x=rb.velocity.x;
+            }
             if ((rb.velocity.z>0 && targetVelocity.z>0 && targetVelocity.z<rb.velocity.z) || (rb.velocity.z<0 && targetVelocity.z<0 && targetVelocity.z>rb.velocity.z))
+            {
                 targetVelocity.z=rb.velocity.z;
+            }
             
             velocityChange = targetVelocity-rb.velocity;
 
-            velocityChange.x = Mathf.Clamp(velocityChange.x,-movementChangeSpeed,movementChangeSpeed);
-            velocityChange.z = Mathf.Clamp(velocityChange.z,-movementChangeSpeed,movementChangeSpeed);
-            velocityChange.y = 0.0f;
+            velocityChange.x=Mathf.Clamp(velocityChange.x,-movementChangeSpeed,movementChangeSpeed);
+            velocityChange.z=Mathf.Clamp(velocityChange.z,-movementChangeSpeed,movementChangeSpeed);
+            velocityChange.y=0.0f;
 
             rb.AddForce(velocityChange,ForceMode.VelocityChange);
         }
 
-        rb.AddForce(Physics.gravity * rb.mass * 2.0f) ;
+
     }
 }

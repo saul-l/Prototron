@@ -3,7 +3,8 @@
  * Required in scene for pooling system to work
  * 
  * PoolHandler.instance.GetPool(String GameObject name, PoolTypes.PoolType poolType)
- * Gives you a pool of GameObject type. If none exists already a new one is created.
+ * Gives you a pool of GameObject type. If none exist already a new one is created.
+ *
  * PoolTypes:
  * PoolTypes.PoolType.ForcedRecycleObjectPool - Regular pool, which will give nothing, if there are no inactive objects in pool
  * PoolTypes.PoolType.ForcedRecycleObjectPool - Pool which will automatically grab oldest active object, if there are no inactive objects in pool
