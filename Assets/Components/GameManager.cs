@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;  
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -16,5 +17,10 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
       
         Physics.autoSyncTransforms = true;
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
