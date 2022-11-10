@@ -14,10 +14,10 @@ public class HealthComponent : MonoBehaviour, IDamageable, ISpawnable
     void Awake ()
     {
    
-        damageEffectPool = PoolHandler.instance.GetPool(damageEffect.gameObject.name, PoolTypes.PoolType.ForcedRecycleObjectPool);
+        damageEffectPool = PoolHandler.instance.GetPool(damageEffect.gameObject.name, PoolType.ForcedRecycleObjectPool);
         damageEffectPool.PopulatePool(damageEffect, 1);
 
-        deathEffectPool = PoolHandler.instance.GetPool(deathEffect.gameObject.name, PoolTypes.PoolType.ForcedRecycleObjectPool);
+        deathEffectPool = PoolHandler.instance.GetPool(deathEffect.gameObject.name, PoolType.ForcedRecycleObjectPool);
         deathEffectPool.PopulatePool(deathEffect, 1);
     }
 

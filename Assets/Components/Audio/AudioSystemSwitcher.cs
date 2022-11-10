@@ -27,6 +27,7 @@ public  class AudioSystemSwitcher : MonoBehaviour
     [SerializeField] private bool usingUnityAudioSystem = false;
     [SerializeField] private bool startUpCheckDone = false;
 
+
     void Update()
     {
         // Assign akIinitializer and select proper audio system on "fake init"
@@ -94,3 +95,11 @@ public  class AudioSystemSwitcher : MonoBehaviour
 }
 
 #endif
+
+public class AudioSystemSwitcherDestroyer : MonoBehaviour
+{
+    private void Awake()
+    {
+        Destroy(gameObject);
+    }
+}

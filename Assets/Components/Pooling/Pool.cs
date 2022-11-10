@@ -7,29 +7,42 @@ public class Pool : MonoBehaviour
 {
     public List<GameObject> pooledObjects;
 
-    public int amountToPool;
-
-    void Start()
+    public void PopulatePool(GameObject objectToPool, int amount, PopulateStyle populateStyle)
     {
+        int amountToPool = 0;
 
+        if(pooledObjects == null) pooledObjects = new List<GameObject>();
+
+        GameObject tmp;
+        if (populateStyle == PopulateStyle.Add)
+        {
+            amountToPool = amount;
+        }
+        else if (pooledObjects.Count < amount)
+        {
+            amountToPool = amount - pooledObjects.Count;
+        }
+                
+        if(amountToPool > 0)
+        {
+            for (int i = 0; i < amountToPool; i++)
+            {
+                tmp = Instantiate(objectToPool);
+                tmp.transform.parent = this.transform;
+                tmp.SetActive(false);
+                pooledObjects.Add(tmp);
+            }
+        }        
     }
 
     public void PopulatePool(GameObject objectToPool, int amount)
     {
-        amountToPool = amount;
-        if(pooledObjects == null) pooledObjects = new List<GameObject>();
-        GameObject tmp;
-        for (int i = 0; i < amountToPool; i++)
-        {
-            tmp = Instantiate(objectToPool);
-            tmp.transform.parent = this.transform;
-            tmp.SetActive(false);
-            pooledObjects.Add(tmp);
-        }
+        PopulatePool(objectToPool, amount, PopulateStyle.Normal);
     }
+
     public virtual GameObject GetPooledObject()
     {
-        for (int i = 0; i < amountToPool; i++)
+        for (int i = 0; i < pooledObjects.Count; i++)
         {
             if (!pooledObjects[i].activeInHierarchy)
             {
@@ -39,6 +52,9 @@ public class Pool : MonoBehaviour
 
         return null;
     }
+}
 
-
+public enum PopulateStyle
+{
+    Normal, Add
 }

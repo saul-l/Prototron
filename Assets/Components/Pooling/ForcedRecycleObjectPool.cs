@@ -10,7 +10,7 @@ public class ForcedRecycleObjectPool : Pool
 
         GameObject tmp;
 
-        for (int i = 0; i < amountToPool; i++)
+        for (int i = 0; i < pooledObjects.Count; i++)
         {
             if (!pooledObjects[i].activeInHierarchy)
             {

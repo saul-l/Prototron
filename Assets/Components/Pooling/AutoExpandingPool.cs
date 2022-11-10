@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Not done yet
 public class AutoExpandingPool : Pool
 {
     public override GameObject GetPooledObject()
@@ -9,7 +10,7 @@ public class AutoExpandingPool : Pool
 
         GameObject tmp;
 
-        for (int i = 0; i < amountToPool; i++)
+        for (int i = 0; i < pooledObjects.Count; i++)
         {
             if (!pooledObjects[i].activeInHierarchy)
             {

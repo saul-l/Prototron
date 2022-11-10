@@ -50,7 +50,7 @@ MonoBehaviour:
   hitHumanAudioevent: Play_bullet_hit_human
   layerMask:
     serializedVersion: 2
-    m_Bits: 2560
+    m_Bits: 512
   damage: 1
   trailRendererTime: 0
   velocity: {x: 0, y: 0, z: 0}

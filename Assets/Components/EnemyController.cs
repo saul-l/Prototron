@@ -24,7 +24,8 @@ public class EnemyController : MonoBehaviour
     private Transform playerTransform;
     private float lastAttackTime = 0.0f;
     private bool canShoot = true;
-    
+    public EnemySpawner mySpawner;
+
     void Awake()
     {
         meleeWeaponComponent = meleeWeapon.GetComponent<MeleeComponent>();
@@ -46,6 +47,13 @@ public class EnemyController : MonoBehaviour
 
     }
 
+    private void OnDisable()
+    {
+        if(mySpawner != null)
+        {
+            mySpawner.enemyDied();
+        }
+    }
     void AttackLogicStopAndShoot()
     {
         if(Time.time >= lastAttackTime+attackInterval)

@@ -17,8 +17,8 @@ public class BulletComponent : MonoBehaviour, ISpawnable
     public bool explosive;
     public float explosionRadius;
     public float bulletForce = 10.0f;
-    private  bool alive = true;
-    
+    private bool alive = true;
+    private Vector3 prevFramePosition;
     void Awake()
     {
         trailRendererTime = trailRenderer.time;
@@ -30,29 +30,41 @@ public class BulletComponent : MonoBehaviour, ISpawnable
         if(alive)TraceToNewPosition();
     }
 
+
     private void TraceToNewPosition()
     {
         newPosition = transform.position+velocity;
-        if(Physics.Linecast(transform.position,newPosition, out hit, layerMask))
-        {
-            transform.position = hit.point;
-            
-            if(hit.collider.attachedRigidbody!=null)
-            {             
-                hit.collider.attachedRigidbody.AddForce(velocity * bulletForce, ForceMode.VelocityChange);
-            }
 
-            if (hit.collider.gameObject.GetComponent<IDamageable>() != null)
-            {
-                SimpleAudioWrapper.PlayAudioEvent(hitHumanAudioevent, gameObject);
-                hit.collider.gameObject.GetComponent<IDamageable>().ApplyDamage(damage);             
-            }
-            ReturnToPool();
+        
+        if (Physics.Linecast(prevFramePosition, newPosition, out hit, layerMask))
+        {
+            hitSomething();
+        }
+        else if (Physics.Linecast(newPosition, prevFramePosition, out hit, layerMask))
+        {
+            hitSomething();
         }
         else
         {
+            Debug.DrawLine(transform.position, newPosition, Color.red, 25);
+            prevFramePosition = transform.position;
             transform.position = newPosition;
         }
+    }
+
+    private void hitSomething()
+    {
+        transform.position = hit.point;
+        if (hit.collider.attachedRigidbody != null)
+        {
+            hit.collider.attachedRigidbody.AddForce(velocity * bulletForce, ForceMode.VelocityChange);
+        }
+        if (hit.collider.gameObject.GetComponent<IDamageable>() != null)
+        {
+            SimpleAudioWrapper.PlayAudioEvent(hitHumanAudioevent, gameObject);
+            hit.collider.gameObject.GetComponent<IDamageable>().ApplyDamage(damage);
+        }
+        ReturnToPool();
     }
 
     public void ReturnToPool()
@@ -67,7 +79,7 @@ public class BulletComponent : MonoBehaviour, ISpawnable
         alive = true;
         trailRenderer.time = trailRendererTime;
         trailRenderer.Clear();
-
+        prevFramePosition = transform.position;
     }
 
     private void explode(RaycastHit hit)

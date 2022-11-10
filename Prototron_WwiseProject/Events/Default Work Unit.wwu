@@ -3,7 +3,7 @@
 	<Events>
 		<WorkUnit Name="Default Work Unit" ID="{81ACE85C-04F0-4D38-BC06-0F5F91A1452D}" PersistMode="Standalone">
 			<ChildrenList>
-				<Event Name="Play_pistol_shoot" ID="{D9676DF9-DA17-4CC6-A932-E21404161556}">
+				<Event Name="Play_weapon_pistol_shoot" ID="{D9676DF9-DA17-4CC6-A932-E21404161556}">
 					<ChildrenList>
 						<Action Name="" ID="{7E8BED84-0E69-4AE9-B324-00245FB8F768}" ShortID="545225167">
 							<ReferenceList>

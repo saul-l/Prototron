@@ -13,6 +13,7 @@
  * - Default config assumes only WebGL uses Unity native audio.
  */
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,7 +29,12 @@ public static class SimpleAudioWrapper
 
         gObject.GetComponent<AudioSource>().PlayOneShot(SimpleAudioWrapperSoundBank.instance.GetAudioClipByName(audioEvent));
 #else
-        AkSoundEngine.PostEvent(audioEvent, gObject);
+
+
+
+        //(AkSoundEngine.PostEvent(audioEvent, gObject)
+
+
 #endif
     }
 

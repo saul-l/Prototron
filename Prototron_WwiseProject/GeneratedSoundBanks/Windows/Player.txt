@@ -1,5 +1,5 @@
 Event	ID	Name			Wwise Object Path	Notes
-	2955138351	Play_pistol_shoot			\Default Work Unit\Play_pistol_shoot	
+	1419340308	Play_weapon_pistol_shoot			\Default Work Unit\Play_weapon_pistol_shoot	
 
 Modulator Envelope	ID	Name			Wwise Object Path	Notes
 	248889742	Modulator Envelope (Custom)				

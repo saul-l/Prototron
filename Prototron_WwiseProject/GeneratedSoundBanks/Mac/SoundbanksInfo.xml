@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1069431850" Type="User" Language="SFX" Hash="{65BEFBC1-A150-0C9A-0AE3-06627CCF629F}">
+		<SoundBank Id="1069431850" Type="User" Language="SFX" Hash="{913AC7D8-BEE3-6BEE-EC9E-DDEE5326AE4D}">
 			<ShortName>Player</ShortName>
 			<Path>Player.bnk</Path>
 			<Plugins>
@@ -18,7 +18,7 @@
 				</Custom>
 			</Plugins>
 			<Events>
-				<Event Id="2955138351" Name="Play_pistol_shoot" DurationType="Unknown">
+				<Event Id="1419340308" Name="Play_weapon_pistol_shoot" DurationType="Unknown">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="884056763"/>
@@ -41,5 +41,5 @@
 			</Busses>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{A2ED172D-D758-40A4-82CD-EAF31ED9A1FB}</FileHash>
+	<FileHash>{43CAED84-3CE4-17D0-614B-9543EA52C4AB}</FileHash>
 </SoundBanksInfo>

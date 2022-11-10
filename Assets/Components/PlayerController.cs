@@ -19,10 +19,13 @@ public class PlayerController : MonoBehaviour
     public UniqueStack<Directions.Direction> aimFireBuffer = new UniqueStack<Directions.Direction>();
     void Start()
     {
-
-
         movementComponent = this.GetComponent<MovementComponent>();
         shootingComponent = this.GetComponent<ShootingComponent>();
+
+        //This is ugly, but for some reason PlayerInput fails after scene load and disabling and enabling helps.
+        PlayerInput playerInput = this.GetComponent<PlayerInput>();
+        playerInput.enabled = false;
+        playerInput.enabled = true;
     }
 	
 

@@ -47,13 +47,13 @@ public class PoolHandler : MonoBehaviour
     void Awake()
     {
         if (instance != null && instance != this)
-            Destroy(this);
+            Destroy(gameObject);
         else
             instance = this;      
     }
 
-
-    public Pool GetPool(string tmpGameObject, PoolTypes.PoolType poolType)
+    
+    public Pool GetPool(string tmpGameObject, PoolType poolType)
     {
 
         if (poolDictionary.TryGetValue(tmpGameObject, out Pool tmpPool))
@@ -64,13 +64,13 @@ public class PoolHandler : MonoBehaviour
 
         switch(poolType)
         {
-            case PoolTypes.PoolType.ForcedRecycleObjectPool:
+            case PoolType.ForcedRecycleObjectPool:
                 {
                     Pool tempPool = this.gameObject.AddComponent<ForcedRecycleObjectPool>();
                     poolDictionary.Add(tmpGameObject, tempPool);
                     return tempPool;
                 }
-            case PoolTypes.PoolType.NormalPool:
+            case PoolType.NormalPool:
                 {
                     Pool tempPool = this.gameObject.AddComponent<Pool>();
                     poolDictionary.Add(tmpGameObject, tempPool);
@@ -89,13 +89,11 @@ public class PoolHandler : MonoBehaviour
 
 }
 
-public class PoolTypes
-{
-    public enum PoolType
-    {
-        NormalPool, ForcedRecycleObjectPool
-    }
 
+public enum PoolType
+{
+    NormalPool, ForcedRecycleObjectPool
 }
+
 
 
