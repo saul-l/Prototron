@@ -1,3 +1,12 @@
+/* Player Controller handles player controls
+ * 
+ * Invoke events with Player Input component
+ * 
+ * Requires MovementComponent and ShootingComponent in same prefab
+ *
+ * Restarts game through GameManager. It's ugly, but works for now.
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,11 +30,6 @@ public class PlayerController : MonoBehaviour
     {
         movementComponent = this.GetComponent<MovementComponent>();
         shootingComponent = this.GetComponent<ShootingComponent>();
-
-        //This is ugly, but for some reason PlayerInput fails after scene load and disabling and enabling helps.
-        PlayerInput playerInput = this.GetComponent<PlayerInput>();
-        playerInput.enabled = false;
-        playerInput.enabled = true;
     }
 	
 
@@ -123,10 +127,12 @@ public class PlayerController : MonoBehaviour
         {
             shootingComponent.fire = true;
         }
+    }
 
-
-
-
+    // I hate this, but it works.
+    public void RestartGame()
+    {
+        GameManager.instance.RestartGame();
     }
 
 }

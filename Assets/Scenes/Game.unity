@@ -134,6 +134,46 @@ PrefabInstance:
       propertyPath: health
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: -5811726607277540040, guid: 536787e5f32b4da4bb11d1d3e3933686, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5811726607277540040, guid: 536787e5f32b4da4bb11d1d3e3933686, type: 3}
+      propertyPath: m_ActionEvents.Array.data[8].m_ActionId
+      value: ea384a01-7303-449f-94df-ee574cead384
+      objectReference: {fileID: 0}
+    - target: {fileID: -5811726607277540040, guid: 536787e5f32b4da4bb11d1d3e3933686, type: 3}
+      propertyPath: m_ActionEvents.Array.data[8].m_ActionName
+      value: Player/Restart[/Keyboard/escape]
+      objectReference: {fileID: 0}
+    - target: {fileID: -5811726607277540040, guid: 536787e5f32b4da4bb11d1d3e3933686, type: 3}
+      propertyPath: m_ActionEvents.Array.data[8].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5811726607277540040, guid: 536787e5f32b4da4bb11d1d3e3933686, type: 3}
+      propertyPath: m_ActionEvents.Array.data[8].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5811726607277540040, guid: 536787e5f32b4da4bb11d1d3e3933686, type: 3}
+      propertyPath: m_ActionEvents.Array.data[8].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1746402396}
+    - target: {fileID: -5811726607277540040, guid: 536787e5f32b4da4bb11d1d3e3933686, type: 3}
+      propertyPath: m_ActionEvents.Array.data[8].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -5811726607277540040, guid: 536787e5f32b4da4bb11d1d3e3933686, type: 3}
+      propertyPath: m_ActionEvents.Array.data[8].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: -5811726607277540040, guid: 536787e5f32b4da4bb11d1d3e3933686, type: 3}
+      propertyPath: m_ActionEvents.Array.data[8].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: -5811726607277540040, guid: 536787e5f32b4da4bb11d1d3e3933686, type: 3}
+      propertyPath: m_ActionEvents.Array.data[8].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2059973495, guid: 536787e5f32b4da4bb11d1d3e3933686, type: 3}
       propertyPath: shootAudioSource
       value: 
@@ -973,184 +1013,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1134398094 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2396955622470180564, guid: 78b31a903fa67b84785e25f2ab663b4e, type: 3}
-  m_PrefabInstance: {fileID: 1392233080}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1134398095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1134398094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 6fde8517b698cae42993711ae9baa2c7, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1746402396}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: SetMovingDirection
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 2f331463-f6bc-45b7-aa00-2547faef5aa3
-    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1746402396}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: SetAimingDirection
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 89ee97bf-413c-49c4-9fdf-72736f6178d0
-    m_ActionName: Player/Aim[/Mouse/delta,/Keyboard/upArrow,/Keyboard/numpad8,/Keyboard/downArrow,/Keyboard/numpad5,/Keyboard/numpad2,/Keyboard/leftArrow,/Keyboard/numpad4,/Keyboard/rightArrow,/Keyboard/numpad6]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1746402396}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnFire
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 0f18e263-8e3a-4f12-9382-22cdbd964558
-    m_ActionName: Player/Fire[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1746402396}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: FireLeft
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: aa2ada30-9d48-41ff-9e4d-5fb21bb1519f
-    m_ActionName: Player/FireLeft[/Keyboard/numpad4]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1746402396}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: FireRight
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 6b5cf9f5-ba3d-466a-adcf-48cd1b22bd79
-    m_ActionName: Player/FireRight[/Keyboard/numpad4]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1746402396}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: FireUp
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 1a3d005a-0262-49a4-a5f5-9c5c733d734b
-    m_ActionName: Player/FireUp[/Keyboard/numpad4]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1746402396}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: FireDown
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 35deb58c-45a3-4bd5-ba0c-8c0c759278e4
-    m_ActionName: Player/FireDown[/Keyboard/numpad4]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 7649ee3a-4dd3-4b50-85af-9286e0c54095
-    m_ActionName: Player/EightWayKeyboardAim[/Keyboard/upArrow,/Keyboard/numpad8,/Keyboard/downArrow,/Keyboard/numpad5,/Keyboard/numpad2,/Keyboard/leftArrow,/Keyboard/numpad4,/Keyboard/rightArrow,/Keyboard/numpad6]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1134398096}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: RestartGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: ccf2e476-e082-4a08-8f8f-459e84d5fd41
-    m_ActionName: UI/Restart[/Keyboard/escape]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: UI
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!114 &1134398096 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7865252441595201302, guid: 78b31a903fa67b84785e25f2ab663b4e, type: 3}
-  m_PrefabInstance: {fileID: 1392233080}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1134398094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c602acc5003d0541b1e8f2101f9a892, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1143913297
 GameObject:
   m_ObjectHideFlags: 0

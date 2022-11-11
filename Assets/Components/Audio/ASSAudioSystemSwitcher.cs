@@ -15,6 +15,10 @@
  * SimpleAudioWrapperSoundBank - SoundBank for SimpleAudioWrapper.
  * 
  * Usage:
+ * 
+ * Add NO_WWISE preprocessor definition for non-Wwise platforms.
+ * (Project Settings - Player - Script Compilation - Scripting Define Symbols
+ *
  * Place one instance into a scene. After that audio system switches between Wwise and Unity automatically
  * based on active platform in Unity.
  *  
@@ -63,8 +67,13 @@ public  class ASSAudioSystemSwitcher : MonoBehaviour
     void Awake()
     {
         // Create soundbanks and initializer when game is playing. Destroy them when we have stopped.
-        if (EditorApplication.isPlaying || Application.isPlaying)
+#if UNITY_EDITOR
+        if (EditorApplication.isPlaying)
         {
+#else
+        if(Application.isPlaying)
+        {
+#endif
             this.AddComponent<AkInitializer>();
 
             foreach (GameObject soundBank in wwiseSoundBank)
@@ -88,7 +97,7 @@ public  class ASSAudioSystemSwitcher : MonoBehaviour
 
 #if UNITY_EDITOR
 
-    void Update()
+            void Update()
     {
         if (!EditorApplication.isPlaying)
         {
@@ -142,8 +151,9 @@ public  class ASSAudioSystemSwitcher : MonoBehaviour
 
         usingUnityAudioSystem = false;
     }
-    
+
+#endif
 #endif
 }
 
-#endif
+

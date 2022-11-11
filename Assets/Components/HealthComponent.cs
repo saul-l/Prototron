@@ -1,3 +1,15 @@
+/* Health Component handles character health 
+ * 
+ * Health will reset when object is activated.
+ * 
+ * No need to be ISpawnable anymore. Waiting for refactoring.
+ * 
+ * Usage:
+ * Set health to desired health.
+ * Set spawned damage particle effect prefab to damageEffect
+ * Set spawned death particle effect prefab to deathEffect;
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,20 +17,25 @@ using UnityEngine;
 public class HealthComponent : MonoBehaviour, IDamageable, ISpawnable
 {
     [SerializeField] int health = 2;
-
-    public Pool damageEffectPool;
-    public Pool deathEffectPool;
     public GameObject deathEffect;
     public GameObject damageEffect;
 
+    private Pool damageEffectPool;
+    private Pool deathEffectPool;
+    
+    private int originalHealth;
     void Awake ()
-    {
-   
+    {   
         damageEffectPool = PoolHandler.instance.GetPool(damageEffect.gameObject.name, PoolType.ForcedRecycleObjectPool);
-        damageEffectPool.PopulatePool(damageEffect, 1);
+        damageEffectPool.PopulatePool(damageEffect, 1, PopulateStyle.Add);
 
         deathEffectPool = PoolHandler.instance.GetPool(deathEffect.gameObject.name, PoolType.ForcedRecycleObjectPool);
-        deathEffectPool.PopulatePool(deathEffect, 1);
+        deathEffectPool.PopulatePool(deathEffect, 1, PopulateStyle.Add);
+    }
+
+    void Start ()
+    {
+        originalHealth = health;
     }
 
     public void ApplyDamage(int damageAmount)
@@ -55,10 +72,10 @@ public class HealthComponent : MonoBehaviour, IDamageable, ISpawnable
 
     private void OnEnable()
     {
-        SpawnFromPool();
+        health = originalHealth;
     }
     public void SpawnFromPool()
     {
-        health = 2;
+        
     }
 }

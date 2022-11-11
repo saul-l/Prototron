@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Restart",
+                    "type": "Button",
+                    "id": "ea384a01-7303-449f-94df-ee574cead384",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -320,27 +329,10 @@
                     "action": "EightWayKeyboardAim",
                     "isComposite": false,
                     "isPartOfComposite": true
-                }
-            ]
-        },
-        {
-            "name": "UI",
-            "id": "4582e3c9-6d96-433f-86cb-0428bee65296",
-            "actions": [
-                {
-                    "name": "Restart",
-                    "type": "Button",
-                    "id": "ccf2e476-e082-4a08-8f8f-459e84d5fd41",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
+                },
                 {
                     "name": "",
-                    "id": "89a1ef48-1011-4913-a17a-9008ac544c2d",
+                    "id": "49294397-d130-4dfd-95a3-cd639845ccf1",
                     "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
@@ -351,7 +343,7 @@
                 },
                 {
                     "name": "",
-                    "id": "900d153e-849c-4d96-ba1b-46520e52b07f",
+                    "id": "9c215a2f-916f-4b0d-879a-1a0278c47f1b",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
@@ -361,6 +353,12 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "UI",
+            "id": "4582e3c9-6d96-433f-86cb-0428bee65296",
+            "actions": [],
+            "bindings": []
         }
     ],
     "controlSchemes": [
