@@ -2,32 +2,14 @@
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="144">
 	<RootPaths>
 		<ProjectRoot>../..</ProjectRoot>
-		<SourceFilesRoot>../../.cache/Mac/</SourceFilesRoot>
+		<SourceFilesRoot>../../.cache/Mac</SourceFilesRoot>
 		<SoundBanksRoot>.</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
 		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1069431850" Type="User" Language="SFX" Hash="{913AC7D8-BEE3-6BEE-EC9E-DDEE5326AE4D}">
-			<ShortName>Player</ShortName>
-			<Path>Player.bnk</Path>
-			<Plugins>
-				<Custom>
-					<Plugin Id="884056763" Name="asdfg" LibName="Wwise Synth One" LibId="9699330"/>
-				</Custom>
-			</Plugins>
-			<Events>
-				<Event Id="1419340308" Name="Play_weapon_pistol_shoot" DurationType="Unknown">
-					<PluginRefs>
-						<Custom>
-							<PluginRef Id="884056763"/>
-						</Custom>
-					</PluginRefs>
-				</Event>
-			</Events>
-		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{117A1B2B-F6A7-7699-E3A3-2AA4E0DDED56}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{906F145D-8EC4-98DD-8896-A13B6757E8AB}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -40,6 +22,32 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
+		<SoundBank Id="1661994096" Type="User" Language="SFX" Hash="{84C4252F-CFC7-8131-081C-D0C8F6FE626D}">
+			<ShortName>Soundbank</ShortName>
+			<Path>Soundbank.bnk</Path>
+			<Media>
+				<File Id="428303096" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Play_bullet_hit_human.wav</ShortName>
+					<CachePath>SFX/Play_bullet_hit_human_10C4C929.wem</CachePath>
+				</File>
+				<File Id="1070173029" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Play_weapon_pistol_shoot.wav</ShortName>
+					<CachePath>SFX/Play_weapon_pistol_shoot_10C4C929.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="306738902" Name="Play_bullet_hit_human" DurationType="OneShot" DurationMin="0.28760415" DurationMax="0.28760415">
+					<MediaRefs>
+						<MediaRef Id="428303096"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1419340308" Name="Play_weapon_pistol_shoot" DurationType="OneShot" DurationMin="1.0128542" DurationMax="1.0128542">
+					<MediaRefs>
+						<MediaRef Id="1070173029"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
 	</SoundBanks>
-	<FileHash>{43CAED84-3CE4-17D0-614B-9543EA52C4AB}</FileHash>
+	<FileHash>{39C82CBE-5BBA-E059-7A24-4EA50D1B939E}</FileHash>
 </SoundBanksInfo>

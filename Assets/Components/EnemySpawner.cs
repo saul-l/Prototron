@@ -24,23 +24,20 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [HideInInspector] public Pool[] myPool;
-    public Transform spawnPerimeter;
-    public GameObject[] enemyType;
+
+    [SerializeField] private Transform spawnPerimeter;
+    [SerializeField] private GameObject[] enemyType;
     [Range(1, 100)]
-    public int[] enemyValues;
-    public float totalEnemyValue;
+    [SerializeField] private int[] enemyValues;
+    [SerializeField] private float totalEnemyValue;
+    [SerializeField] private float interval = 3.0f;
+    [SerializeField] private List<int> enemyOrder;
+    [SerializeField] private int minimumEnemiesBeforeNextPhase = 0;
+    [SerializeField] private int totalEnemies;
+    [SerializeField] private int maxEnemiesAtTheSameTime = 100;
+    [SerializeField] private int enemyCounter = 0;
 
-    public float interval = 3.0f;
-    public List<int> enemyOrder;
-    [SerializeField] int minimumEnemiesBeforeNextPhase = 0;
-    [SerializeField] int totalEnemies;
-    [SerializeField] int maxEnemiesAtTheSameTime = 100;
-    public int enemyCounter = 0;
-
-    private Vector2 worldSize = Vector2.one;
     private float prevTime = 0.0f;
-
-    private int prevEnemyValue;
 
     private int requestedPoolSize = 50;
     private int enemiesKilled;

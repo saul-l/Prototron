@@ -13,13 +13,14 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID PLAY_BULLET_HIT_HUMAN = 306738902U;
         static const AkUniqueID PLAY_WEAPON_PISTOL_SHOOT = 1419340308U;
     } // namespace EVENTS
 
     namespace BANKS
     {
         static const AkUniqueID INIT = 1355168291U;
-        static const AkUniqueID PLAYER = 1069431850U;
+        static const AkUniqueID SOUNDBANK = 1661994096U;
     } // namespace BANKS
 
     namespace BUSSES

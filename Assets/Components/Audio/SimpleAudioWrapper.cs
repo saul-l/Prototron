@@ -11,6 +11,8 @@
  *   Like this: SimpleAudioWrapper.PlayAudioEvent("Play_test_event", gameObject);
  * - Game objects must have audiosources!
  * - Default config assumes only WebGL uses Unity native audio.
+ * 
+ * Works in tandem with AudioSystemSwitcher (ASSAudioSystemSwitcher.cs)
  */
 
 using System;
@@ -21,20 +23,12 @@ using UnityEngine;
 public static class SimpleAudioWrapper
 {
     
-    // This will one day be a wrapper/facade so that I can easily switch between Wwise and Unity native audio
-
     public static void PlayAudioEvent(string audioEvent, GameObject gObject)
     {
-#if UNITY_WEBGL
-
+#if NO_WWISE
         gObject.GetComponent<AudioSource>().PlayOneShot(SimpleAudioWrapperSoundBank.instance.GetAudioClipByName(audioEvent));
 #else
-
-
-
-        //(AkSoundEngine.PostEvent(audioEvent, gObject)
-
-
+        AkSoundEngine.PostEvent(audioEvent, gObject);
 #endif
     }
 

@@ -8,7 +8,18 @@
 						<Action Name="" ID="{7E8BED84-0E69-4AE9-B324-00245FB8F768}" ShortID="545225167">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="pistol_shoot" ID="{DEB28903-4CA1-4427-B030-1FE010413529}" WorkUnitID="{C9F511D6-D9C0-484C-BF58-4900270F90D0}"/>
+									<ObjectRef Name="weapon_pistol_shoot" ID="{DEB28903-4CA1-4427-B030-1FE010413529}" WorkUnitID="{C9F511D6-D9C0-484C-BF58-4900270F90D0}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_bullet_hit_human" ID="{173FB29F-614B-4049-B935-AA4788D7E35A}">
+					<ChildrenList>
+						<Action Name="" ID="{1DAE44C3-106B-475B-BCC9-7152B361FC6B}" ShortID="556622077">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="bullet_hit_human" ID="{05EA7CBD-AF4D-4C72-8AA4-D3EAABD30F9A}" WorkUnitID="{C9F511D6-D9C0-484C-BF58-4900270F90D0}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

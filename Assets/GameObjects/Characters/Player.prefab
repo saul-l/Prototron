@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 6476357762918511915}
   - component: {fileID: 4501438282179230414}
   - component: {fileID: 2059973504}
-  - component: {fileID: 2059973496}
+  - component: {fileID: 681513220821841964}
   - component: {fileID: 2059973495}
   m_Layer: 6
   m_Name: Player
@@ -472,7 +472,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2059973496
+--- !u!114 &681513220821841964
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -481,19 +481,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7569796107671719673}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d16b55054b0a3a84a84b76f2dbcb0d0d, type: 3}
+  m_Script: {fileID: 11500000, guid: de8c55db762a54f4fb6c5010721cd70b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_listeners:
-    initialListenerList: []
-    useDefaultListeners: 1
-  isEnvironmentAware: 1
-  isStaticObject: 0
-  m_positionOffsetData:
-    KeepMe: 0
-    positionOffset: {x: 0, y: 0, z: 0}
-  m_posOffsetData: {fileID: 0}
-  listenerMask: 1
+  IsEnvironmentAware: 1
+  ApplyPositionOffset: 0
+  IsRoomAware: 0
+  positionOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &2059973495
 MonoBehaviour:
   m_ObjectHideFlags: 0

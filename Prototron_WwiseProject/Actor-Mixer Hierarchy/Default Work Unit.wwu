@@ -13,7 +13,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<RandomSequenceContainer Name="pistol_shoot" ID="{DEB28903-4CA1-4427-B030-1FE010413529}" ShortID="377713728">
+						<RandomSequenceContainer Name="weapon_pistol_shoot" ID="{DEB28903-4CA1-4427-B030-1FE010413529}" ShortID="377713728">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B690BD39-2A93-45BF-B10C-380FC057D481}"/>
@@ -23,15 +23,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Sound Name="New Sound SFX" ID="{74862527-1B8A-4296-B8C5-A88298B52281}" ShortID="635567944">
-									<PropertyList>
-										<Property Name="Lowpass" Type="int16">
-											<ValueList>
-												<Value>46</Value>
-											</ValueList>
-										</Property>
-										<Property Name="OverrideVirtualVoice" Type="bool" Value="True"/>
-									</PropertyList>
+								<Sound Name="Play_weapon_pistol_shoot" ID="{8A7EDB83-CD14-4ECA-845F-D970A0A18EEA}" ShortID="76992235">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B690BD39-2A93-45BF-B10C-380FC057D481}"/>
@@ -41,113 +33,72 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<SourcePlugin Name="asdfg" ID="{12919699-975D-4A58-856F-8B8C6F751B51}" ShortID="884056763" PluginName="Wwise Synth One" CompanyID="0" PluginID="148">
-											<PropertyList>
-												<Property Name="BaseFrequency" Type="Real32" Value="194"/>
-												<Property Name="OperationMode" Type="int32" Value="1"/>
-												<Property Name="Osc1Transpose" Type="int32" Value="1327"/>
-												<Property Name="Osc2Transpose" Type="int32" Value="-3600"/>
-												<Property Name="Osc2Waveform" Type="int32" Value="1"/>
-											</PropertyList>
-											<ObjectLists>
-												<ObjectList Name="RTPC">
-													<Reference>
-														<Local>
-															<RTPC Name="" ID="{F1EF2668-0D60-44F0-95D0-15004E3BC704}" ShortID="414897591">
-																<PropertyList>
-																	<Property Name="PropertyName" Type="string" Value="OutputLevel"/>
-																</PropertyList>
-																<ReferenceList>
-																	<Reference Name="ControlInput">
-																		<Custom>
-																			<ModulatorEnvelope Name="Modulator Envelope (Custom)" ID="{57961E3B-55C6-4E5E-8D17-0A36179F21DE}" ShortID="616137897">
-																				<PropertyList>
-																					<Property Name="EnvelopeAttackCurve" Type="Real64" Value="0"/>
-																					<Property Name="EnvelopeAttackTime" Type="Real64" Value="0"/>
-																					<Property Name="EnvelopeAutoRelease" Type="bool" Value="True"/>
-																					<Property Name="EnvelopeDecayTime" Type="Real64" Value="0.222"/>
-																					<Property Name="EnvelopeReleaseTime" Type="Real64" Value="0.542"/>
-																					<Property Name="EnvelopeSustainLevel" Type="Real64" Value="0"/>
-																				</PropertyList>
-																			</ModulatorEnvelope>
-																		</Custom>
-																	</Reference>
-																	<Reference Name="Curve">
-																		<Custom>
-																			<Curve Name="" ID="{54ABC858-8FA7-4E7D-8407-9B2F626A0414}">
-																				<PropertyList>
-																					<Property Name="Flags" Type="int32" Value="3"/>
-																				</PropertyList>
-																				<PointList>
-																					<Point>
-																						<XPos>0</XPos>
-																						<YPos>-120</YPos>
-																						<Flags>21</Flags>
-																					</Point>
-																					<Point>
-																						<XPos>1</XPos>
-																						<YPos>0</YPos>
-																						<Flags>53</Flags>
-																					</Point>
-																				</PointList>
-																			</Curve>
-																		</Custom>
-																	</Reference>
-																</ReferenceList>
-															</RTPC>
-														</Local>
-													</Reference>
-													<Reference>
-														<Local>
-															<RTPC Name="" ID="{678A7548-9DF7-4A3B-9ED0-45ED9954A3C8}" ShortID="233618305">
-																<PropertyList>
-																	<Property Name="PropertyName" Type="string" Value="BaseFrequency"/>
-																</PropertyList>
-																<ReferenceList>
-																	<Reference Name="ControlInput">
-																		<Custom>
-																			<ModulatorEnvelope Name="Modulator Envelope (Custom)" ID="{57B53950-3DC2-4729-920B-2E5B3E2BF69A}" ShortID="248889742">
-																				<PropertyList>
-																					<Property Name="EnvelopeAttackTime" Type="Real64" Value="0"/>
-																					<Property Name="EnvelopeAutoRelease" Type="bool" Value="True"/>
-																					<Property Name="EnvelopeDecayTime" Type="Real64" Value="0.311"/>
-																					<Property Name="EnvelopeSustainLevel" Type="Real64" Value="0"/>
-																				</PropertyList>
-																			</ModulatorEnvelope>
-																		</Custom>
-																	</Reference>
-																	<Reference Name="Curve">
-																		<Custom>
-																			<Curve Name="" ID="{E7E47C14-B315-4638-9CB2-BEA61AF4640C}">
-																				<PropertyList>
-																					<Property Name="Flags" Type="int32" Value="5"/>
-																				</PropertyList>
-																				<PointList>
-																					<Point>
-																						<XPos>0</XPos>
-																						<YPos>51.85888</YPos>
-																						<Flags>21</Flags>
-																					</Point>
-																					<Point>
-																						<XPos>1</XPos>
-																						<YPos>2000.00001</YPos>
-																						<Flags>53</Flags>
-																					</Point>
-																				</PointList>
-																			</Curve>
-																		</Custom>
-																	</Reference>
-																</ReferenceList>
-															</RTPC>
-														</Local>
-													</Reference>
-												</ObjectList>
-											</ObjectLists>
+										<AudioFileSource Name="Play_weapon_pistol_shoot" ID="{80676FB1-9823-48DF-B705-7FC1B1EEA833}">
 											<Language>SFX</Language>
-										</SourcePlugin>
+											<AudioFile>Play_weapon_pistol_shoot.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1070173029"/>
+											</MediaIDList>
+										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="asdfg" ID="{12919699-975D-4A58-856F-8B8C6F751B51}" Platform="Linked"/>
+										<ActiveSource Name="Play_weapon_pistol_shoot" ID="{80676FB1-9823-48DF-B705-7FC1B1EEA833}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+					</ChildrenList>
+				</ActorMixer>
+				<ActorMixer Name="Enemy" ID="{517E694C-5A50-4D78-AD81-A7EC0D9C7296}" ShortID="1056245844">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B690BD39-2A93-45BF-B10C-380FC057D481}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8C8D4C01-5511-4B0D-93D1-0A8CC2D46915}"/>
+						</Reference>
+					</ReferenceList>
+				</ActorMixer>
+				<ActorMixer Name="Weapon" ID="{0157E514-4B1F-48AA-A348-C64747EA31F0}" ShortID="758526540">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B690BD39-2A93-45BF-B10C-380FC057D481}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8C8D4C01-5511-4B0D-93D1-0A8CC2D46915}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<RandomSequenceContainer Name="bullet_hit_human" ID="{05EA7CBD-AF4D-4C72-8AA4-D3EAABD30F9A}" ShortID="593468494">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B690BD39-2A93-45BF-B10C-380FC057D481}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8C8D4C01-5511-4B0D-93D1-0A8CC2D46915}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Play_bullet_hit_human" ID="{2F60B106-2CA1-4268-A9F8-02C1ADE67017}" ShortID="502226449">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B690BD39-2A93-45BF-B10C-380FC057D481}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8C8D4C01-5511-4B0D-93D1-0A8CC2D46915}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Play_bullet_hit_human" ID="{102FEA30-F255-4520-93E9-70ABE3689E1D}">
+											<Language>SFX</Language>
+											<AudioFile>Play_bullet_hit_human.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="428303096"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Play_bullet_hit_human" ID="{102FEA30-F255-4520-93E9-70ABE3689E1D}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>

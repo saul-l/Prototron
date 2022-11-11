@@ -9,25 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1069431850" Type="User" Language="SFX" Hash="{913AC7D8-BEE3-6BEE-EC9E-DDEE5326AE4D}">
-			<ShortName>Player</ShortName>
-			<Path>Player.bnk</Path>
-			<Plugins>
-				<Custom>
-					<Plugin Id="884056763" Name="asdfg" LibName="Wwise Synth One" LibId="9699330"/>
-				</Custom>
-			</Plugins>
-			<Events>
-				<Event Id="1419340308" Name="Play_weapon_pistol_shoot" DurationType="Unknown">
-					<PluginRefs>
-						<Custom>
-							<PluginRef Id="884056763"/>
-						</Custom>
-					</PluginRefs>
-				</Event>
-			</Events>
-		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{39C2D916-65F9-8EB8-F8A0-32FBCA5C0A40}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{27583624-5B8E-2CDA-D317-E9F7A02C7AF9}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -40,6 +22,32 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
+		<SoundBank Id="1661994096" Type="User" Language="SFX" Hash="{84C4252F-CFC7-8131-081C-D0C8F6FE626D}">
+			<ShortName>Soundbank</ShortName>
+			<Path>Soundbank.bnk</Path>
+			<Media>
+				<File Id="428303096" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Play_bullet_hit_human.wav</ShortName>
+					<CachePath>SFX/Play_bullet_hit_human_10C4C929.wem</CachePath>
+				</File>
+				<File Id="1070173029" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Play_weapon_pistol_shoot.wav</ShortName>
+					<CachePath>SFX/Play_weapon_pistol_shoot_10C4C929.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="306738902" Name="Play_bullet_hit_human" DurationType="OneShot" DurationMin="0.28760415" DurationMax="0.28760415">
+					<MediaRefs>
+						<MediaRef Id="428303096"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1419340308" Name="Play_weapon_pistol_shoot" DurationType="OneShot" DurationMin="1.0128542" DurationMax="1.0128542">
+					<MediaRefs>
+						<MediaRef Id="1070173029"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
 	</SoundBanks>
-	<FileHash>{5311B530-3CD4-DADE-E0B3-BB77FA59D01B}</FileHash>
+	<FileHash>{5C69F3E9-BBD2-DFD0-3BCA-C62A476F0E20}</FileHash>
 </SoundBanksInfo>
