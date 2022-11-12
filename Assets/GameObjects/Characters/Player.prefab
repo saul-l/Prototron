@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1815517575145660383}
+  - component: {fileID: -7702000397160545759}
   - component: {fileID: 8241060102195771655}
   - component: {fileID: -707190230888361410}
   - component: {fileID: 6745584638906953259}
@@ -16,12 +17,12 @@ GameObject:
   - component: {fileID: 103913049835960774}
   - component: {fileID: -5811726607277540040}
   - component: {fileID: -3888252133575931285}
-  - component: {fileID: -7702000397160545759}
   - component: {fileID: 6476357762918511915}
   - component: {fileID: 4501438282179230414}
   - component: {fileID: 2059973504}
   - component: {fileID: 681513220821841964}
   - component: {fileID: 2059973495}
+  - component: {fileID: 2446713982752480310}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -46,6 +47,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-7702000397160545759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7569796107671719673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 596b557ab8dbe5a478533c2369ca1ef5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
+  deactivateOnDeath: 0
+  destroyOnDeath:
+  - {fileID: 8241060102195771655}
+  - {fileID: -707190230888361410}
+  - {fileID: 6745584638906953259}
+  - {fileID: 103913049835960774}
+  - {fileID: -3888252133575931285}
+  - {fileID: 6476357762918511915}
+  - {fileID: 4501438282179230414}
+  - {fileID: 8333643723174991426}
+  - {fileID: 1398873471945326766}
+  sendMessageOnDamage: 1
+  deathEffect: {fileID: 2891007673029878220, guid: 36a3ad642d90ee74d911d33156fd4a62, type: 3}
+  damageEffect: {fileID: 8974671989784390187, guid: 42d562fb7a525fa45adca4edb9cfc943, type: 3}
 --- !u!95 &8241060102195771655
 Animator:
   serializedVersion: 4
@@ -126,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementDirection: {x: 0, y: 0, z: 0}
-  movementSpeed: 12
+  movementSpeed: 15
   movementChangeSpeed: 12
   rb: {fileID: 0}
 --- !u!114 &-5811726607277540040
@@ -271,9 +299,21 @@ MonoBehaviour:
     m_ActionId: 7649ee3a-4dd3-4b50-85af-9286e0c54095
     m_ActionName: Player/EightWayKeyboardAim[/Keyboard/upArrow,/Keyboard/numpad8,/Keyboard/downArrow,/Keyboard/numpad5,/Keyboard/numpad2,/Keyboard/leftArrow,/Keyboard/numpad4,/Keyboard/rightArrow,/Keyboard/numpad6]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ccf2e476-e082-4a08-8f8f-459e84d5fd41
-    m_ActionName: UI/Restart[/Keyboard/escape]
+      m_Calls:
+      - m_Target: {fileID: 5609702219844219259}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ea384a01-7303-449f-94df-ee574cead384
+    m_ActionName: Player/Restart[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -292,6 +332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: {fileID: 0}
+  bulletSpeed: 1
   myPool: {fileID: 0}
   bullet: {fileID: 6641427923098496259, guid: f60e99df7df94084d8fc3dbf5db018d2, type: 3}
   shootingDirection: {x: 0, y: 0, z: 0}
@@ -328,23 +369,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &-7702000397160545759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7569796107671719673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 596b557ab8dbe5a478533c2369ca1ef5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 2
-  damageEffectPool: {fileID: 0}
-  deathEffectPool: {fileID: 0}
-  deathEffect: {fileID: 2891007673029878220, guid: 36a3ad642d90ee74d911d33156fd4a62, type: 3}
-  damageEffect: {fileID: 8974671989784390187, guid: 42d562fb7a525fa45adca4edb9cfc943, type: 3}
 --- !u!114 &6476357762918511915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,8 +410,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 07d21ec511ebdfb4c99351b7acb1af9c, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -399,7 +423,7 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -417,7 +441,7 @@ AudioSource:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 0
+      value: 0.9978577
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -432,7 +456,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -447,7 +471,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.25555557
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -484,10 +508,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de8c55db762a54f4fb6c5010721cd70b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsEnvironmentAware: 1
-  ApplyPositionOffset: 0
-  IsRoomAware: 0
-  positionOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &2059973495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,7 +521,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootAudioEvent: Play_weapon_pistol_shoot
-  damageAudioEvent: Play_bullet_hit_human
+  damageAudioEvent: Play_player_damage
+  deathAudioEvent: Play_player_death
+--- !u!114 &2446713982752480310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7569796107671719673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd438daa74926540ba945c4196e1e21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7909715160050154295
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -571,6 +604,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62cb8574bf474294fb26b4b983f95aba, type: 3}
+--- !u!137 &1398873471945326766 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -95358422839755879, guid: 62cb8574bf474294fb26b4b983f95aba, type: 3}
+  m_PrefabInstance: {fileID: 7909715160050154295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7660145205469961436 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 62cb8574bf474294fb26b4b983f95aba, type: 3}
@@ -652,5 +690,10 @@ PrefabInstance:
 --- !u!4 &8333643723169716384 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
+  m_PrefabInstance: {fileID: 8333643723170103842}
+  m_PrefabAsset: {fileID: 0}
+--- !u!119 &8333643723174991426 stripped
+Projector:
+  m_CorrespondingSourceObject: {fileID: 11900000, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
   m_PrefabInstance: {fileID: 8333643723170103842}
   m_PrefabAsset: {fileID: 0}

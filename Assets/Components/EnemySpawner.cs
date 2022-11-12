@@ -41,8 +41,8 @@ public class EnemySpawner : MonoBehaviour
 
     private int requestedPoolSize = 50;
     private int enemiesKilled;
+    private int enemiesAlive;
 
-    private float enemyValueIncrease;
     private float spawnPerimeterX;
     private float spawnPerimeterZ;
     private float spawnPerimeterY;
@@ -71,7 +71,8 @@ public class EnemySpawner : MonoBehaviour
         spawnPerimeterY = spawnPerimeter.position.y;
         spawnPerimeterZ = spawnPerimeter.localScale.z;
 
-        CreateEnemyOrderAndPools();
+        CreateEnemyOrder();
+        CreatePools();
     }
 
     void Update()
@@ -84,7 +85,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
 
-    void CreateEnemyOrderAndPools()
+    void CreateEnemyOrder()
     {
         int[] enemyAmount = new int[enemyType.Length];
 
@@ -109,14 +110,15 @@ public class EnemySpawner : MonoBehaviour
             }
             else
             {
-                totalEnemies++;
                 enemyOrder.Add(randomVal);
                 enemyAmount[randomVal]++;
                 totalEnemyValue -= enemyValues[randomVal];
-
             }
         }
+    }
 
+    void CreatePools()
+    { 
         // Pools for enemies
         myPool = new Pool[enemyType.Length];
 
@@ -172,25 +174,26 @@ public class EnemySpawner : MonoBehaviour
             newEnemy.transform.rotation = Quaternion.identity;
             newEnemy.SetActive(true);
             newEnemy.GetComponent<EnemyController>().mySpawner = this;
-
+            totalEnemies++;
             enemyCounter++;
         }
     }
 
     public void enemyDied()
     {
-        // This is messy. Currently has only infinite spawner system active.
+        // Currently has only infinite spawner system active.
 
-        // Temp UI
-        DebugText.instance.PrintText("Score: " + enemiesKilled);
+        // I don't like this.
+        GameManager.instance.score++;
+        GameManager.instance.UpdateUI();
 
         totalEnemies--;
-
+        
         enemiesKilled++;
-        totalEnemyValue += enemiesKilled;
+        totalEnemyValue = totalEnemyValue + 3;
 
 
-        CreateEnemyOrderAndPools(); // This is a bit hardcore for just adding two.
+        CreateEnemyOrder(); // This is a bit hardcore maybe.
 
         /* Sequential spawner things.
         if (nextSpawner != null)

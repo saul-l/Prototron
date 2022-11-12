@@ -17,13 +17,14 @@ using UnityEngine.InputSystem.Interactions;
 
 public class PlayerController : MonoBehaviour
 {
-    public MovementComponent movementComponent;
-    public ShootingComponent shootingComponent;
+    [SerializeField] private MovementComponent movementComponent;
+    [SerializeField]private ShootingComponent shootingComponent;
     private Vector3 movementDirection;
     private Vector3 shootingDirection;
     public ButtonControl pressedButton;
     Directions.Direction aimingDirection;
     [SerializeField] UnityEvent FireEvent;
+    private bool isDead = false;
 
     public UniqueStack<Directions.Direction> aimFireBuffer = new UniqueStack<Directions.Direction>();
     void Start()
@@ -32,14 +33,20 @@ public class PlayerController : MonoBehaviour
         shootingComponent = this.GetComponent<ShootingComponent>();
     }
 	
-
+    void IsDead()
+    {
+        isDead = true;
+    }
 
     public void SetMovingDirection(InputAction.CallbackContext context)
     {
-        movementDirection=context.ReadValue<Vector2>();
-        movementDirection.z=movementDirection.y;
-        movementDirection.y=0;
-        movementComponent.movementDirection=this.movementDirection;
+        if(!isDead)
+        { 
+            movementDirection=context.ReadValue<Vector2>();
+            movementDirection.z=movementDirection.y;
+            movementDirection.y=0;
+            movementComponent.movementDirection=this.movementDirection;
+        }
     }
 
     public void SetAimingDirection(InputAction.CallbackContext context)
@@ -57,7 +64,6 @@ public class PlayerController : MonoBehaviour
         //  angle *= antiFourer;
         //  newShootingDirection.z = Mathf.Cos(angle);
         //  newShootingDirection.x = Mathf.Sin(angle);
-
     }
 
 
@@ -97,35 +103,37 @@ public class PlayerController : MonoBehaviour
 
     public void CalculateShootingDirectionAndFire()
     {
+        if (!isDead)
+        {
+            if (aimFireBuffer.returnFirstNodeValue() == Directions.Direction.Up)
+            {
+                shootingComponent.shootingDirection = Vector3.forward;
+            }
 
-        if (aimFireBuffer.returnFirstNodeValue() == Directions.Direction.Up)
-        {
-            shootingComponent.shootingDirection = Vector3.forward;
-        }
+            if (aimFireBuffer.returnFirstNodeValue() == Directions.Direction.Down)
+            {
+                shootingComponent.shootingDirection = Vector3.back;
+            }
 
-        if (aimFireBuffer.returnFirstNodeValue() == Directions.Direction.Down)
-        {
-            shootingComponent.shootingDirection = Vector3.back;
-        }
+            if (aimFireBuffer.returnFirstNodeValue() == Directions.Direction.Left)
+            {
+                shootingComponent.shootingDirection = Vector3.left;
+            }
 
-        if (aimFireBuffer.returnFirstNodeValue() == Directions.Direction.Left)
-        {
-            shootingComponent.shootingDirection = Vector3.left;
-        }
-        
-        if (aimFireBuffer.returnFirstNodeValue() == Directions.Direction.Right)
-        {
-            shootingComponent.shootingDirection = Vector3.right;
-        }
-        
-        if (aimFireBuffer.returnFirstNodeValue() == Directions.Direction.None)
-        {
-            shootingComponent.shootingDirection = Vector3.zero;
-            shootingComponent.fire = false;
-        }
-        else
-        {
-            shootingComponent.fire = true;
+            if (aimFireBuffer.returnFirstNodeValue() == Directions.Direction.Right)
+            {
+                shootingComponent.shootingDirection = Vector3.right;
+            }
+
+            if (aimFireBuffer.returnFirstNodeValue() == Directions.Direction.None)
+            {
+                shootingComponent.shootingDirection = Vector3.zero;
+                shootingComponent.fire = false;
+            }
+            else
+            {
+                shootingComponent.fire = true;
+            }
         }
     }
 

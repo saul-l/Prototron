@@ -12,13 +12,13 @@ TagManager:
   - Water
   - UI
   - Player
-  - IgnoreEnemies
-  - IgnoreAll
+  - NoEnemies
+  - NoThing
   - Enemies
-  - IgnoreAllExceptPlayer
-  - IgnoreAllExcteptEnemies
-  - IgnocreAllExceptCharacters
-  - IgnoreCharacters
+  - OnlyPlayer
+  - OnlyEnemies
+  - OnlyCharacters
+  - NoCharacters
   - 
   - 
   - 

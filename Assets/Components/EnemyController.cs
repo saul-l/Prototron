@@ -24,6 +24,7 @@ public class EnemyController : MonoBehaviour
     private Transform playerTransform;
     private float lastAttackTime = 0.0f;
     private bool canShoot = true;
+    private Vector3 shootingDirection = Vector3.zero;
     public EnemySpawner mySpawner;
 
     void Awake()
@@ -58,7 +59,9 @@ public class EnemyController : MonoBehaviour
     {
         if(Time.time >= lastAttackTime+attackInterval)
         {
-            shootingComponent.shootingDirection = (playerTransform.position - myTransform.position).normalized;
+            shootingDirection = (playerTransform.position - myTransform.position).normalized;
+            shootingDirection.y = 0.0f;
+            shootingComponent.shootingDirection = shootingDirection;
             shootingComponent.fire = true;
             lastAttackTime = Time.time;
             canShoot = false;            

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Pool : MonoBehaviour
 {
+    static int pooledObjectCount;
     public List<GameObject> pooledObjects;
 
     public void PopulatePool(GameObject objectToPool, int amount, PopulateStyle populateStyle)
@@ -28,6 +29,8 @@ public class Pool : MonoBehaviour
             for (int i = 0; i < amountToPool; i++)
             {
                 tmp = Instantiate(objectToPool);
+                pooledObjectCount++;
+                tmp.name = tmp.name + " " + pooledObjectCount;
                 tmp.transform.parent = this.transform;
                 tmp.SetActive(false);
                 pooledObjects.Add(tmp);

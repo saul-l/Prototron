@@ -8,6 +8,8 @@
  * Set health to desired health.
  * Set spawned damage particle effect prefab to damageEffect
  * Set spawned death particle effect prefab to deathEffect;
+ * If deactivateOnDeath is true, the gameobject will be deactivated.
+ * If deactivateOnDeath is false, components in destroyonDeath will be destroyed.
  */
 
 using System.Collections;
@@ -16,7 +18,10 @@ using UnityEngine;
 
 public class HealthComponent : MonoBehaviour, IDamageable, ISpawnable
 {
-    [SerializeField] int health = 2;
+    public int health = 2;
+    [SerializeField] private bool deactivateOnDeath = true;
+    [SerializeField] private Component[] destroyOnDeath;
+    [SerializeField] private bool sendMessageOnDamage;
     public GameObject deathEffect;
     public GameObject damageEffect;
 
@@ -24,6 +29,8 @@ public class HealthComponent : MonoBehaviour, IDamageable, ISpawnable
     private Pool deathEffectPool;
     
     private int originalHealth;
+
+
     void Awake ()
     {   
         damageEffectPool = PoolHandler.instance.GetPool(damageEffect.gameObject.name, PoolType.ForcedRecycleObjectPool);
@@ -31,19 +38,21 @@ public class HealthComponent : MonoBehaviour, IDamageable, ISpawnable
 
         deathEffectPool = PoolHandler.instance.GetPool(deathEffect.gameObject.name, PoolType.ForcedRecycleObjectPool);
         deathEffectPool.PopulatePool(deathEffect, 1, PopulateStyle.Add);
-    }
 
-    void Start ()
-    {
         originalHealth = health;
     }
 
+
+
     public void ApplyDamage(int damageAmount)
-    {    
+    {   
+
+
         health -= damageAmount;
-        if (health < 0)
+
+        if (sendMessageOnDamage)
         {
-            ReturnToPool();
+            gameObject.SendMessage("OnDamage");
         }
 
         GameObject newDamageEffect = damageEffectPool.GetPooledObject();
@@ -54,9 +63,15 @@ public class HealthComponent : MonoBehaviour, IDamageable, ISpawnable
              newDamageEffect.transform.rotation = Quaternion.identity;
              newDamageEffect.SetActive(true);    
          }
+
+        if (health <= 0)
+        {
+            Death();
+        }
+
     }
 
-    public void ReturnToPool()
+    public void Death()
     {
         GameObject newDeathEffect = deathEffectPool.GetPooledObject();
         if (newDeathEffect != null)
@@ -67,12 +82,27 @@ public class HealthComponent : MonoBehaviour, IDamageable, ISpawnable
             newDeathEffect.SetActive(true);
         }
 
-        gameObject.SetActive(false);
+        if(deactivateOnDeath)
+        { 
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            gameObject.SendMessage("IsDead");
+            foreach (Component component in destroyOnDeath)
+            {
+                Destroy(component);
+            }
+        }
     }
 
     private void OnEnable()
     {
         health = originalHealth;
+    }
+    public void ReturnToPool()
+    {
+
     }
     public void SpawnFromPool()
     {

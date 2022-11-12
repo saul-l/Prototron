@@ -475,7 +475,7 @@ MonoBehaviour:
   meleeWeapon: {fileID: 8243354866566091642}
   player: {fileID: 0}
   weapon: {fileID: 11500000, guid: 2621f0e862f92b44a9aaa00c55b2137d, type: 3}
-  attackInterval: 1
+  attackInterval: 2
   shootingComponent: {fileID: 4211928328542684201}
   shooter: 1
   melee: 0
@@ -524,9 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596b557ab8dbe5a478533c2369ca1ef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
-  damageEffectPool: {fileID: 0}
-  deathEffectPool: {fileID: 0}
+  health: 3
   deathEffect: {fileID: 8457978493270944543, guid: ba721e7bc9df6064fa6cdf67f272aa42, type: 3}
   damageEffect: {fileID: 8974671989784390187, guid: 42d562fb7a525fa45adca4edb9cfc943, type: 3}
 --- !u!136 &4067082640400488950
@@ -591,12 +589,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: {fileID: 0}
+  bulletSpeed: 0.5
   myPool: {fileID: 0}
   bullet: {fileID: 6641427923098496259, guid: 5ce7aa9bc8ddf4d4f89a084d90b334b2, type: 3}
   shootingDirection: {x: 0, y: 0, z: 0}
   newShootingDirection: {x: 0, y: 0, z: 0}
   prevShootingDirection: {x: 0, y: 0, z: 0}
   totalShootingDirectionValue: 0
+  pooledBullets: 2
   angle: 0
   fire: 0
   hasShot:

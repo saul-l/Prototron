@@ -12,6 +12,7 @@ using static UnityEngine.GraphicsBuffer;
 public class ShootingComponent : MonoBehaviour
 {
     [SerializeField] private ScriptableObject weaponType;
+    public float bulletSpeed = 1.0f;
     public Pool myPool;
     public GameObject bullet;
     public Vector3 shootingDirection;
@@ -21,7 +22,7 @@ public class ShootingComponent : MonoBehaviour
     public int pooledBullets = 2;
     private float rateOfFire = (1 / 60f) * 20.0f;
     private float lastShotTime = 0.0f;
-    private float bulletSpeed = 1.0f;
+    
     public float angle;
 
     public bool fire;

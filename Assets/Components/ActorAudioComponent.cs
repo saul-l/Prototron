@@ -9,26 +9,26 @@ public class ActorAudioComponent : MonoBehaviour
 
     [SerializeField] private string shootAudioEvent;
     [SerializeField] private string damageAudioEvent;
-
+    [SerializeField] private string deathAudioEvent;
 
 
     public void shootAudio()
     {
         SimpleAudioWrapper.PlayAudioEvent(shootAudioEvent, gameObject);
-
-
     }
 
     public void deathAudio()
     {
-
+        SimpleAudioWrapper.PlayAudioEvent(deathAudioEvent, gameObject);
     }
 
+    public void meleeAudio()
+    {
+        SimpleAudioWrapper.PlayAudioEvent(deathAudioEvent, gameObject);
+    }
     public void damageAudio()
     {
-#if !UNITY_WEBGL
-        AkSoundEngine.PostEvent(damageAudioEvent, gameObject);
-#endif
+        SimpleAudioWrapper.PlayAudioEvent(damageAudioEvent, gameObject);
     }
 
 }

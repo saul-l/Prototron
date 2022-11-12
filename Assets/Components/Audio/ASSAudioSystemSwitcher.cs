@@ -80,8 +80,7 @@ public  class ASSAudioSystemSwitcher : MonoBehaviour
             {
                 GameObject tmpSoundBank = Instantiate(soundBank);
                 instantiatedSoundBanks.Add(tmpSoundBank);
-            }
-           
+            }         
         }
         else
         {
@@ -97,7 +96,7 @@ public  class ASSAudioSystemSwitcher : MonoBehaviour
 
 #if UNITY_EDITOR
 
-            void Update()
+    void Update()
     {
         if (!EditorApplication.isPlaying)
         {

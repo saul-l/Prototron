@@ -25,6 +25,7 @@ public class DebugText : MonoBehaviour
     void Start()
     {
         debugText = GetComponent<TextMeshProUGUI>();
+        GameManager.instance.UpdateUI();
     }
 
     public void PrintText(string textToPrint)
