@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthComponent : MonoBehaviour, IDamageable, ISpawnable
-{
+{   
     public int health = 2;
     [SerializeField] private bool deactivateOnDeath = true;
     [SerializeField] private Component[] destroyOnDeath;

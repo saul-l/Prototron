@@ -16,6 +16,7 @@ public class MeleeComponent : MonoBehaviour, IWeapon
     private bool attacking = false;
     private bool hasHit = false;
 
+    [SerializeField] private string hitAudioevent;
     [SerializeField] private Collider myCollider;
     [SerializeField] private GameObject effectGameObject;
     void Start()
@@ -62,6 +63,7 @@ public class MeleeComponent : MonoBehaviour, IWeapon
         if (!hasHit && other.gameObject.GetComponent<IDamageable>() != null)
         {
             other.gameObject.GetComponent<IDamageable>().ApplyDamage(damage);
+            SimpleAudioWrapper.PlayAudioEvent(hitAudioevent, gameObject);
             hasHit = true;
         }
     }

@@ -25,8 +25,9 @@ public class ForcedRecycleObjectPool : Pool
         tmp = pooledObjects[0];
         pooledObjects.RemoveAt(0);
         pooledObjects.Add(tmp);
+        tmp.SetActive(false);
         tmp.transform.parent = this.transform;
-
+        tmp.SetActive(true);
         return tmp;
     }
 

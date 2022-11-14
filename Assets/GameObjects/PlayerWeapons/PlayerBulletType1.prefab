@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trailRenderer: {fileID: 2268676907624842348}
-  hitHumanAudioevent: Play_bullet_hit_human
+  hitAudioevent: Play_bullet_hit_human
   layerMask:
     serializedVersion: 2
     m_Bits: 512

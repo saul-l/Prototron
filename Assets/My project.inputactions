@@ -189,8 +189,30 @@
                 },
                 {
                     "name": "",
+                    "id": "23e17524-7e68-4e10-9f98-761fa5d15009",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "FireLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "80477ef4-a4e7-49c1-8eaa-32da6fa0e178",
                     "path": "<Keyboard>/numpad6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "FireRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9a2776bf-d8fd-4950-aa53-865e0c7fa1fa",
+                    "path": "<Keyboard>/l",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -211,11 +233,33 @@
                 },
                 {
                     "name": "",
+                    "id": "909cf0a0-4964-481d-aee2-ac4dce905d21",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "FireUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "604332a3-f2d7-4f9f-b21b-1c54fb9b11f0",
                     "path": "<Keyboard>/numpad2",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
+                    "action": "FireDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6db329be-3822-4cd0-9f91-0ee1f24f00fe",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "FireDown",
                     "isComposite": false,
                     "isPartOfComposite": false

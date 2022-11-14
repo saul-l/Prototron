@@ -7,7 +7,7 @@ public class BulletComponent : MonoBehaviour, ISpawnable
     
     
     [SerializeField] private TrailRenderer trailRenderer;
-    [SerializeField] private string hitHumanAudioevent;
+    [SerializeField] private string hitAudioevent;
     [SerializeField] private LayerMask layerMask;
     private Vector3 newPosition;
     private RaycastHit hit;
@@ -61,7 +61,7 @@ public class BulletComponent : MonoBehaviour, ISpawnable
         }
         if (hit.collider.gameObject.GetComponent<IDamageable>() != null)
         {
-            SimpleAudioWrapper.PlayAudioEvent(hitHumanAudioevent, gameObject);
+            SimpleAudioWrapper.PlayAudioEvent(hitAudioevent, gameObject);
             hit.collider.gameObject.GetComponent<IDamageable>().ApplyDamage(damage);
         }
         ReturnToPool();

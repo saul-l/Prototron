@@ -130,6 +130,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -707190230888361410, guid: 536787e5f32b4da4bb11d1d3e3933686, type: 3}
+      propertyPath: m_Drag
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -707190230888361410, guid: 536787e5f32b4da4bb11d1d3e3933686, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 103913049835960774, guid: 536787e5f32b4da4bb11d1d3e3933686, type: 3}
+      propertyPath: movementSpeed
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 103913049835960774, guid: 536787e5f32b4da4bb11d1d3e3933686, type: 3}
+      propertyPath: movementChangeSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1815517575145660383, guid: 536787e5f32b4da4bb11d1d3e3933686, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1683,7 +1699,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6274695066796279089, guid: a302712c9658c0d4ab03310424eda5e3, type: 3}
       propertyPath: audioClips.Array.size
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6274695066796279089, guid: a302712c9658c0d4ab03310424eda5e3, type: 3}
       propertyPath: audioClips.Array.data[2]
@@ -1704,7 +1720,11 @@ PrefabInstance:
     - target: {fileID: 6274695066796279089, guid: a302712c9658c0d4ab03310424eda5e3, type: 3}
       propertyPath: audioClips.Array.data[6]
       value: 
-      objectReference: {fileID: 8300000, guid: 37702c4a760a34349bf8a24ba1d3e0f5, type: 3}
+      objectReference: {fileID: 8300000, guid: b082d65bb517d7147a38b1beaafc122b, type: 3}
+    - target: {fileID: 6274695066796279089, guid: a302712c9658c0d4ab03310424eda5e3, type: 3}
+      propertyPath: audioClips.Array.data[7]
+      value: 
+      objectReference: {fileID: 8300000, guid: 154d38cb217d99f46bff2db104f776da, type: 3}
     - target: {fileID: 6274695066796279091, guid: a302712c9658c0d4ab03310424eda5e3, type: 3}
       propertyPath: m_Name
       value: SimpleAudioWrapperSoundBank

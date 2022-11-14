@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1406638165561532042}
   - component: {fileID: 3281180555068099717}
+  - component: {fileID: -7948647608762721477}
   - component: {fileID: 2268676907624842348}
   - component: {fileID: 1013283143927860268}
   m_Layer: 0
@@ -47,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trailRenderer: {fileID: 2268676907624842348}
-  hitHumanAudioevent: Play_bullet_hit_human
+  hitAudioevent: Play_bullet_hit_player
   layerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -57,6 +58,19 @@ MonoBehaviour:
   explosive: 0
   explosionRadius: 0
   bulletForce: 10
+--- !u!114 &-7948647608762721477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6641427923098496259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aef4c10c42164404093a3e3ad271f6d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioEvent: Play_enemy_shoot
 --- !u!96 &2268676907624842348
 TrailRenderer:
   serializedVersion: 2
