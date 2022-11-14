@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
         }
         else
         { 
-            DebugText.instance.PrintText("Score: " + score + " Press ESC");
+            DebugText.instance.PrintText("Score: " + score + " Press Enter or ESC");
         }
     }
     public void RestartGame()

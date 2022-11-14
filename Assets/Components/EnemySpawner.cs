@@ -77,7 +77,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if (enemyCounter < enemyOrder.Count && Time.time >= prevTime + interval && totalEnemies < maxEnemiesAtTheSameTime)
+        if (!GameManager.instance.gameOver && enemyCounter < enemyOrder.Count && Time.time >= prevTime + interval && totalEnemies < maxEnemiesAtTheSameTime)
         {
             prevTime = Time.time;
             SpawnEnemy();
