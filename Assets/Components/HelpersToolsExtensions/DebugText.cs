@@ -11,7 +11,7 @@ public class DebugText : MonoBehaviour
 
 
     public TextMeshProUGUI debugText;
-
+    private GameManager gameManager;
    
 
     void Awake()
@@ -20,12 +20,14 @@ public class DebugText : MonoBehaviour
             Destroy(this);
         else
             instance = this;
+
+        gameManager = GameObjectDependencyManager.instance.GetGameObject("GameManager").GetComponent<GameManager>();
     }
 
     void Start()
     {
         debugText = GetComponent<TextMeshProUGUI>();
-        GameManager.instance.UpdateUI();
+        gameManager.UpdateUI();
     }
 
     public void PrintText(string textToPrint)

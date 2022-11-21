@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ProjectInfo>
-	<Project Name="Prototron_WwiseProject" GUID="{CA52F5B1-6201-405B-892F-EB1B34DBCE68}" Generator="2022.1.0.7985"/>
+	<Project Name="Prototron_WwiseProject" GUID="{CA52F5B1-6201-405B-892F-EB1B34DBCE68}" Generator="2022.1.0.8070"/>
 	<CacheRoot>../../../../Prototron_WwiseProject/.cache</CacheRoot>
 	<Platforms>
 		<Platform Name="Mac" GUID="{AE568F76-99EE-44C5-8BB4-5AC9E0D3DF73}" BasePlatform="Mac" BasePlatformGUID="{9C6217D5-DD11-4795-87C1-6CE02853C540}" Path="../../../../Prototron_WwiseProject/GeneratedSoundBanks/Mac"/>
@@ -9,5 +9,5 @@
 	<Languages>
 		<Language Name="English(US)" Id="684519430" GUID="{EE2F4791-3AD5-4939-B1B1-792509195583}" Default="true" UseAsStandIn="true"/>
 	</Languages>
-	<FileHash>{2FB1C525-A294-C2B6-BB9E-1FD129006C82}</FileHash>
+	<FileHash>{FC876CE8-C087-2098-3604-E3D9333A75C9}</FileHash>
 </ProjectInfo>

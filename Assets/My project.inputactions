@@ -80,10 +80,10 @@
                 {
                     "name": "Restart",
                     "type": "Button",
-                    "id": "ea384a01-7303-449f-94df-ee574cead384",
+                    "id": "15a0b3ed-a9be-4003-ae8e-f8e4147d230f",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "initialStateCheck": false
                 }
             ],
@@ -259,7 +259,7 @@
                     "path": "<Keyboard>/k",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "FireDown",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -376,18 +376,7 @@
                 },
                 {
                     "name": "",
-                    "id": "49294397-d130-4dfd-95a3-cd639845ccf1",
-                    "path": "<Gamepad>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Restart",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9c215a2f-916f-4b0d-879a-1a0278c47f1b",
+                    "id": "696d6315-5cfe-4e07-8ba8-4c0264920301",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
@@ -398,7 +387,7 @@
                 },
                 {
                     "name": "",
-                    "id": "36038ba1-297b-4b6d-bb00-a0d1e3c43b8e",
+                    "id": "e981545e-b6ae-476a-a2fa-dfed0be7361c",
                     "path": "<Keyboard>/enter",
                     "interactions": "",
                     "processors": "",

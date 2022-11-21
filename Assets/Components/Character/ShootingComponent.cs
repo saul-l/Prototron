@@ -33,7 +33,7 @@ public class ShootingComponent : MonoBehaviour
     private float weaponDistance = 0.2f;
     void Start()
     {
-       myPool = PoolHandler.instance.GetPool(bullet.gameObject.name, PoolType.ForcedRecycleObjectPool);
+       myPool = GameObjectDependencyManager.instance.GetGameObject("PoolHandler").GetComponent<PoolHandler>().GetPool(bullet.gameObject.name, PoolType.ForcedRecycleObjectPool);
        myPool.PopulatePool(bullet, pooledBullets, PopulateStyle.Add);
     }
     void FixedUpdate()

@@ -41,18 +41,9 @@ using static PlayerController;
 
 public class PoolHandler : MonoBehaviour
 {
-    public static PoolHandler instance;
+
     [SerializeField] Dictionary<string, Pool> poolDictionary = new Dictionary<string, Pool>();
 
-    void Awake()
-    {
-        if (instance != null && instance != this)
-            Destroy(gameObject);
-        else
-            instance = this;      
-    }
-
-    
     public Pool GetPool(string tmpGameObject, PoolType poolType)
     {
 

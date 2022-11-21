@@ -32,18 +32,19 @@ public class HealthComponent : MonoBehaviour, IDamageable, ISpawnable
 
 
     void Awake ()
-    {   
-        damageEffectPool = PoolHandler.instance.GetPool(damageEffect.gameObject.name, PoolType.ForcedRecycleObjectPool);
-        damageEffectPool.PopulatePool(damageEffect, 1, PopulateStyle.Add);
-
-        deathEffectPool = PoolHandler.instance.GetPool(deathEffect.gameObject.name, PoolType.ForcedRecycleObjectPool);
-        deathEffectPool.PopulatePool(deathEffect, 1, PopulateStyle.Add);
+    {
 
         originalHealth = health;
     }
 
+    void Start ()
+    {
+        damageEffectPool = GameObjectDependencyManager.instance.GetGameObject("PoolHandler").GetComponent<PoolHandler>().GetPool(damageEffect.gameObject.name, PoolType.ForcedRecycleObjectPool);
+        damageEffectPool.PopulatePool(damageEffect, 15);
 
-
+        deathEffectPool = GameObjectDependencyManager.instance.GetGameObject("PoolHandler").GetComponent<PoolHandler>().GetPool(deathEffect.gameObject.name, PoolType.ForcedRecycleObjectPool);
+        deathEffectPool.PopulatePool(deathEffect, 15);
+    }
     public void ApplyDamage(int damageAmount)
     {   
 

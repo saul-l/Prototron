@@ -5,19 +5,20 @@ using UnityEngine;
 public class PlayerUIComponent : MonoBehaviour
 {
     HealthComponent healthComponent;
-
+    GameManager gameManager;
     void Start()
-    {    
+    {
+        gameManager = GameObjectDependencyManager.instance.GetGameObject("GameManager").GetComponent<GameManager>();
         healthComponent = GetComponent<HealthComponent>();
-        GameManager.instance.health = healthComponent.health;       
+        gameManager.health = healthComponent.health;
     }
     void OnDamage()
     {
-        GameManager.instance.health = healthComponent.health;
+        gameManager.health = healthComponent.health;
         if(healthComponent.health <= 0)
         {
-            GameManager.instance.gameOver = true;
+            gameManager.gameOver = true;
         }
-        GameManager.instance.UpdateUI();
+        gameManager.UpdateUI();
     }
 }

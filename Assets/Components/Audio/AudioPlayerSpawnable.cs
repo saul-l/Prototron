@@ -9,5 +9,6 @@ public class AudioPlayerSpawnable : MonoBehaviour
     void OnEnable()
     {
         SimpleAudioWrapper.PlayAudioEvent(AudioEvent, gameObject);
+
     }
 }

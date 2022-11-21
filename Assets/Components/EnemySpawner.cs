@@ -23,6 +23,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public GameManager gameManager;
     [HideInInspector] public Pool[] myPool;
 
     [SerializeField] private Transform spawnPerimeter;
@@ -36,6 +37,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private int totalEnemies;
     [SerializeField] private int maxEnemiesAtTheSameTime = 100;
     [SerializeField] private int enemyCounter = 0;
+
+    
 
     private float prevTime = 0.0f;
 
@@ -51,19 +54,25 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] GameObject nextSpawner;
 
-    private void OnValidate()
+    /*
+        private void OnValidate()
+        {
+            // Only allow ISpawnables to be spawned
+               for (int i = 0; i < enemyType.Length; i++)
+               {        
+                   if (!enemyType[i].TryGetComponent(typeof(ISpawnable), out var component))
+                       enemyType[i] = null;
+               }
+
+        }*/
+
+    private void Awake()
     {
-        // Only allow ISpawnables to be spawned
-        /*   for (int i = 0; i < enemyType.Length; i++)
-           {        
-               if (!enemyType[i].TryGetComponent(typeof(ISpawnable), out var component))
-                   enemyType[i] = null;
-           }
-           */
+        gameManager = GameObjectDependencyManager.instance.GetGameObject("GameManager").GetComponent<GameManager>();
     }
     void Start()
     {
-
+      
         Array.Sort(enemyValues, enemyType);
 
         spawnPerimeterCenter = spawnPerimeter.position;
@@ -77,7 +86,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if (!GameManager.instance.gameOver && enemyCounter < enemyOrder.Count && Time.time >= prevTime + interval && totalEnemies < maxEnemiesAtTheSameTime)
+        if (!gameManager.gameOver && enemyCounter < enemyOrder.Count && Time.time >= prevTime + interval && totalEnemies < maxEnemiesAtTheSameTime)
         {
             prevTime = Time.time;
             SpawnEnemy();
@@ -124,7 +133,8 @@ public class EnemySpawner : MonoBehaviour
 
         for (int i = 0; i < enemyType.Length; i++)
         {
-            myPool[i] = PoolHandler.instance.GetPool(enemyType[i].gameObject.name, PoolType.NormalPool);
+            myPool[i] = GameObjectDependencyManager.instance.GetGameObject("PoolHandler").GetComponent<PoolHandler>().GetPool(enemyType[i].gameObject.name, PoolType.NormalPool);
+            
             myPool[i].PopulatePool(enemyType[i], requestedPoolSize);
         }
     }
@@ -184,8 +194,8 @@ public class EnemySpawner : MonoBehaviour
         // Currently has only infinite spawner system active.
 
         // I don't like this.
-        GameManager.instance.score++;
-        GameManager.instance.UpdateUI();
+        gameManager.score++;
+        gameManager.UpdateUI();
 
         totalEnemies--;
         

@@ -26,6 +26,7 @@ public class EnemyController : MonoBehaviour
     private bool canShoot = true;
     private Vector3 shootingDirection = Vector3.zero;
     public EnemySpawner mySpawner;
+    GameManager gameManager;
 
     void Awake()
     {
@@ -35,12 +36,13 @@ public class EnemyController : MonoBehaviour
         player = GameObject.Find("Player");      
         playerTransform = player.transform;
         myTransform = transform;
+        gameManager = GameObjectDependencyManager.instance.GetGameObject("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!GameManager.instance.gameOver)
+        if(!gameManager.gameOver)
         {
             MovementLogicFollow();
             if(melee) AttackLogicCloseCombatMelee();

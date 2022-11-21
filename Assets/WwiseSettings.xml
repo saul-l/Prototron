@@ -10,8 +10,8 @@
   <ShowMissingRigidBodyWarning>true</ShowMissingRigidBodyWarning>
   <ShowSpatialAudioWarningMsg>true</ShowSpatialAudioWarningMsg>
   <WwiseInstallationPathMac />
-  <WwiseInstallationPathWindows>C:\Program Files (x86)\Audiokinetic\Wwise 2022.1.0.7985</WwiseInstallationPathWindows>
-  <WwiseProjectPath>../Prototron_WwiseProject/Prototron_WwiseProject.wproj</WwiseProjectPath>
+  <WwiseInstallationPathWindows>C:\Program Files (x86)\Audiokinetic\Wwise 2022.1.0.8070</WwiseInstallationPathWindows>
+  <WwiseProjectPath>../../Prototron/Prototron_WwiseProject/Prototron_WwiseProject.wproj</WwiseProjectPath>
   <UseWaapi>true</UseWaapi>
   <WaapiPort>8080</WaapiPort>
   <WaapiIP>127.0.0.1</WaapiIP>

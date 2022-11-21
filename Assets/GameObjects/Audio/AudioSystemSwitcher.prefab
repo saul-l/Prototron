@@ -44,3 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d24b65322d224143a99b9bbf86b84f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wwiseSoundBank:
+  - {fileID: 848647360373286016, guid: 4019718d50d590347b6a4ed5659346d4, type: 3}
+  usingUnityAudioSystem: 0
+  startUpCheckDone: 0
+  instantiatedSoundBanks: []

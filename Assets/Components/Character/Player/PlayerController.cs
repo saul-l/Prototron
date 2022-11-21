@@ -25,12 +25,13 @@ public class PlayerController : MonoBehaviour
     Directions.Direction aimingDirection;
     [SerializeField] UnityEvent FireEvent;
     private bool isDead = false;
-
+    GameManager gameManager;
     public UniqueStack<Directions.Direction> aimFireBuffer = new UniqueStack<Directions.Direction>();
     void Start()
     {
         movementComponent = this.GetComponent<MovementComponent>();
         shootingComponent = this.GetComponent<ShootingComponent>();
+        gameManager = GameObjectDependencyManager.instance.GetGameObject("GameManager").GetComponent<GameManager>();
     }
 	
     void IsDead()
@@ -95,7 +96,11 @@ public class PlayerController : MonoBehaviour
 
     public void FireDown(InputAction.CallbackContext context)
     {
-        if (context.started) aimFireBuffer.AddNode(Directions.Direction.Down);
+        if (context.started)
+        {
+      
+            aimFireBuffer.AddNode(Directions.Direction.Down);
+        }
         if (context.canceled) aimFireBuffer.RemoveNode(Directions.Direction.Down);
 
         CalculateShootingDirectionAndFire();
@@ -138,9 +143,9 @@ public class PlayerController : MonoBehaviour
     }
 
     // I hate this, but it works.
-    public void RestartGame()
+    public void RestartGame(InputAction.CallbackContext context)
     {
-        GameManager.instance.RestartGame();
+        if (context.started) gameManager.RestartGame();
     }
 
 }
