@@ -1,12 +1,19 @@
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.Presets;
 using UnityEngine;
 
 public class ASSWwiseSoundBank : MonoBehaviour
 {
-    AkBank
-    // Start is called before the first frame update
+#if !NO_WWISE    
+    Preset akBankPreset;
+    AkBank akBank;
+
     void Awake()
     {
-        gameObject.AddComponent<ASSWwiseSoundBank>();
+        akBank = gameObject.AddComponent<AkBank>();
+        akBankPreset.ApplyTo(akBank);
     }
-
+#endif
 }

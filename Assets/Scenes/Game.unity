@@ -676,6 +676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6836819c4dbbe4f4983edbde2e97fe49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsDefaultListener: 1
 --- !u!81 &637919632
 AudioListener:
   m_ObjectHideFlags: 0
@@ -918,6 +919,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -1648616614524993914, guid: 5218dd6643b9ac245875752b5a6c30b4, type: 3}
+      propertyPath: akBankPreset
+      value: 
+      objectReference: {fileID: 2655988077585873504, guid: 96b7727188ae53c4989d6b0146e70d79, type: 2}
+    - target: {fileID: -1648616614524993914, guid: 5218dd6643b9ac245875752b5a6c30b4, type: 3}
       propertyPath: akInitializer
       value: 
       objectReference: {fileID: 0}
@@ -936,7 +941,7 @@ PrefabInstance:
     - target: {fileID: -1648616614524993914, guid: 5218dd6643b9ac245875752b5a6c30b4, type: 3}
       propertyPath: wwiseSoundBank.Array.data[0]
       value: 
-      objectReference: {fileID: 848647360373286016, guid: 4019718d50d590347b6a4ed5659346d4, type: 3}
+      objectReference: {fileID: 2883679451039071886, guid: 50dbc98cba9ff054d873b6b037d2f9ba, type: 3}
     - target: {fileID: 2789797142038415411, guid: 5218dd6643b9ac245875752b5a6c30b4, type: 3}
       propertyPath: m_Name
       value: AudioSystemSwitcher

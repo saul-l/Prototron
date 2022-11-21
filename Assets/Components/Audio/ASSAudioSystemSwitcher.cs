@@ -9,7 +9,8 @@
  * 
  * Related components:
  * ASSWwiseGameObj - Handles adding and removing AkGameObj, when Wwise is used. Use instead of AkGameObj
- * AssWwiseListener - Handles adding and removing AkAudioListener. Use instead of AkAudioListener
+ * ASSWwiseListener - Handles adding and removing AkAudioListener. Use instead of AkAudioListener
+ * ASSWwiseSoundBank - Handles loading soundbank.
  * SimpleAudioWrapper - Wrapper for audio events. Plays either Wwise events or Unity Audio events depending
  *  of platform
  * SimpleAudioWrapperSoundBank - SoundBank for SimpleAudioWrapper.
@@ -22,7 +23,7 @@
  * Place one instance into a scene. After that audio system switches between Wwise and Unity automatically
  * based on active platform in Unity.
  *  
- * Create prefab(s) for Wwise soundbanks. (AkBank component)
+ * Create preset for Wwise soundbank (AkBank Component)
  * 
  * Add these to Wwise Sound Bank array in inspector.
  * 
@@ -51,6 +52,7 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
+using UnityEditor.Presets;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
@@ -58,12 +60,12 @@ using UnityEngine.PlayerLoop;
 public  class ASSAudioSystemSwitcher : MonoBehaviour
 {
     
-    [SerializeField] private GameObject[] wwiseSoundBank;
     [SerializeField] private bool usingUnityAudioSystem = false;
     [SerializeField] private bool startUpCheckDone = false;
-    [SerializeField] private List<GameObject> instantiatedSoundBanks;
 
 #if !NO_WWISE
+    [SerializeField] private Preset akBankPreset;
+    AkBank akBank;
     void Awake()
     {
         // Create soundbanks and initializer when game is playing. Destroy them when we have stopped.
@@ -75,20 +77,15 @@ public  class ASSAudioSystemSwitcher : MonoBehaviour
         {
 #endif
             this.AddComponent<AkInitializer>();
-
-            foreach (GameObject soundBank in wwiseSoundBank)
-            {
-                GameObject tmpSoundBank = Instantiate(soundBank);
-                instantiatedSoundBanks.Add(tmpSoundBank);
-            }         
+            akBank = this.AddComponent<AkBank>();
+            akBankPreset.ApplyTo(akBank);
+      
         }
         else
         {
-            foreach (GameObject soundBank in instantiatedSoundBanks)
-            {
-                DestroyImmediate(soundBank);
-            }
             DestroyImmediate(gameObject.GetComponent<AkInitializer>());
+            akBank = null;
+            DestroyImmediate(gameObject.GetComponent<AkBank>());            
         }
     }
 
