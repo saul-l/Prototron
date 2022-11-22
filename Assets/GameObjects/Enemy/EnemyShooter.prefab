@@ -591,15 +591,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b5fd427442472149a0b46f8ce5c0f6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: {fileID: 0}
-  bulletSpeed: 0.5
+  weaponType: {fileID: 11400000, guid: 2d18d1a3a13eae34897040e23d42057f, type: 2}
   myPool: {fileID: 0}
   bullet: {fileID: 6641427923098496259, guid: 5ce7aa9bc8ddf4d4f89a084d90b334b2, type: 3}
   shootingDirection: {x: 0, y: 0, z: 0}
   newShootingDirection: {x: 0, y: 0, z: 0}
   prevShootingDirection: {x: 0, y: 0, z: 0}
   totalShootingDirectionValue: 0
-  pooledBullets: 2
   angle: 0
   fire: 0
   hasShot:
@@ -1154,6 +1152,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4575058035517225104, guid: 332c9935f97e8a849a8efb23752f1467, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5690005673586108598, guid: 332c9935f97e8a849a8efb23752f1467, type: 3}
+      propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
