@@ -176,6 +176,10 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[8].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: -3888252133575931285, guid: 536787e5f32b4da4bb11d1d3e3933686, type: 3}
+      propertyPath: weaponType
+      value: 
+      objectReference: {fileID: 11400000, guid: 77de4c6ddea9eec459eba51c89af2082, type: 2}
     - target: {fileID: -707190230888361410, guid: 536787e5f32b4da4bb11d1d3e3933686, type: 3}
       propertyPath: m_Drag
       value: 2
@@ -1029,7 +1033,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2406289660876974039, guid: 9c38d1cf8e71687428f4a4bc322d47da, type: 3}
       propertyPath: interval
-      value: 0.75
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -2406289660876974039, guid: 9c38d1cf8e71687428f4a4bc322d47da, type: 3}
       propertyPath: nextSpawner

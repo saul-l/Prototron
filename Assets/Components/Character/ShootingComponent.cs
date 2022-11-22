@@ -11,17 +11,19 @@ using static UnityEngine.GraphicsBuffer;
 
 public class ShootingComponent : MonoBehaviour
 {
-    [SerializeField] private ScriptableObject weaponType;
-    public float bulletSpeed = 1.0f;
+    [SerializeField] private WeaponRangedScriptableObject weaponType;
+  
     public Pool myPool;
     public GameObject bullet;
     public Vector3 shootingDirection;
     public Vector3 newShootingDirection;
     public Vector3 prevShootingDirection = Vector3.zero;
     public float totalShootingDirectionValue;
-    public int pooledBullets = 2;
-    private float rateOfFire = (1 / 60f) * 20.0f;
-    private float lastShotTime = 0.0f;
+
+    // Handled by weaponType ScriptableObject
+
+    
+    private float nextShotTime = 0.0f;
     
     public float angle;
 
@@ -31,24 +33,50 @@ public class ShootingComponent : MonoBehaviour
     public UnityEvent hasShot;
     private Vector3 weaponPosition = new Vector3(0,0.55f,0);
     private float weaponDistance = 0.2f;
+    [SerializeField] private float bulletsLeft;
+
     void Start()
     {
+       bulletsLeft = weaponType.clipSize;
        myPool = GameObjectDependencyManager.instance.GetGameObject("PoolHandler").GetComponent<PoolHandler>().GetPool(bullet.gameObject.name, PoolType.ForcedRecycleObjectPool);
-       myPool.PopulatePool(bullet, pooledBullets, PopulateStyle.Add);
+       myPool.PopulatePool(bullet, weaponType.pooledBullets);
     }
     void FixedUpdate()
     {
         if (fire)
         {
-            if (lastShotTime <= Time.time)
+            if (nextShotTime <= Time.time)
             {
                 //Correct timing if continuously shooting
                 if (prevFired) { 
-                    timingCorrection = Time.time - lastShotTime;
+                    timingCorrection = Time.time - nextShotTime;
                 }
+
                 prevFired = true;                
-                lastShotTime = Time.time + rateOfFire - timingCorrection;
-                SpawnBullet();
+                
+                if(weaponType.clipSize > 0)
+                {
+                    bulletsLeft--;
+
+                    if(bulletsLeft <= 0)
+                    {
+                        bulletsLeft = weaponType.clipSize;
+                        nextShotTime = Time.time + weaponType.reloadTime - timingCorrection;
+                    }
+                    else
+                    {
+                        nextShotTime = Time.time + (weaponType.attackRate* 0.016666667f) - timingCorrection;
+                    }
+                }
+                else
+                {
+                    nextShotTime = Time.time + (weaponType.attackRate * 0.016666667f) - timingCorrection;
+                }
+
+                SpawnBullet(weaponType.bulletsPerShot);
+
+                
+
             }
         }
         else if (prevFired)
@@ -58,26 +86,31 @@ public class ShootingComponent : MonoBehaviour
         }
     }
 
-    void SpawnBullet()
+    void SpawnBullet(int spawnAmount)
     {
-   
-        GameObject newBullet = myPool.GetPooledObject();
-
-        if (newBullet != null)
+        
+        Vector3 spawnPosition = weaponPosition + transform.position + shootingDirection*weaponDistance;
+        
+        for(int ii = 0; ii < spawnAmount; ii++)
         {
-            hasShot.Invoke();
-            BulletComponent newBulletBulletComponent = newBullet.GetComponent<BulletComponent>();
+            Debug.Log("whatthefuuu");
+        
+            GameObject newBullet = myPool.GetPooledObject();
 
-            // Weapon position should come from weapon bone position eventually)
-            newBullet.transform.position = weaponPosition + transform.position + shootingDirection*weaponDistance;
-            newBullet.transform.rotation = Quaternion.identity;
-            newBullet.SetActive(true);
-            newBulletBulletComponent.SpawnFromPool();
-            newBulletBulletComponent.velocity = shootingDirection * bulletSpeed;
-            
+            if (newBullet != null)
+            {
+                hasShot.Invoke();
+                BulletComponent newBulletBulletComponent = newBullet.GetComponent<BulletComponent>();
 
+                // Weapon position should come from weapon bone position eventually)
+                newBullet.transform.position = spawnPosition;
+                newBullet.transform.rotation = Quaternion.identity;
+                newBullet.SetActive(true);
+                newBulletBulletComponent.SpawnFromPool();
+                newBulletBulletComponent.velocity = (shootingDirection * weaponType.bulletSpeed) + new Vector3 (shootingDirection.z * Random.Range(-weaponType.inaccuracy,weaponType.inaccuracy), 0.0f, shootingDirection.x * Random.Range(-weaponType.inaccuracy,weaponType.inaccuracy));
+                newBulletBulletComponent.damage = weaponType.damage;
+            }
         }
-
     }
 
 }
