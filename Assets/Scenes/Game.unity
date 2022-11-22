@@ -676,7 +676,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6836819c4dbbe4f4983edbde2e97fe49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsDefaultListener: 1
 --- !u!81 &637919632
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1348,6 +1347,42 @@ PrefabInstance:
       propertyPath: audioClips.Array.data[7]
       value: 
       objectReference: {fileID: 8300000, guid: 154d38cb217d99f46bff2db104f776da, type: 3}
+    - target: {fileID: 6274695066796279089, guid: a302712c9658c0d4ab03310424eda5e3, type: 3}
+      propertyPath: soundContainers.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6274695066796279089, guid: a302712c9658c0d4ab03310424eda5e3, type: 3}
+      propertyPath: soundContainers.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 60bbd879b6aa5334191a19eb680ea1f4, type: 2}
+    - target: {fileID: 6274695066796279089, guid: a302712c9658c0d4ab03310424eda5e3, type: 3}
+      propertyPath: soundContainers.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 77616bb8d55c8ee4fbb33d603022e14b, type: 2}
+    - target: {fileID: 6274695066796279089, guid: a302712c9658c0d4ab03310424eda5e3, type: 3}
+      propertyPath: soundContainers.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: c27e564fd65b21d4e932f6ee6943d521, type: 2}
+    - target: {fileID: 6274695066796279089, guid: a302712c9658c0d4ab03310424eda5e3, type: 3}
+      propertyPath: soundContainers.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4761a11f22b784e4ca651adaabce6b35, type: 2}
+    - target: {fileID: 6274695066796279089, guid: a302712c9658c0d4ab03310424eda5e3, type: 3}
+      propertyPath: soundContainers.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 72d78f360b5fc9c40ba33eb9fe7b6a72, type: 2}
+    - target: {fileID: 6274695066796279089, guid: a302712c9658c0d4ab03310424eda5e3, type: 3}
+      propertyPath: soundContainers.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: e6cd06629acf59a45bc68f1eaedb4c74, type: 2}
+    - target: {fileID: 6274695066796279089, guid: a302712c9658c0d4ab03310424eda5e3, type: 3}
+      propertyPath: soundContainers.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 86089bb915f126c4395bcdf69eb70b66, type: 2}
+    - target: {fileID: 6274695066796279089, guid: a302712c9658c0d4ab03310424eda5e3, type: 3}
+      propertyPath: soundContainers.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 89241010d8507e74e9f7a2feb786faff, type: 2}
     - target: {fileID: 6274695066796279091, guid: a302712c9658c0d4ab03310424eda5e3, type: 3}
       propertyPath: m_Name
       value: SimpleAudioWrapperSoundBank
