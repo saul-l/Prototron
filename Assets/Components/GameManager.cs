@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;  
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class GameManager : MonoBehaviour
             DebugText.instance.PrintText("Score: " + score + " Press Enter or ESC");
         }
     }
-    public void RestartGame()
+    public void RestartGame(InputAction.CallbackContext context)
     {
         GameObjectDependencyManager.instance.ResetGameObjectDictionary();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

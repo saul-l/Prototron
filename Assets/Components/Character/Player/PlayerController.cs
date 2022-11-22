@@ -141,13 +141,6 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
-    // I hate this, but it works.
-    public void RestartGame(InputAction.CallbackContext context)
-    {
-        if (context.started) gameManager.RestartGame();
-    }
-
 }
 
 public class Directions
