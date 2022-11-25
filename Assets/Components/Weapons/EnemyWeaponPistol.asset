@@ -20,3 +20,5 @@ MonoBehaviour:
   clipSize: 0
   reloadTime: 0
   bulletsPerShot: 1
+  shootingEffect: {fileID: 2257903972720718003, guid: 82ac673a514d7e44681a46663e5c2111, type: 3}
+  shootingAudioEvent: 

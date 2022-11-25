@@ -13,4 +13,6 @@ public class WeaponRangedScriptableObject : ScriptableObject
     public int clipSize;
     public float reloadTime;
     public int bulletsPerShot;
+    public GameObject shootingEffect;
+    public string shootingAudioEvent;
 }

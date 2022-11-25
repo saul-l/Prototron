@@ -615,6 +615,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  bulletsLeft: 0
 --- !u!1 &6091517831549281873
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,8 +21,6 @@ public class ShootingComponent : MonoBehaviour
     public float totalShootingDirectionValue;
 
     // Handled by weaponType ScriptableObject
-
-    
     private float nextShotTime = 0.0f;
     
     public float angle;
@@ -33,13 +31,16 @@ public class ShootingComponent : MonoBehaviour
     public UnityEvent hasShot;
     private Vector3 weaponPosition = new Vector3(0,0.55f,0);
     private float weaponDistance = 0.2f;
-    [SerializeField] private float bulletsLeft;
+    private float bulletsLeft;
+    private GameObject shootingEffect;
 
     void Start()
     {
        bulletsLeft = weaponType.clipSize;
        myPool = GameObjectDependencyManager.instance.GetGameObject("PoolHandler").GetComponent<PoolHandler>().GetPool(bullet.gameObject.name, PoolType.ForcedRecycleObjectPool);
        myPool.PopulatePool(bullet, weaponType.pooledBullets);
+        shootingEffect = GameObject.Instantiate(weaponType.shootingEffect, transform.position+weaponPosition*4.0f+transform.forward, Quaternion.identity, transform);
+       shootingEffect.SetActive(false);
     }
     void FixedUpdate()
     {
@@ -88,9 +89,11 @@ public class ShootingComponent : MonoBehaviour
 
     void SpawnBullet(int spawnAmount)
     {
-        
-        Vector3 spawnPosition = weaponPosition + transform.position + shootingDirection*weaponDistance;
-        
+        Vector3 spawnPosition = weaponPosition + transform.position + shootingDirection * weaponDistance;
+
+        shootingEffect.SetActive(false);
+        shootingEffect.SetActive(true);
+
         for(int ii = 0; ii < spawnAmount; ii++)
         {
             Debug.Log("whatthefuuu");
