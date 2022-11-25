@@ -15,7 +15,7 @@ MonoBehaviour:
   attackRate: 20
   bulletSpeed: 1
   damage: 1
-  inaccuracy: 0.6
+  inaccuracy: 0.5
   pooledBullets: 10
   clipSize: 2
   reloadTime: 0.8
