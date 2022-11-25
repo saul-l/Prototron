@@ -10,13 +10,12 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-       
-    public MovementComponent movementComponent;
+    private IShooting shootingComponent;
+    private IMovement movementComponent;
     public GameObject meleeWeapon;
     public GameObject player;
     public Object weapon;
-    [SerializeField] float attackInterval = 1.0f;
-    [SerializeField] ShootingComponent shootingComponent;
+    [SerializeField] float attackInterval = 1.0f;    
     [SerializeField] bool shooter;
     [SerializeField] bool melee;
     private MeleeComponent meleeWeaponComponent;
@@ -31,8 +30,8 @@ public class EnemyController : MonoBehaviour
     void Awake()
     {
         meleeWeaponComponent = meleeWeapon.GetComponent<MeleeComponent>();
-        movementComponent = this.GetComponent<MovementComponent>();
-        shootingComponent = this.GetComponent<ShootingComponent>();
+        movementComponent = this.GetComponent<IMovement>();
+        shootingComponent = this.GetComponent<IShooting>();
         player = GameObject.Find("Player");      
         playerTransform = player.transform;
         myTransform = transform;

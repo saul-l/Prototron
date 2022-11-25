@@ -5,14 +5,16 @@ using UnityEngine;
 public class CharacterAnimationComponent : MonoBehaviour
 {
 
-    [SerializeField] private Animator animator;
-    [SerializeField] private MovementComponent movementComponent;
-    [SerializeField] private ShootingComponent shootingComponent;
+    private Animator animator;
+    private IMovement movementComponent;
+    private IShooting shootingComponent;
     public float debugValue;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        movementComponent = GetComponent<IMovement>();
+        shootingComponent = GetComponent<IShooting>();
     }
 
     // Update is called once per frame

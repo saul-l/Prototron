@@ -9,7 +9,7 @@ using UnityEngine.Events;
 using static CustomExtension;
 using static UnityEngine.GraphicsBuffer;
 
-public class ShootingComponent : MonoBehaviour
+public class ShootingComponent : MonoBehaviour, IShooting
 {
     [SerializeField] private WeaponRangedScriptableObject weaponType;
   
@@ -34,12 +34,24 @@ public class ShootingComponent : MonoBehaviour
     private float bulletsLeft;
     private GameObject shootingEffect;
 
+    Vector3 IShooting.shootingDirection 
+    { 
+        get => shootingDirection;
+        set => shootingDirection = value;
+    }
+
+    bool IShooting.fire 
+    {
+        get => fire; 
+        set => fire = value;
+    }
+
     void Start()
     {
        bulletsLeft = weaponType.clipSize;
        myPool = GameObjectDependencyManager.instance.GetGameObject("PoolHandler").GetComponent<PoolHandler>().GetPool(bullet.gameObject.name, PoolType.ForcedRecycleObjectPool);
        myPool.PopulatePool(bullet, weaponType.pooledBullets);
-        shootingEffect = GameObject.Instantiate(weaponType.shootingEffect, transform.position+weaponPosition*4.0f+transform.forward, Quaternion.identity, transform);
+       shootingEffect = GameObject.Instantiate(weaponType.shootingEffect, transform.position+weaponPosition*4.0f+transform.forward, Quaternion.identity, transform);
        shootingEffect.SetActive(false);
     }
     void FixedUpdate()
@@ -96,8 +108,6 @@ public class ShootingComponent : MonoBehaviour
 
         for(int ii = 0; ii < spawnAmount; ii++)
         {
-            Debug.Log("whatthefuuu");
-        
             GameObject newBullet = myPool.GetPooledObject();
 
             if (newBullet != null)

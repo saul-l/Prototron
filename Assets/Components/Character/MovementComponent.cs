@@ -22,7 +22,7 @@ public class MovementComponent : MonoBehaviour, IMovement
     public float movementSpeed;
     public float movementChangeSpeed;
     public Rigidbody rb;
-    
+
     void Start()
     {
         rb=this.GetComponent<Rigidbody>();
@@ -55,7 +55,12 @@ public class MovementComponent : MonoBehaviour, IMovement
 
             rb.AddForce(velocityChange,ForceMode.VelocityChange);
         }
-
-
     }
+
+    Vector3 IMovement.movementDirection
+    {
+        get => movementDirection;
+        set => movementDirection = value;
+    }
+
 }

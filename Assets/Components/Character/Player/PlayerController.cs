@@ -17,8 +17,8 @@ using UnityEngine.InputSystem.Interactions;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private MovementComponent movementComponent;
-    [SerializeField]private ShootingComponent shootingComponent;
+    private IMovement movementComponent;
+    private IShooting shootingComponent;
     private Vector3 movementDirection;
     private Vector3 shootingDirection;
     public ButtonControl pressedButton;
@@ -29,8 +29,8 @@ public class PlayerController : MonoBehaviour
     public UniqueStack<Directions.Direction> aimFireBuffer = new UniqueStack<Directions.Direction>();
     void Start()
     {
-        movementComponent = this.GetComponent<MovementComponent>();
-        shootingComponent = this.GetComponent<ShootingComponent>();
+        movementComponent = this.GetComponent<IMovement>();
+        shootingComponent = this.GetComponent<IShooting>();
         gameManager = GameObjectDependencyManager.instance.GetGameObject("GameManager").GetComponent<GameManager>();
     }
 	

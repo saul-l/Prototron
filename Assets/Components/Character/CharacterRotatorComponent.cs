@@ -8,14 +8,16 @@ public class CharacterRotatorComponent : MonoBehaviour
 {
 
 
-    [SerializeField] private MovementComponent movementComponent;
-    [SerializeField] private ShootingComponent shootingComponent;
+    private IMovement movementComponent;
+    private IShooting shootingComponent;
     [SerializeField] private float rotationSpeed = 1.0f;
     private Quaternion lookAtTarget;
     private Vector3 lookAtDirection = Vector3.zero;
 
     private void Start()
     {
+        movementComponent = GetComponent<IMovement>();
+        shootingComponent = GetComponent<IShooting>();
         rotationSpeed = rotationSpeed * 100.0f;
     }
     // Update is called once per frame
