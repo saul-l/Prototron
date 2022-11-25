@@ -16,7 +16,7 @@ MonoBehaviour:
   bulletSpeed: 1
   damage: 1
   inaccuracy: 0.1
-  pooledBullets: 3
+  pooledBullets: 4
   clipSize: 0
   reloadTime: 0
   bulletsPerShot: 1

@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class MovementComponent : MonoBehaviour
+public class MovementComponent : MonoBehaviour, IMovement
 {
     public Vector3 movementDirection;
 
