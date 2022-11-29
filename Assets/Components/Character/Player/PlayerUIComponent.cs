@@ -15,10 +15,6 @@ public class PlayerUIComponent : MonoBehaviour
     void OnDamage()
     {
         gameManager.health = healthComponent.health;
-        if(healthComponent.health <= 0)
-        {
-            gameManager.gameOver = true;
-        }
         gameManager.UpdateUI();
     }
 }

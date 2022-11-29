@@ -470,12 +470,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85c8375ed43b56940bdbb6a0d13dcd2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementComponent: {fileID: 1604578956}
   meleeWeapon: {fileID: 8243354866566091642}
-  player: {fileID: 0}
   weapon: {fileID: 11500000, guid: 2621f0e862f92b44a9aaa00c55b2137d, type: 3}
   attackInterval: 2
-  shootingComponent: {fileID: 4211928328542684201}
   shooter: 1
   melee: 0
   mySpawner: {fileID: 0}
@@ -529,6 +526,7 @@ MonoBehaviour:
   sendMessageOnDamage: 0
   deathEffect: {fileID: 8457978493270944543, guid: ba721e7bc9df6064fa6cdf67f272aa42, type: 3}
   damageEffect: {fileID: 8974671989784390187, guid: 42d562fb7a525fa45adca4edb9cfc943, type: 3}
+  deathDecal: {fileID: 7260845352483027405, guid: 6f2ed228c17338b429b4ec782d82c2d0, type: 3}
 --- !u!136 &4067082640400488950
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -575,9 +573,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b198558ee05a1742a51264507ef733e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementComponent: {fileID: 1604578956}
-  shootingComponent: {fileID: 0}
   rotationSpeed: 5
+  rotationSpeedShoot: 1
+  shootingDirectionResetTime: 0.5
 --- !u!114 &4211928328542684201
 MonoBehaviour:
   m_ObjectHideFlags: 0

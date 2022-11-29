@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5609702219844219259}
   - component: {fileID: 103913049835960774}
   - component: {fileID: -5811726607277540040}
+  - component: {fileID: 595249390903480438}
   - component: {fileID: -3888252133575931285}
   - component: {fileID: 6476357762918511915}
   - component: {fileID: 4501438282179230414}
@@ -26,7 +27,7 @@ GameObject:
   - component: {fileID: 1532300240}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,6 +75,7 @@ MonoBehaviour:
   sendMessageOnDamage: 1
   deathEffect: {fileID: 2891007673029878220, guid: 36a3ad642d90ee74d911d33156fd4a62, type: 3}
   damageEffect: {fileID: 8974671989784390187, guid: 42d562fb7a525fa45adca4edb9cfc943, type: 3}
+  deathDecal: {fileID: 7260845352483027405, guid: 6f2ed228c17338b429b4ec782d82c2d0, type: 3}
 --- !u!95 &8241060102195771655
 Animator:
   serializedVersion: 4
@@ -136,8 +138,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e026602db7ea4598c2bd0ce0a6fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementComponent: {fileID: 103913049835960774}
-  shootingComponent: {fileID: -3888252133575931285}
   FireEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 6fde8517b698cae42993711ae9baa2c7, type: 3}
-  m_NotificationBehavior: 2
+  m_NotificationBehavior: 3
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -314,11 +314,23 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 15a0b3ed-a9be-4003-ae8e-f8e4147d230f
     m_ActionName: Player/Restart[/Keyboard/escape,/Keyboard/enter]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard&Mouse
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &595249390903480438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7569796107671719673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3765b95bfbc230478de2dba612a63c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-3888252133575931285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,9 +391,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b198558ee05a1742a51264507ef733e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementComponent: {fileID: 103913049835960774}
-  shootingComponent: {fileID: -3888252133575931285}
-  rotationSpeed: 10
+  rotationSpeed: 8
+  rotationSpeedShoot: 25
+  shootingDirectionResetTime: 0.5
 --- !u!114 &4501438282179230414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,9 +406,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1713b70baa483334398dc543d66fe78f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 8241060102195771655}
-  movementComponent: {fileID: 103913049835960774}
-  shootingComponent: {fileID: -3888252133575931285}
   debugValue: 0
 --- !u!82 &2059973504
 AudioSource:
@@ -546,6 +555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Singleton: 0
+  UnregisterOnDeath: 1
 --- !u!1001 &7909715160050154295
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -560,15 +570,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 62cb8574bf474294fb26b4b983f95aba, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.3
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 62cb8574bf474294fb26b4b983f95aba, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.3
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 62cb8574bf474294fb26b4b983f95aba, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.3
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 62cb8574bf474294fb26b4b983f95aba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -643,17 +653,21 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -95358422839755879, guid: 62cb8574bf474294fb26b4b983f95aba, type: 3}
+      propertyPath: m_RootBone
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -95358422839755879, guid: 62cb8574bf474294fb26b4b983f95aba, type: 3}
       propertyPath: m_Materials.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -95358422839755879, guid: 62cb8574bf474294fb26b4b983f95aba, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+      objectReference: {fileID: 2100000, guid: f0cc860a67319a54da6674e75d80dbac, type: 2}
     - target: {fileID: -95358422839755879, guid: 62cb8574bf474294fb26b4b983f95aba, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+      objectReference: {fileID: -876546973899608171, guid: 374ec76880a5a06448de001607b11e86, type: 3}
     - target: {fileID: 919132149155446097, guid: 62cb8574bf474294fb26b4b983f95aba, type: 3}
       propertyPath: m_Name
       value: character_washing_machine

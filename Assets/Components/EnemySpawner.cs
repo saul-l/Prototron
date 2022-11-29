@@ -25,7 +25,6 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameManager gameManager;
     [HideInInspector] public Pool[] myPool;
-
     [SerializeField] private Transform spawnPerimeter;
     [SerializeField] private GameObject[] enemyType;
     [Range(1, 100)]
@@ -86,7 +85,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if (!gameManager.gameOver && enemyCounter < enemyOrder.Count && Time.time >= prevTime + interval && totalEnemies < maxEnemiesAtTheSameTime)
+        if (gameManager.gameStarted && !gameManager.gameOver && enemyCounter < enemyOrder.Count && Time.time >= prevTime + interval && totalEnemies < maxEnemiesAtTheSameTime)
         {
             prevTime = Time.time;
             SpawnEnemy();
@@ -177,7 +176,7 @@ public class EnemySpawner : MonoBehaviour
         Vector3 spawnPosition = CalculatePointOnSpawnPerimeter();
 
         GameObject newEnemy = myPool[enemyOrder[enemyCounter]].GetPooledObject();
-
+        
         if (newEnemy != null)
         {
             newEnemy.transform.position = spawnPosition;
@@ -187,9 +186,10 @@ public class EnemySpawner : MonoBehaviour
             totalEnemies++;
             enemyCounter++;
         }
+        else Debug.Log("ENEMY NULL!");
     }
 
-    public void enemyDied()
+    public void EnemyDied()
     {
         // Currently has only infinite spawner system active.
 
@@ -200,7 +200,7 @@ public class EnemySpawner : MonoBehaviour
         totalEnemies--;
         
         enemiesKilled++;
-        totalEnemyValue = totalEnemyValue + 3;
+        totalEnemyValue += 3;
 
 
         CreateEnemyOrder(); // This is a bit hardcore maybe.

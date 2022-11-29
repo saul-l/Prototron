@@ -22,18 +22,20 @@ public class HealthComponent : MonoBehaviour, IDamageable, ISpawnable
     [SerializeField] private bool deactivateOnDeath = true;
     [SerializeField] private Component[] destroyOnDeath;
     [SerializeField] private bool sendMessageOnDamage;
-    public GameObject deathEffect;
-    public GameObject damageEffect;
-
+    [SerializeField] private GameObject deathEffect;
+    [SerializeField] private GameObject damageEffect;
+    [SerializeField] private GameObject deathDecal;
     private Pool damageEffectPool;
     private Pool deathEffectPool;
+    private Pool deathDecalPool;
     
     private int originalHealth;
 
+    public event DeathNotify EventDead;
 
+    private Quaternion localUp = Quaternion.Euler(90f, 0f, 0f);
     void Awake ()
     {
-
         originalHealth = health;
     }
 
@@ -44,11 +46,12 @@ public class HealthComponent : MonoBehaviour, IDamageable, ISpawnable
 
         deathEffectPool = GameObjectDependencyManager.instance.GetGameObject("PoolHandler").GetComponent<PoolHandler>().GetPool(deathEffect.gameObject.name, PoolType.ForcedRecycleObjectPool);
         deathEffectPool.PopulatePool(deathEffect, 15);
+
+        deathDecalPool = GameObjectDependencyManager.instance.GetGameObject("PoolHandler").GetComponent<PoolHandler>().GetPool(deathDecal.gameObject.name, PoolType.ForcedRecycleObjectPool);
+        deathDecalPool.PopulatePool(deathDecal, 100);
     }
     public void ApplyDamage(int damageAmount)
     {   
-
-
         health -= damageAmount;
 
         if (sendMessageOnDamage)
@@ -61,7 +64,7 @@ public class HealthComponent : MonoBehaviour, IDamageable, ISpawnable
          {
              newDamageEffect.SetActive(false);
              newDamageEffect.transform.position = transform.position;
-             newDamageEffect.transform.rotation = Quaternion.identity;
+             newDamageEffect.transform.rotation = localUp;
              newDamageEffect.SetActive(true);    
          }
 
@@ -74,27 +77,43 @@ public class HealthComponent : MonoBehaviour, IDamageable, ISpawnable
 
     public void Death()
     {
+        if (EventDead != null)
+        {
+            EventDead.Invoke();
+            EventDead = null;
+        }
+
         GameObject newDeathEffect = deathEffectPool.GetPooledObject();
         if (newDeathEffect != null)
         {
             newDeathEffect.SetActive(false);
             newDeathEffect.transform.position = transform.position;
-            newDeathEffect.transform.rotation = Quaternion.identity;
+            newDeathEffect.transform.rotation = localUp;
             newDeathEffect.SetActive(true);
         }
 
-        if(deactivateOnDeath)
+        GameObject newDeathDecal = deathDecalPool.GetPooledObject();
+
+        if (newDeathDecal != null)
+        {
+            newDeathDecal.SetActive(false);
+            newDeathDecal.transform.position = transform.position;
+            newDeathDecal.transform.rotation = localUp;
+            newDeathDecal.SetActive(true);
+        }
+
+        if (deactivateOnDeath)
         { 
             gameObject.SetActive(false);
-        }
+        }        
         else
         {
-            gameObject.SendMessage("IsDead");
             foreach (Component component in destroyOnDeath)
             {
                 Destroy(component);
             }
         }
+       
     }
 
     private void OnEnable()

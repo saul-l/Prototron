@@ -13,60 +13,135 @@ public class EnemyController : MonoBehaviour
     private IShooting shootingComponent;
     private IMovement movementComponent;
     public GameObject meleeWeapon;
-    public GameObject player;
+
     public Object weapon;
-    [SerializeField] float attackInterval = 1.0f;    
+    [SerializeField] float attackInterval = 1.0f;
     [SerializeField] bool shooter;
     [SerializeField] bool melee;
     private MeleeComponent meleeWeaponComponent;
-    private Transform myTransform;
-    private Transform playerTransform;
+
     private float lastAttackTime = 0.0f;
     private bool canShoot = true;
     private Vector3 shootingDirection = Vector3.zero;
     public EnemySpawner mySpawner;
-    GameManager gameManager;
-
+    private GameManager gameManager;
+    private GameObject targetGameObject;
+    private Transform myTransform;
+    private Transform targetTransform;
     void Awake()
     {
         meleeWeaponComponent = meleeWeapon.GetComponent<MeleeComponent>();
         movementComponent = this.GetComponent<IMovement>();
         shootingComponent = this.GetComponent<IShooting>();
-        player = GameObject.Find("Player");      
-        playerTransform = player.transform;
         myTransform = transform;
         gameManager = GameObjectDependencyManager.instance.GetGameObject("GameManager").GetComponent<GameManager>();
+        // save list of players
+
     }
 
+    void SetNearestPlayerAsTarget()
+    {
+        
+        List<GameObject> players = GameObjectDependencyManager.instance.GetGameObjects("Player");
+        if (players != null)
+        {
+            float distanceToPlayer;
+            float? previousDistanceToPlayer = null;
+
+            int asdf = 0;
+
+            foreach (GameObject playerTmp in players)
+            {
+                Debug.Log("players size: " + asdf +"gameobject "+gameObject.name);
+                asdf++;
+                distanceToPlayer = Mathf.Abs((playerTmp.GetComponent<Transform>().position - transform.position).sqrMagnitude);
+           
+                if (previousDistanceToPlayer.HasValue)
+                {
+                    if (distanceToPlayer < previousDistanceToPlayer)
+                    {
+                        previousDistanceToPlayer = distanceToPlayer;
+                        targetTransform = playerTmp.transform;
+                        targetGameObject = playerTmp.gameObject;
+                    }
+                }
+                else
+                {
+                    previousDistanceToPlayer = distanceToPlayer;
+                    targetTransform = playerTmp.transform;
+                    targetGameObject = playerTmp.gameObject;
+                }
+            }
+
+            if (targetGameObject != null)
+            {
+                targetGameObject.GetComponent<IDamageable>().EventDead += TargetDeath;
+            }
+        }
+    }
+
+    void TargetDeath()
+    {
+        targetGameObject.GetComponent<IDamageable>().EventDead -= TargetDeath;
+        targetGameObject = null;
+        targetTransform = null;
+    }
+
+    void Start()
+    {
+        SetNearestPlayerAsTarget();
+    }
     // Update is called once per frame
     void Update()
     {
-        if(!gameManager.gameOver)
-        {
+        if(targetGameObject != null)
+        { 
             MovementLogicFollow();
-            if(melee) AttackLogicCloseCombatMelee();
-            if (shooter && canShoot) AttackLogicStopAndShoot();
+        
+            if (melee)
+            {
+                AttackLogicCloseCombatMelee();
+            }
+            if (shooter && canShoot)
+            {
+                AttackLogicStopAndShoot();
+            }
         }
-
+        else
+        {
+            movementComponent.movementDirection = Vector3.zero;
+            SetNearestPlayerAsTarget();
+        }
     }
 
     private void OnDisable()
     {
-        if(mySpawner != null)
+        if(targetGameObject!=null)
+        { 
+        targetGameObject.GetComponent<IDamageable>().EventDead -= TargetDeath;
+        targetGameObject = null;
+        targetTransform = null;
+        }
+
+        if (mySpawner != null)
         {
-            mySpawner.enemyDied();
+            mySpawner.EnemyDied();
         }
     }
     void AttackLogicStopAndShoot()
     {
         if(Time.time >= lastAttackTime+attackInterval)
         {
-            shootingDirection = (playerTransform.position - myTransform.position).normalized;
+            shootingDirection = (targetTransform.position - myTransform.position).normalized;
             shootingDirection.y = 0.0f;
             shootingComponent.shootingDirection = shootingDirection;
             shootingComponent.fire = true;
             lastAttackTime = Time.time;
             canShoot = false;            
+        }
+        else
+        {
+            shootingComponent.shootingDirection = Vector3.zero;
         }
     }
 
@@ -74,19 +149,18 @@ public class EnemyController : MonoBehaviour
         {
             if(meleeWeapon!=null && Time.time >= lastAttackTime+meleeWeaponComponent.RateOfFire)
         {
-            if(Vector3.Distance(playerTransform.position, myTransform.position) < meleeWeaponComponent.attackDistance)
+            if(Vector3.Distance(targetTransform.position, myTransform.position) < meleeWeaponComponent.attackDistance)
             {
              
                 lastAttackTime = Time.time;
-                meleeWeaponComponent.Attack(playerTransform.position - transform.position);
+                meleeWeaponComponent.Attack(targetTransform.position - transform.position);
             }
         }
         }
 
     void MovementLogicFollow()
     {
-        movementComponent.movementDirection = (playerTransform.position-myTransform.position).normalized;
-       
+        movementComponent.movementDirection = (targetTransform.position-myTransform.position).normalized;
     }
 
     public void HasShot()

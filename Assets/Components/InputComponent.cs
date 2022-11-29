@@ -5,17 +5,19 @@ using UnityEngine.InputSystem;
 
 public class InputComponent : MonoBehaviour
 {
-    public InputHandler inputhandler;
+    private PlayerInput playerInput;
     private GameManager gameManager;
-    private PlayerController playerController1;
-    private PlayerController playerController2;
+    private PlayerController playerController;
+
     // Start is called before the first frame update
     void Awake()
     {
-        playerController1 = GameObjectDependencyManager.instance.GetGameObject("Player").GetComponent<PlayerController>();
+        playerController = GetComponent<PlayerController>();
         gameManager = GameObjectDependencyManager.instance.GetGameObject("GameManager").GetComponent<GameManager>();
 
-        inputhandler = new InputHandler();
+        playerInput = GetComponent<PlayerInput>();
+        Debug.Log(" " + playerInput.playerIndex.ToString());
+
     }
 
     // Update is called once per frame
@@ -23,27 +25,27 @@ public class InputComponent : MonoBehaviour
 
     void OnEnable()
     {
-        inputhandler.Player.Enable(); 
-        inputhandler.Player.Move.performed += playerController1.SetMovingDirection;
-        inputhandler.Player.Move.canceled += playerController1.SetMovingDirection;
-        
-        inputhandler.Player.FireDown.started += playerController1.FireDown;
-        inputhandler.Player.FireDown.canceled += playerController1.FireDown;
-        
-        inputhandler.Player.FireUp.started += playerController1.FireUp;
-        inputhandler.Player.FireUp.canceled += playerController1.FireUp;
-        
-        inputhandler.Player.FireLeft.started += playerController1.FireLeft;
-        inputhandler.Player.FireLeft.canceled += playerController1.FireLeft;
+        // inputhandler.Player.Enable(); 
 
-        inputhandler.Player.FireRight.started += playerController1.FireRight;
-        inputhandler.Player.FireRight.canceled += playerController1.FireRight;
+        playerInput.actions["Move"].performed += playerController.SetMovingDirection;
+        playerInput.actions["Move"].canceled += playerController.SetMovingDirection;
 
-        inputhandler.Player.Restart.started += gameManager.RestartGame;       
+        playerInput.actions["FireDown"].started += playerController.FireDown;
+        playerInput.actions["FireDown"].canceled += playerController.FireDown;
+
+        playerInput.actions["FireUp"].started += playerController.FireUp;
+        playerInput.actions["FireUp"].canceled += playerController.FireUp;
+
+        playerInput.actions["FireLeft"].started += playerController.FireLeft;
+        playerInput.actions["FireLeft"].canceled += playerController.FireLeft;
+
+        playerInput.actions["FireRight"].started += playerController.FireRight;
+        playerInput.actions["FireRight"].canceled += playerController.FireRight;
+
     }
 
     void OnDisable()
     {
-        inputhandler.Player.Disable();
+      //  inputhandler.Player.Disable();
     }
 }

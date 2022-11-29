@@ -28,8 +28,6 @@ public class MovementComponent : MonoBehaviour, IMovement
         rb=this.GetComponent<Rigidbody>();
     }
 
-    
-
     void FixedUpdate()
     {
         if (movementDirection!=Vector3.zero)
