@@ -12,4 +12,9 @@ public interface IShooting
         get;
         set;
     }
+    WeaponRangedScriptableObject weaponType
+    {
+        get;
+        set;
+    }
 }

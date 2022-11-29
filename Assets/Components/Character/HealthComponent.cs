@@ -97,8 +97,8 @@ public class HealthComponent : MonoBehaviour, IDamageable, ISpawnable
         if (newDeathDecal != null)
         {
             newDeathDecal.SetActive(false);
-            newDeathDecal.transform.position = transform.position;
-            newDeathDecal.transform.rotation = localUp;
+            newDeathDecal.transform.position = newDeathDecal.transform.localPosition + new Vector3 (transform.position.x, 0.0f, transform.position.z);
+            newDeathDecal.transform.rotation = transform.rotation * newDeathDecal.transform.localRotation;
             newDeathDecal.SetActive(true);
         }
 

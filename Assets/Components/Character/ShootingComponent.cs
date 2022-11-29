@@ -32,27 +32,11 @@ public class ShootingComponent : MonoBehaviour, IShooting
     private Vector3 weaponPosition = new Vector3(0,0.55f,0);
     private float weaponDistance = 0.2f;
     private float bulletsLeft;
-    private GameObject shootingEffect;
-
-    Vector3 IShooting.shootingDirection 
-    { 
-        get => shootingDirection;
-        set => shootingDirection = value;
-    }
-
-    bool IShooting.fire 
-    {
-        get => fire; 
-        set => fire = value;
-    }
+    private GameObject shootingEffect;  
 
     void Start()
     {
-       bulletsLeft = weaponType.clipSize;
-       myPool = GameObjectDependencyManager.instance.GetGameObject("PoolHandler").GetComponent<PoolHandler>().GetPool(bullet.gameObject.name, PoolType.ForcedRecycleObjectPool);
-       myPool.PopulatePool(bullet, weaponType.pooledBullets);
-       shootingEffect = GameObject.Instantiate(weaponType.shootingEffect, transform.position+weaponPosition*4.0f+transform.forward, Quaternion.identity, transform);
-       shootingEffect.SetActive(false);
+        InitializeWeapon();
     }
     void FixedUpdate()
     {
@@ -125,5 +109,36 @@ public class ShootingComponent : MonoBehaviour, IShooting
             }
         }
     }
+
+    void InitializeWeapon()
+    {
+        bulletsLeft = weaponType.clipSize;
+        myPool = GameObjectDependencyManager.instance.GetGameObject("PoolHandler").GetComponent<PoolHandler>().GetPool(bullet.gameObject.name, PoolType.ForcedRecycleObjectPool);
+        myPool.PopulatePool(bullet, weaponType.pooledBullets);
+        shootingEffect = GameObject.Instantiate(weaponType.shootingEffect, transform.position + weaponPosition * 4.0f + transform.forward, Quaternion.identity, transform);
+        shootingEffect.SetActive(false);
+    }
+
+    Vector3 IShooting.shootingDirection
+    {
+        get => shootingDirection;
+        set => shootingDirection = value;
+    }
+
+    bool IShooting.fire
+    {
+        get => fire;
+        set => fire = value;
+    }
+    WeaponRangedScriptableObject IShooting.weaponType
+    {
+        get => weaponType;
+        set
+        {
+            weaponType = value;
+            InitializeWeapon();
+        }
+    }
+
 
 }

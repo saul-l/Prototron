@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1319743360890486284}
   - component: {fileID: 6167520577942647207}
-  - component: {fileID: 5085266794682168624}
+  - component: {fileID: 5581309774796559327}
+  - component: {fileID: 4564462625341449575}
   m_Layer: 0
   m_Name: BloodSplatter
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7260845352483027405}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -1.2, y: -2.525, z: -4.1}
+  m_LocalPosition: {x: 0, y: -3.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -53,10 +54,10 @@ MonoBehaviour:
   m_UVScale: {x: 1, y: 1}
   m_UVBias: {x: 0, y: 0}
   m_ScaleMode: 0
-  m_Offset: {x: 0, y: 0, z: 0.5}
-  m_Size: {x: 6, y: 6, z: 1}
+  m_Offset: {x: 0, y: 0, z: 0.05}
+  m_Size: {x: 6, y: 6, z: 0.1}
   m_FadeFactor: 1
---- !u!95 &5085266794682168624
+--- !u!95 &5581309774796559327
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -66,7 +67,7 @@ Animator:
   m_GameObject: {fileID: 7260845352483027405}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8cf31c90b8f11d8489e07ffd7adfa401, type: 2}
+  m_Controller: {fileID: 9100000, guid: 15e9be566c027e042bdff6ab3f5762f4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -76,3 +77,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4564462625341449575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7260845352483027405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 265de703aac50984a990b8931898b1ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeFactor: 1
+  size: {x: 6, y: 6, z: 0.1}

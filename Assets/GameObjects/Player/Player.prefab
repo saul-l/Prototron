@@ -343,7 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b5fd427442472149a0b46f8ce5c0f6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: {fileID: 11400000, guid: 77de4c6ddea9eec459eba51c89af2082, type: 2}
+  weaponType: {fileID: 11400000, guid: 580e1c56c3a846d448cdc486cc22e18b, type: 2}
   myPool: {fileID: 0}
   bullet: {fileID: 6641427923098496259, guid: f60e99df7df94084d8fc3dbf5db018d2, type: 3}
   shootingDirection: {x: 0, y: 0, z: 0}
