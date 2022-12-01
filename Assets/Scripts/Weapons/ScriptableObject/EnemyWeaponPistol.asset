@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b673f15e888213447ab33f7315df4ae2, type: 3}
+  m_Name: EnemyWeaponPistol
+  m_EditorClassIdentifier: 
+  attackRate: 30
+  bulletSpeed: 1
+  damage: 1
+  inaccuracy: 0.1
+  pooledBullets: 4
+  clipSize: 0
+  reloadTime: 0
+  bulletsPerShot: 1
+  shootingEffect: {fileID: 2257903972720718003, guid: 82ac673a514d7e44681a46663e5c2111, type: 3}
+  shootingAudioEvent: Play_enemy_shoot
