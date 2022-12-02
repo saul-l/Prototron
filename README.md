@@ -7,6 +7,7 @@ WebGL platform works without Wwise integration.
 If you have no idea what this means, switch platform to WebGL in Unity.  
 
 Windows/Mac platform building is currently broken, but works fine in editor mode.
+(Turns out Presets are not supported runtime.)
 
 Audio and texture data uses Git LFS, so direct download link from GitHub doesn't work.  
 Install Git LFS and Use git clone.
