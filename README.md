@@ -10,5 +10,5 @@ Audio and texture data uses Git LFS, so direct download link from GitHub doesn't
 Install Git LFS and Use git clone.
 
 If you are looking for Wwise-Unity native audio wrapper it's here:  
-https://github.com/saul-l/Prototron/tree/main/Assets/Components/Audio  
+https://github.com/saul-l/Prototron/tree/main/Assets/Scripts/Audio  
 (Proper release coming when it has more features.)
