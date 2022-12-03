@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SAWSoundContainer", menuName = "SimpleAudioWrapper/SingleSoundContainer", order = 1)]
-public class SimpleAudioWrapperSingleSoundContainer : SimpleAudioWrapperSoundContainer
+public class SASSingleSoundContainer : SASSoundContainer
 {
     [SerializeField] private AudioClip audioClip;
     [SerializeField] private float volumeScale = 1.0f;

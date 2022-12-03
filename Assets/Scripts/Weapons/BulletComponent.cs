@@ -61,7 +61,7 @@ public class BulletComponent : MonoBehaviour, ISpawnable
         }
         if (hit.collider.gameObject.GetComponent<IDamageable>() != null)
         {
-            SimpleAudioWrapper.PlayAudioEvent(hitAudioevent, gameObject);
+            SASSimpleAudioSystem.PlayAudioEvent(hitAudioevent, gameObject);
             hit.collider.gameObject.GetComponent<IDamageable>().ApplyDamage(damage);
         }
         ReturnToPool();

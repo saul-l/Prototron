@@ -89,7 +89,7 @@ public class ShootingComponent : MonoBehaviour, IShooting
 
         shootingEffect.SetActive(false);
         shootingEffect.SetActive(true);
-        SimpleAudioWrapper.PlayAudioEvent(weaponType.shootingAudioEvent, gameObject);
+        SASSimpleAudioSystem.PlayAudioEvent(weaponType.shootingAudioEvent, gameObject);
         for (int ii = 0; ii < spawnAmount; ii++)
         {
             GameObject newBullet = myPool.GetPooledObject();

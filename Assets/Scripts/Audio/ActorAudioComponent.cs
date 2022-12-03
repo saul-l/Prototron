@@ -12,16 +12,16 @@ public class ActorAudioComponent : MonoBehaviour
 
     public void deathAudio()
     {
-        SimpleAudioWrapper.PlayAudioEvent(deathAudioEvent, gameObject);
+        SASSimpleAudioSystem.PlayAudioEvent(deathAudioEvent, gameObject);
     }
 
     public void meleeAudio()
     {
-        SimpleAudioWrapper.PlayAudioEvent(deathAudioEvent, gameObject);
+        SASSimpleAudioSystem.PlayAudioEvent(deathAudioEvent, gameObject);
     }
     public void damageAudio()
     {
-        SimpleAudioWrapper.PlayAudioEvent(damageAudioEvent, gameObject);
+        SASSimpleAudioSystem.PlayAudioEvent(damageAudioEvent, gameObject);
     }
 
 }

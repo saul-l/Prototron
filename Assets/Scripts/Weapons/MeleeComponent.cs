@@ -63,7 +63,7 @@ public class MeleeComponent : MonoBehaviour, IWeapon
         if (!hasHit && other.gameObject.GetComponent<IDamageable>() != null)
         {
             other.gameObject.GetComponent<IDamageable>().ApplyDamage(damage);
-            SimpleAudioWrapper.PlayAudioEvent(hitAudioevent, gameObject);
+            SASSimpleAudioSystem.PlayAudioEvent(hitAudioevent, gameObject);
             hasHit = true;
         }
     }

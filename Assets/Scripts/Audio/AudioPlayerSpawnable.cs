@@ -8,6 +8,6 @@ public class AudioPlayerSpawnable : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
-        SimpleAudioWrapper.PlayAudioEvent(AudioEvent, gameObject);
+        SASSimpleAudioSystem.PlayAudioEvent(AudioEvent, gameObject);
     }
 }

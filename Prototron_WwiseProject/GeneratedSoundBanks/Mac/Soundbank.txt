@@ -1,8 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	306738902	Play_bullet_hit_human			\Default Work Unit\Play_bullet_hit_human	
-	1419340308	Play_weapon_pistol_shoot			\Default Work Unit\Play_weapon_pistol_shoot	
-
-In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	428303096	Play_bullet_hit_human	C:\Users\Sauli_L\Documents\Unity Projects\Prototron\Prototron_WwiseProject\.cache\Mac\SFX\Play_bullet_hit_human_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Weapon\bullet_hit_human\Play_bullet_hit_human		27706
-	1070173029	Play_weapon_pistol_shoot	C:\Users\Sauli_L\Documents\Unity Projects\Prototron\Prototron_WwiseProject\.cache\Mac\SFX\Play_weapon_pistol_shoot_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\player\weapon_pistol_shoot\Play_weapon_pistol_shoot		97330
-

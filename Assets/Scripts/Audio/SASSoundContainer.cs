@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class SimpleAudioWrapperSoundContainer : ScriptableObject
+public abstract class SASSoundContainer : ScriptableObject
 {
     public virtual void GetAudioClip(out AudioClip audioClip, out float volumeScale)
     {
