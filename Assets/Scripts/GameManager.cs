@@ -82,12 +82,12 @@ public class GameManager : MonoBehaviour
         if(gamepad)
         {
             newPlayer.GetComponent<PlayerInput>().SwitchCurrentControlScheme("GamePad", Gamepad.current.device);
-            keyboardPlayer = true;
+            activeGamepads.Add(Gamepad.current.device);            
         }
         else
         { 
             newPlayer.GetComponent<PlayerInput>().SwitchCurrentControlScheme("KeyboardMouse", Keyboard.current.device);
-            activeGamepads.Add(Gamepad.current.device);
+            keyboardPlayer = true;
         }
 
         newPlayer.GetComponent<IDamageable>().EventDead += PlayerDied;
