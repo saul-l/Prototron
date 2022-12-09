@@ -28,11 +28,19 @@ public class EnemyController : MonoBehaviour
     private GameObject targetGameObject;
     private Transform myTransform;
     private Transform targetTransform;
+    private bool attackActivated = false;
     void Awake()
     {
-        meleeWeaponComponent = meleeWeapon.GetComponent<MeleeComponent>();
+        
         movementComponent = this.GetComponent<IMovement>();
-        shootingComponent = this.GetComponent<IShooting>();
+        if (melee)
+        {
+            meleeWeaponComponent = meleeWeapon.GetComponent<MeleeComponent>();
+        }
+        if (shooter)
+        {
+            shootingComponent = this.GetComponent<IShooting>();
+        }
         myTransform = transform;
         gameManager = GameObjectDependencyManager.instance.GetGameObject("GameManager").GetComponent<GameManager>();
         // save list of players
@@ -52,11 +60,11 @@ public class EnemyController : MonoBehaviour
         { 
             MovementLogicFollow();
         
-            if (melee)
+            if (melee && attackActivated)
             {
                 AttackLogicCloseCombatMelee();
             }
-            if (shooter && canShoot)
+            if (shooter && canShoot && attackActivated)
             {
                 AttackLogicStopAndShoot();
             }
@@ -67,7 +75,14 @@ public class EnemyController : MonoBehaviour
             SetNearestPlayerAsTarget();
         }
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if(!attackActivated && other.CompareTag("EnemyAttackActivation"))
+        {
+            attackActivated = true;
+            lastAttackTime = Time.time;
+        }
+    }
     private void OnDisable()
     {
         if(targetGameObject!=null)
@@ -76,6 +91,8 @@ public class EnemyController : MonoBehaviour
         targetGameObject = null;
         targetTransform = null;
         }
+
+        attackActivated = false;
 
         if (mySpawner != null)
         {

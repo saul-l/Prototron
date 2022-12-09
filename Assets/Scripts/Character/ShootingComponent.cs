@@ -115,7 +115,7 @@ public class ShootingComponent : MonoBehaviour, IShooting
         bulletsLeft = weaponType.clipSize;
         myPool = GameObjectDependencyManager.instance.GetGameObject("PoolHandler").GetComponent<PoolHandler>().GetPool(bullet.gameObject.name, PoolType.ForcedRecycleObjectPool);
         myPool.PopulatePool(bullet, weaponType.pooledBullets);
-        shootingEffect = GameObject.Instantiate(weaponType.shootingEffect, transform.position + weaponPosition * 4.0f + transform.forward, Quaternion.identity, transform);
+        shootingEffect = GameObject.Instantiate(weaponType.shootingEffect, transform.position + weaponType.shootingEffect.transform.localPosition + transform.forward, weaponType.shootingEffect.transform.rotation * transform.rotation, transform);
         shootingEffect.SetActive(false);
     }
 

@@ -52,7 +52,7 @@ PlayerSettings:
   m_MTRendering: 1
   mipStripping: 0
   numberOfMipsStripped: 0
-  m_StackTraceTypes: 000000000000000000000000000000000000000001000000
+  m_StackTraceTypes: 010000000100000001000000010000000100000001000000
   iosShowActivityIndicatorOnLoading: -1
   androidShowActivityIndicatorOnLoading: -1
   iosUseCustomAppBackgroundBehavior: 0
@@ -138,7 +138,16 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleVersion: 0.1
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: 8300000, guid: afddaf9985673fa49ad19e7684cb8cdd, type: 3}
+  - {fileID: 8300000, guid: 154d38cb217d99f46bff2db104f776da, type: 3}
+  - {fileID: 8300000, guid: 7027076cab1cbf14b9e18a95aebf2bed, type: 3}
+  - {fileID: 8300000, guid: 37702c4a760a34349bf8a24ba1d3e0f5, type: 3}
+  - {fileID: 8300000, guid: 54542567e7ccd7f468e2f4778ab35172, type: 3}
+  - {fileID: 8300000, guid: c0c48aff1e4b03f44a555d38e1c9a972, type: 3}
+  - {fileID: 8300000, guid: b082d65bb517d7147a38b1beaafc122b, type: 3}
+  - {fileID: 2800000, guid: 7f11deeeb93789042ad50b2cce7bfd70, type: 3}
+  - {fileID: 11400000, guid: ab40fc3cf59dd5e44b9575fa756ccfb7, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -175,7 +184,7 @@ PlayerSettings:
   ForceSDCardPermission: 0
   CreateWallpaper: 0
   APKExpansionFiles: 0
-  keepLoadedShadersAlive: 0
+  keepLoadedShadersAlive: 1
   StripUnusedMeshComponents: 1
   strictShaderVariantMatching: 0
   VertexChannelCompressionMask: 4054
@@ -347,7 +356,8 @@ PlayerSettings:
   openGLRequireES31: 0
   openGLRequireES31AEP: 0
   openGLRequireES32: 0
-  m_TemplateCustomTags: {}
+  m_TemplateCustomTags:
+    PRODUCT_DESCRIPTION: 
   mobileMTRendering:
     Android: 1
     iPhone: 1
@@ -622,7 +632,7 @@ PlayerSettings:
   webGLDebugSymbols: 0
   webGLEmscriptenArgs: 
   webGLModulesDirectory: 
-  webGLTemplate: APPLICATION:Default
+  webGLTemplate: APPLICATION:PWA
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
   webGLCompressionFormat: 1
@@ -749,7 +759,13 @@ PlayerSettings:
   activeInputHandler: 2
   cloudProjectId: 
   framebufferDepthMemorylessMode: 0
-  qualitySettingsNames: []
+  qualitySettingsNames:
+  - Very Low
+  - Low
+  - Medium
+  - High
+  - Very High
+  - Ultra
   projectName: 
   organizationId: 
   cloudEnabled: 0

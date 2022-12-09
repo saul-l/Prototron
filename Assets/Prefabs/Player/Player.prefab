@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 6476357762918511915}
   - component: {fileID: 4501438282179230414}
   - component: {fileID: 2059973504}
-  - component: {fileID: 681513220821841964}
   - component: {fileID: 2059973495}
   - component: {fileID: 2446713982752480310}
   - component: {fileID: 1532300240}
@@ -41,8 +40,8 @@ Transform:
   m_GameObject: {fileID: 7569796107671719673}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7660145205469961436}
   m_Father: {fileID: 0}
@@ -503,18 +502,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &681513220821841964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7569796107671719673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de8c55db762a54f4fb6c5010721cd70b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2059973495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -527,7 +514,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5763cbe8beab5e840a8d533426bd38ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootAudioEvent: Play_weapon_pistol_shoot
   damageAudioEvent: Play_player_damage
   deathAudioEvent: Play_player_death
 --- !u!114 &2446713982752480310

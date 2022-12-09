@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 public class DecalAnimator : MonoBehaviour
 {
-    private DecalProjector decalProjector;
+    [SerializeField] private DecalProjector decalProjector;
     [SerializeField] float fadeFactor;
     [SerializeField] Vector3 size;
     void Start()
