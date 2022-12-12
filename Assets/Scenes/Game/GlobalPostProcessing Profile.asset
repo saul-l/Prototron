@@ -15,6 +15,7 @@ MonoBehaviour:
   components:
   - {fileID: 6533453825999041029}
   - {fileID: 4489213428335971402}
+  - {fileID: 7073717231069875689}
 --- !u!114 &4489213428335971402
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -31,7 +32,7 @@ MonoBehaviour:
   master:
     m_OverrideState: 1
     m_Value:
-      <length>k__BackingField: 2
+      <length>k__BackingField: 3
       m_Loop: 0
       m_ZeroValue: 0
       m_Range: 1
@@ -39,10 +40,19 @@ MonoBehaviour:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: 0.021876035
+          time: 0.02247191
           value: 0
           inSlope: 0
-          outSlope: 1
+          outSlope: 1.0315212
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 0.6268301
+          value: 0.7858657
+          inSlope: 2.0756185
+          outSlope: 2.0756185
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
@@ -228,13 +238,13 @@ MonoBehaviour:
   active: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 0.55
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 2
   scatter:
     m_OverrideState: 1
-    m_Value: 0.3
+    m_Value: 0.574
   clamp:
     m_OverrideState: 1
     m_Value: 65471.53
@@ -254,3 +264,26 @@ MonoBehaviour:
   dirtIntensity:
     m_OverrideState: 0
     m_Value: 1
+--- !u!114 &7073717231069875689
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc13b23b1d921a4ab9e8b7903bdbc8e, type: 3}
+  m_Name: CustomEffectComponent
+  m_EditorClassIdentifier: 
+  active: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.549
+  overlayColor:
+    m_OverrideState: 0
+    m_Value: {r: 0.6603774, g: 0.058561735, b: 0.058561735, a: 1}
+    hdr: 0
+  fakeLightTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 8400000, guid: 8aae9f42eaa22cb45a90976c785e472c, type: 2}

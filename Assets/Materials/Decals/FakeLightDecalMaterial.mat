@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: FakeLightDecalMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: 1301e63391fc32e4ebc2674bcc9aba58, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 9b4e681081e2b4c469111bb649e2f7ee, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -47,7 +47,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Normal_Map:
-        m_Texture: {fileID: 2800000, guid: 35eb7d78348d5b24ba9e60297dbee94e, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -75,7 +75,7 @@ Material:
         m_Scale: {x: 3, y: 3}
         m_Offset: {x: 0.4, y: 0.1}
     - _FakeNormal:
-        m_Texture: {fileID: 2800000, guid: 93c08443e82ba8043a17deace3310814, type: 3}
+        m_Texture: {fileID: 2800000, guid: 35eb7d78348d5b24ba9e60297dbee94e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -121,7 +121,7 @@ Material:
     m_Ints: []
     m_Floats:
     - Normal_Blend: 0
-    - _Alpha: 7
+    - _Alpha: 5
     - _AlphaClip: 0
     - _Blend: 0
     - _BlendModePreserveSpecular: 1

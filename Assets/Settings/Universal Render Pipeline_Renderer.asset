@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5681355899703611992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb7b729acc90444ebe10bfb302029b9, type: 3}
+  m_Name: CustomPostProcessRenderer
+  m_EditorClassIdentifier: 
+  m_Active: 1
 --- !u!114 &-3711869160464108046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12,7 +25,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e32e72b6a3f58a24c9033e2b9275eea0, type: 3}
   m_Name: ScreenSpaceShadows
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   m_Shader: {fileID: 4800000, guid: 0f854b35a0cf61a429bd5dcfea30eddd, type: 3}
 --- !u!114 &-933629328712705006
 MonoBehaviour:
@@ -29,7 +42,7 @@ MonoBehaviour:
   m_Active: 1
   m_Settings:
     technique: 2
-    maxDrawDistance: 2000
+    maxDrawDistance: 2500
     dBufferSettings:
       surfaceData: 0
     screenSpaceSettings:
@@ -54,7 +67,8 @@ MonoBehaviour:
   m_RendererFeatures:
   - {fileID: -933629328712705006}
   - {fileID: -3711869160464108046}
-  m_RendererFeatureMap: 125c317612150bf3f235cf35aaca7ccc
+  - {fileID: -5681355899703611992}
+  m_RendererFeatureMap: 125c317612150bf3f235cf35aaca7ccca8ad980be9c427b1
   m_UseNativeRenderPass: 1
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}

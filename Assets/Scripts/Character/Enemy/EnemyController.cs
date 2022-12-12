@@ -158,10 +158,11 @@ public class EnemyController : MonoBehaviour
             lastAttackTime = Time.time;
             canShoot = false;            
         }
-        else
+       /* else
         {
             shootingComponent.shootingDirection = Vector3.zero;
         }
+       */
     }
 
     void AttackLogicCloseCombatMelee()
@@ -187,4 +188,11 @@ public class EnemyController : MonoBehaviour
         shootingComponent.fire = false;
         canShoot = true;
     }
+}
+
+enum EnemyState
+{
+    idle,
+    move,
+    shoot
 }

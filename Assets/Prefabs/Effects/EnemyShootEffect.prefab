@@ -55,7 +55,7 @@ MonoBehaviour:
   m_UVBias: {x: 0, y: 0}
   m_ScaleMode: 0
   m_Offset: {x: 0, y: 0, z: 5}
-  m_Size: {x: 6, y: 6, z: 10}
+  m_Size: {x: 25, y: 25, z: 10}
   m_FadeFactor: 1
 --- !u!114 &4564462625341449575
 MonoBehaviour:
@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 265de703aac50984a990b8931898b1ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decalProjector: {fileID: 0}
+  decalProjector: {fileID: 6167520577942647207}
   fadeFactor: 1
   size: {x: 7, y: 7, z: 10}
 --- !u!95 &5265177581457246202
