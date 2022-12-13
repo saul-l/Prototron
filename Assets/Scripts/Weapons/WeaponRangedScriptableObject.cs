@@ -15,4 +15,8 @@ public class WeaponRangedScriptableObject : ScriptableObject
     public int bulletsPerShot;
     public GameObject shootingEffect;
     public string shootingAudioEvent;
+    public float bulletAngle;
+    public float bulletSequenceLength;
+    public float bulletSequenceAngleDifference;
 }
+

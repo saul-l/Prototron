@@ -19,7 +19,7 @@ using UnityEngine;
 public class HealthComponent : MonoBehaviour, IDamageable, ISpawnable
 {   
     public int health = 2;
-    [SerializeField] private bool deactivateOnDeath = true;
+    [SerializeField] private bool destroyComponentsOnDeath = true;
     [SerializeField] private Component[] destroyOnDeath;
     [SerializeField] private bool sendMessageOnDamage;
     [SerializeField] private GameObject deathEffect;
@@ -96,22 +96,28 @@ public class HealthComponent : MonoBehaviour, IDamageable, ISpawnable
 
         if (newDeathDecal != null)
         {
+            // localPosition doesn't work for pooled things. Need to store them somewhere on awake. Using hardcoded tempvalue here for now.
+
             newDeathDecal.SetActive(false);
-            newDeathDecal.transform.position = newDeathDecal.transform.localPosition + new Vector3 (transform.position.x, 0.0f, transform.position.z);
+            newDeathDecal.transform.position = new Vector3 (transform.position.x, -3.0f, transform.position.z); //+newDeathDecal.transform.localPosition 
             newDeathDecal.transform.rotation = transform.rotation * newDeathDecal.transform.localRotation;
             newDeathDecal.SetActive(true);
         }
 
-        if (deactivateOnDeath)
-        { 
-            gameObject.SetActive(false);
-        }        
-        else
+        if (destroyComponentsOnDeath)
         {
             foreach (Component component in destroyOnDeath)
             {
                 Destroy(component);
-            }
+            }            
+        }        
+        else if (TryGetComponent<EnemyController>(out EnemyController enemyController))
+        {
+            enemyController.dead = true;
+        }
+        else
+        {
+            gameObject.SetActive(false);
         }
        
     }

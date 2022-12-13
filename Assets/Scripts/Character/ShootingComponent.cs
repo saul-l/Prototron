@@ -4,6 +4,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.Events;
 using static CustomExtension;
@@ -12,7 +13,7 @@ using static UnityEngine.GraphicsBuffer;
 public class ShootingComponent : MonoBehaviour, IShooting
 {
     [SerializeField] private WeaponRangedScriptableObject weaponType;
-  
+
     public Pool myPool;
     public GameObject bullet;
     public Vector3 shootingDirection;
@@ -22,18 +23,18 @@ public class ShootingComponent : MonoBehaviour, IShooting
 
     // Handled by weaponType ScriptableObject
     private float nextShotTime = 0.0f;
-    
-    public float angle;
+
+
 
     public bool fire;
     private bool prevFired;
     private float timingCorrection;
     public UnityEvent hasShot;
-    private Vector3 weaponPosition = new Vector3(0,0.55f,0);
+    private Vector3 weaponPosition = new Vector3(0, 0.55f, 0);
     private float weaponDistance = 0.2f;
     private float bulletsLeft;
-    private GameObject shootingEffect;  
-
+    private GameObject shootingEffect;
+    private int bulletSequencePosition;
     void Start()
     {
         InitializeWeapon();
@@ -45,24 +46,25 @@ public class ShootingComponent : MonoBehaviour, IShooting
             if (nextShotTime <= Time.time)
             {
                 //Correct timing if continuously shooting
-                if (prevFired) { 
+                if (prevFired)
+                {
                     timingCorrection = Time.time - nextShotTime;
                 }
 
-                prevFired = true;                
-                
-                if(weaponType.clipSize > 0)
+                prevFired = true;
+
+                if (weaponType.clipSize > 0)
                 {
                     bulletsLeft--;
 
-                    if(bulletsLeft <= 0)
+                    if (bulletsLeft <= 0)
                     {
                         bulletsLeft = weaponType.clipSize;
                         nextShotTime = Time.time + weaponType.reloadTime - timingCorrection;
                     }
                     else
                     {
-                        nextShotTime = Time.time + (weaponType.attackRate* 0.016666667f) - timingCorrection;
+                        nextShotTime = Time.time + (weaponType.attackRate * 0.016666667f) - timingCorrection;
                     }
                 }
                 else
@@ -72,7 +74,7 @@ public class ShootingComponent : MonoBehaviour, IShooting
 
                 SpawnBullet(weaponType.bulletsPerShot);
 
-                
+
 
             }
         }
@@ -97,6 +99,9 @@ public class ShootingComponent : MonoBehaviour, IShooting
             if (newBullet != null)
             {
                 hasShot.Invoke();
+
+                float localInaccuracy = Random.Range(-weaponType.inaccuracy, weaponType.inaccuracy);
+
                 BulletComponent newBulletBulletComponent = newBullet.GetComponent<BulletComponent>();
 
                 // Weapon position should come from weapon bone position eventually)
@@ -104,8 +109,15 @@ public class ShootingComponent : MonoBehaviour, IShooting
                 newBullet.transform.rotation = Quaternion.identity;
                 newBullet.SetActive(true);
                 newBulletBulletComponent.SpawnFromPool();
-                newBulletBulletComponent.velocity = (shootingDirection * weaponType.bulletSpeed) + new Vector3 (shootingDirection.z * Random.Range(-weaponType.inaccuracy,weaponType.inaccuracy), 0.0f, shootingDirection.x * Random.Range(-weaponType.inaccuracy,weaponType.inaccuracy));
+                newBulletBulletComponent.velocity = weaponType.bulletSpeed * (Quaternion.Euler(0, localInaccuracy+bulletSequencePosition*weaponType.bulletSequenceAngleDifference+weaponType.bulletAngle, 0) * shootingDirection);
+                Debug.Log(newBulletBulletComponent.velocity);
                 newBulletBulletComponent.damage = weaponType.damage;
+
+                bulletSequencePosition++;
+                if (bulletSequencePosition >= weaponType.bulletSequenceLength)
+                {
+                    bulletSequencePosition = 0;
+                }
             }
         }
     }
@@ -139,6 +151,5 @@ public class ShootingComponent : MonoBehaviour, IShooting
             InitializeWeapon();
         }
     }
-
 
 }

@@ -22,15 +22,19 @@ public class CharacterAnimationComponent : MonoBehaviour
     {
         animator.SetFloat("walking_speed", movementComponent.movementDirection.magnitude);  
         debugValue=movementComponent.movementDirection.magnitude;
-        if (shootingComponent.shootingDirection != Vector3.zero)
-        { 
-            animator.SetBool("aim", true);
-        }
-        else
-        {
-            animator.SetBool("aim", false);
-        }
-        
+
+       if(shootingComponent!=null)
+       { 
+            if (shootingComponent.shootingDirection != Vector3.zero)
+            { 
+                animator.SetBool("aim", true);
+            }
+            else
+            {
+                animator.SetBool("aim", false);
+            }
+       }
+
     }
 
     public void Shoot()

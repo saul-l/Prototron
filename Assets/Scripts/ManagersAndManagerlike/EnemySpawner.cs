@@ -53,18 +53,6 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] GameObject nextSpawner;
 
-    /*
-        private void OnValidate()
-        {
-            // Only allow ISpawnables to be spawned
-               for (int i = 0; i < enemyType.Length; i++)
-               {        
-                   if (!enemyType[i].TryGetComponent(typeof(ISpawnable), out var component))
-                       enemyType[i] = null;
-               }
-
-        }*/
-
     private void Awake()
     {
         gameManager = GameObjectDependencyManager.instance.GetGameObject("GameManager").GetComponent<GameManager>();

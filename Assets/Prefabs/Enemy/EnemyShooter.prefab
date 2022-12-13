@@ -439,12 +439,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85c8375ed43b56940bdbb6a0d13dcd2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyState: {fileID: 0}
   meleeWeapon: {fileID: 0}
   weapon: {fileID: 11500000, guid: 2621f0e862f92b44a9aaa00c55b2137d, type: 3}
-  attackInterval: 2
   shooter: 1
   melee: 0
   mySpawner: {fileID: 0}
+  targetGameObject: {fileID: 0}
+  myTransform: {fileID: 0}
+  targetTransform: {fileID: 0}
+  attackActivated: 0
+  dead: 0
+  attackInterval: 2
 --- !u!114 &1604578956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,7 +496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
-  deactivateOnDeath: 1
+  destroyComponentsOnDeath: 0
   destroyOnDeath: []
   sendMessageOnDamage: 0
   deathEffect: {fileID: 8457978493270944543, guid: ba721e7bc9df6064fa6cdf67f272aa42, type: 3}

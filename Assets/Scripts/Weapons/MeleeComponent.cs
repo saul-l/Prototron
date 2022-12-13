@@ -19,9 +19,15 @@ public class MeleeComponent : MonoBehaviour, IWeapon
     [SerializeField] private string hitAudioevent;
     [SerializeField] private Collider myCollider;
     [SerializeField] private GameObject effectGameObject;
-    void Start()
+    void Awake()
     {
-        myCollider=GetComponent<Collider>();
+        myCollider=GetComponent<Collider>();        
+        if (effectGameObject != null)
+            effectGameObject.SetActive(false);
+    }
+
+    void OnEnable()
+    {
         myCollider.enabled = false;
         if (effectGameObject != null)
             effectGameObject.SetActive(false);

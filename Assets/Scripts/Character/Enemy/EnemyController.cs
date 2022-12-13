@@ -1,6 +1,6 @@
 /* EnemyController
- * Holds enemy AI logic and related things.
- * Communicates with MovementComponent, ShootingComponent and MeleeComponent 
+ * Holds values needed by enemy AI state machine
+ * Communicates with MovementComponent, ShootingComponent and MeleeComponent and EnemyState
  */
 
 using System.Collections;
@@ -10,28 +10,38 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    private IShooting shootingComponent;
-    private IMovement movementComponent;
+    [SerializeField] private EnemyState enemyState;
+    public EnemyState previousEnemyState;
+    private EnemyState lastExecutedEnemyState;
     public GameObject meleeWeapon;
 
     public Object weapon;
-    [SerializeField] float attackInterval = 1.0f;
+    
     [SerializeField] bool shooter;
     [SerializeField] bool melee;
-    private MeleeComponent meleeWeaponComponent;
+    public MeleeComponent meleeWeaponComponent;
 
-    private float lastAttackTime = 0.0f;
+
     private bool canShoot = true;
     private Vector3 shootingDirection = Vector3.zero;
     public EnemySpawner mySpawner;
     private GameManager gameManager;
-    private GameObject targetGameObject;
-    private Transform myTransform;
-    private Transform targetTransform;
-    private bool attackActivated = false;
+
+    // Used by state machine
+    public GameObject targetGameObject;
+    public Transform myTransform;
+    public Transform targetTransform;
+    public IShooting shootingComponent;
+    public IMovement movementComponent;
+    public bool attackActivated = false;
+    public bool dead = false;
+
+    // Maybe these should be inside the state machine
+    public float attackInterval = 1.0f;
+    public float lastAttackTime = 0.0f;
+    
     void Awake()
     {
-        
         movementComponent = this.GetComponent<IMovement>();
         if (melee)
         {
@@ -43,20 +53,29 @@ public class EnemyController : MonoBehaviour
         }
         myTransform = transform;
         gameManager = GameObjectDependencyManager.instance.GetGameObject("GameManager").GetComponent<GameManager>();
-        // save list of players
-
     }
 
 
 
     void Start()
     {
-        SetNearestPlayerAsTarget();
+      //  SetNearestPlayerAsTarget();
     }
     // Update is called once per frame
     void Update()
     {
-        if(targetGameObject != null)
+        if (enemyState != null)
+        {
+            lastExecutedEnemyState = enemyState;
+            enemyState.Execute(ref enemyState);
+
+            if(lastExecutedEnemyState!=enemyState)
+            {
+                previousEnemyState = lastExecutedEnemyState;
+            }
+        }
+        /*
+        if (targetGameObject != null)
         { 
             MovementLogicFollow();
         
@@ -74,6 +93,7 @@ public class EnemyController : MonoBehaviour
             movementComponent.movementDirection = Vector3.zero;
             SetNearestPlayerAsTarget();
         }
+        */
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -85,13 +105,6 @@ public class EnemyController : MonoBehaviour
     }
     private void OnDisable()
     {
-        if(targetGameObject!=null)
-        { 
-        targetGameObject.GetComponent<IDamageable>().EventDead -= TargetDeath;
-        targetGameObject = null;
-        targetTransform = null;
-        }
-
         attackActivated = false;
 
         if (mySpawner != null)
@@ -134,19 +147,18 @@ public class EnemyController : MonoBehaviour
                 }
             }
 
-            if (targetGameObject != null)
-            {
-                targetGameObject.GetComponent<IDamageable>().EventDead += TargetDeath;
-            }
+
         }
     }
 
-    void TargetDeath()
+    
+    public void TargetDeath()
     {
         targetGameObject.GetComponent<IDamageable>().EventDead -= TargetDeath;
         targetGameObject = null;
         targetTransform = null;
     }
+
     void AttackLogicStopAndShoot()
     {
         if(Time.time >= lastAttackTime+attackInterval)
@@ -176,7 +188,7 @@ public class EnemyController : MonoBehaviour
                 meleeWeaponComponent.Attack(targetTransform.position - transform.position);
             }
         }
-        }
+     }
 
     void MovementLogicFollow()
     {
@@ -190,9 +202,4 @@ public class EnemyController : MonoBehaviour
     }
 }
 
-enum EnemyState
-{
-    idle,
-    move,
-    shoot
-}
+

@@ -401,6 +401,11 @@ GameObject:
   - component: {fileID: 3230287304328705790}
   - component: {fileID: 1225746332}
   - component: {fileID: -5404787136123125668}
+  - component: {fileID: 7275077202261332861}
+  - component: {fileID: 8072246410550410872}
+  - component: {fileID: 8713983069606776616}
+  - component: {fileID: 7245916737761740745}
+  - component: {fileID: -4036768788532591472}
   m_Layer: 9
   m_Name: EnemyFollower
   m_TagString: Untagged
@@ -438,12 +443,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85c8375ed43b56940bdbb6a0d13dcd2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyState: {fileID: 7275077202261332861}
+  previousEnemyState: {fileID: 0}
   meleeWeapon: {fileID: 8243354866566091642}
   weapon: {fileID: 11500000, guid: 2621f0e862f92b44a9aaa00c55b2137d, type: 3}
-  attackInterval: 1
   shooter: 0
   melee: 1
+  meleeWeaponComponent: {fileID: 0}
   mySpawner: {fileID: 0}
+  targetGameObject: {fileID: 0}
+  myTransform: {fileID: 0}
+  targetTransform: {fileID: 0}
+  attackActivated: 0
+  dead: 0
+  attackInterval: 1
+  lastAttackTime: 0
 --- !u!114 &1604578956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,7 +503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
-  deactivateOnDeath: 1
+  destroyComponentsOnDeath: 0
   destroyOnDeath: []
   sendMessageOnDamage: 0
   deathEffect: {fileID: 8457978493270944543, guid: ba721e7bc9df6064fa6cdf67f272aa42, type: 3}
@@ -519,7 +533,7 @@ Animator:
   m_GameObject: {fileID: 5993817333502248022}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0a8daa7d721ee564f95feabcd14cf067, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -640,6 +654,75 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7275077202261332861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5993817333502248022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21a10982c7e9c9548a88f0e04d1b2677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetFoundState: {fileID: 8072246410550410872}
+--- !u!114 &8072246410550410872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5993817333502248022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9b1bbf57ae75194f8bad3bdec78802a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathState: {fileID: 8713983069606776616}
+  idleState: {fileID: 7275077202261332861}
+  actionState: {fileID: 7245916737761740745}
+  actionRadius: 3
+--- !u!114 &8713983069606776616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5993817333502248022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627ff925443c5804bb4782cf54d24257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idleState: {fileID: 7275077202261332861}
+--- !u!114 &7245916737761740745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5993817333502248022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0c1aef6a1a969a4ca7ed005705256b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathState: {fileID: 8713983069606776616}
+  idleState: {fileID: 7275077202261332861}
+--- !u!114 &-4036768788532591472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5993817333502248022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1713b70baa483334398dc543d66fe78f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugValue: 0
 --- !u!1 &6091517831549281873
 GameObject:
   m_ObjectHideFlags: 0
