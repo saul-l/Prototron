@@ -17,4 +17,9 @@ public interface IShooting
         get;
         set;
     }
+
+    int bulletsLeft
+    {
+        get;
+    }
 }

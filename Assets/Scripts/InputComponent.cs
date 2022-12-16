@@ -16,8 +16,6 @@ public class InputComponent : MonoBehaviour
         gameManager = GameObjectDependencyManager.instance.GetGameObject("GameManager").GetComponent<GameManager>();
 
         playerInput = GetComponent<PlayerInput>();
-        Debug.Log(" " + playerInput.playerIndex.ToString());
-
     }
 
     // Update is called once per frame

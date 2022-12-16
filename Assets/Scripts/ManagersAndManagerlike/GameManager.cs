@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         string currentScene = SceneManager.GetActiveScene().name;
-        SceneManager.UnloadSceneAsync(currentScene);
+      //  SceneManager.UnloadSceneAsync(currentScene);
         GameObjectDependencyManager.instance.ResetGameObjectDictionary();        
         SceneManager.LoadScene(currentScene);
         score = 0;

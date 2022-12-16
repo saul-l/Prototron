@@ -36,12 +36,13 @@ public class CharacterRotatorComponent : MonoBehaviour
             lastShotTime = Time.time;
             rotationSpeedShootApplied = rotationSpeedShoot;
         }
-        else if(lastShotTime + shootingDirectionResetTime > Time.time)
+        else if(lastShotTime + shootingDirectionResetTime >= Time.time)
         {
             rotationSpeedShootApplied = 0.0f;
         }
         else if(movementComponent != null && movementComponent.movementDirection != Vector3.zero)
         {
+   
             rotationSpeedShootApplied = 0.0f;
             lookAtDirection = movementComponent.movementDirection;
             lookAtDirection.y = 0.0f;

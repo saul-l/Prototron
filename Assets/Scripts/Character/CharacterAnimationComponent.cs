@@ -8,8 +8,8 @@ public class CharacterAnimationComponent : MonoBehaviour
     private Animator animator;
     private IMovement movementComponent;
     private IShooting shootingComponent;
-    public float debugValue;
-    // Start is called before the first frame update
+
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -17,11 +17,9 @@ public class CharacterAnimationComponent : MonoBehaviour
         shootingComponent = GetComponent<IShooting>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         animator.SetFloat("walking_speed", movementComponent.movementDirection.magnitude);  
-        debugValue=movementComponent.movementDirection.magnitude;
 
        if(shootingComponent!=null)
        { 

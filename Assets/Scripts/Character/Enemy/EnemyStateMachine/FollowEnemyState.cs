@@ -11,16 +11,22 @@ public class FollowEnemyState : EnemyState
     [SerializeField] private EnemyState idleState;
     [SerializeField] private EnemyState actionState;
     [SerializeField] private float actionRadius;
+    [SerializeField] private float actionInterval;
 
+    private float previousActionTime;
     private EnemyController enemyController;
-    // Update is called once per frame
+    
     private void Start()
     {
         enemyController = GetComponent<EnemyController>();
     }
+
+    public override void EnterState()
+    {
+        previousActionTime = Time.time;
+    }
     public override void Execute(ref EnemyState nextState)
     {
-        Debug.Log("Execute follow state");
         if (enemyController.dead)
         {
             nextState = deathState;
@@ -32,9 +38,8 @@ public class FollowEnemyState : EnemyState
         }
         else 
         {            
-            if(Vector3.Distance(enemyController.targetTransform.position, enemyController.myTransform.position) <= actionRadius)
-            {
-                Debug.Log(Vector3.Distance(enemyController.targetTransform.position, enemyController.myTransform.position));
+            if(Time.time >= (previousActionTime + actionInterval ) && Vector3.Distance(enemyController.targetTransform.position, enemyController.myTransform.position) <= actionRadius)
+            {        
                 nextState = actionState;
             }
             else

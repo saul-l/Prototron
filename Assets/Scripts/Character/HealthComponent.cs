@@ -28,17 +28,23 @@ public class HealthComponent : MonoBehaviour, IDamageable, ISpawnable
     private Pool damageEffectPool;
     private Pool deathEffectPool;
     private Pool deathDecalPool;
-    
+    private bool damagedThisFrame;
+    private bool dead;
     private int originalHealth;
-
+    
     public event DeathNotify EventDead;
 
     private Quaternion localUp = Quaternion.Euler(90f, 0f, 0f);
     void Awake ()
     {
         originalHealth = health;
+        dead = false;
     }
 
+    void LateUpdate ()
+    {
+        if (damagedThisFrame) damagedThisFrame = false;
+    }
     void Start ()
     {
         damageEffectPool = GameObjectDependencyManager.instance.GetGameObject("PoolHandler").GetComponent<PoolHandler>().GetPool(damageEffect.gameObject.name, PoolType.ForcedRecycleObjectPool);
@@ -54,23 +60,28 @@ public class HealthComponent : MonoBehaviour, IDamageable, ISpawnable
     {   
         health -= damageAmount;
 
-        if (sendMessageOnDamage)
+        if (sendMessageOnDamage & !dead)
         {
             gameObject.SendMessage("OnDamage");
         }
+        // We don't want to play more than one damage effect per frame, even if there are multiple hits
 
-        GameObject newDamageEffect = damageEffectPool.GetPooledObject();
-         if (newDamageEffect != null)
-         {
-             newDamageEffect.SetActive(false);
-             newDamageEffect.transform.position = transform.position;
-             newDamageEffect.transform.rotation = localUp;
-             newDamageEffect.SetActive(true);    
-         }
-
-        if (health <= 0)
+        if (!damagedThisFrame)
         {
+
+            GameObject newDamageEffect = damageEffectPool.GetPooledObject();
+            if (newDamageEffect != null)
+            {
+                newDamageEffect.SetActive(false);
+                newDamageEffect.transform.position = transform.position;
+                newDamageEffect.transform.rotation = localUp;
+                newDamageEffect.SetActive(true);
+            }
+        }
+        if (health <= 0 && !dead)
+        {            
             Death();
+            dead = true;
         }
 
     }
@@ -125,6 +136,7 @@ public class HealthComponent : MonoBehaviour, IDamageable, ISpawnable
     private void OnEnable()
     {
         health = originalHealth;
+        dead = false;
     }
     public void ReturnToPool()
     {

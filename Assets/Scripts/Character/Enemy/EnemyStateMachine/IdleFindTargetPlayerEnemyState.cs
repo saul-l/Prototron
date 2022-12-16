@@ -16,7 +16,6 @@ public class IdleFindTargetPlayerEnemyState : EnemyState
 
     public override void Execute(ref EnemyState nextState)
     {
-        Debug.Log("Execute find new target state");
         // We'll just scan for new players every turn we are idle.
         // This is stupid slow. Should only happen when new players enter the game.
         SetNearestPlayerAsTarget();
@@ -41,12 +40,9 @@ public class IdleFindTargetPlayerEnemyState : EnemyState
             float distanceToPlayer;
             float? previousDistanceToPlayer = null;
 
-            int asdf = 0;
-
             foreach (GameObject playerTmp in players)
             {
-                Debug.Log("players size: " + asdf + "gameobject " + gameObject.name);
-                asdf++;
+
                 distanceToPlayer = Mathf.Abs((playerTmp.GetComponent<Transform>().position - transform.position).sqrMagnitude);
 
                 if (previousDistanceToPlayer.HasValue)

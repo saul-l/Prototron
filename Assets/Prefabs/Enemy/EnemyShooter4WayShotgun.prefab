@@ -397,18 +397,19 @@ GameObject:
   - component: {fileID: 1604578956}
   - component: {fileID: 6935448203046852442}
   - component: {fileID: -2270477686504272687}
-  - component: {fileID: 4067082640400488950}
+  - component: {fileID: 6284909201480957919}
   - component: {fileID: 3230287304328705790}
+  - component: {fileID: 4067082640400488950}
   - component: {fileID: 1225746332}
   - component: {fileID: 4211928328542684201}
   - component: {fileID: 1262324191999340932}
   - component: {fileID: -867316509399832969}
   - component: {fileID: 1715304123684342389}
   - component: {fileID: 8913710122785356708}
-  - component: {fileID: 449079734678152155}
   - component: {fileID: -1396395167172202401}
+  - component: {fileID: 1389011330188093595}
   m_Layer: 9
-  m_Name: EnemyShooter
+  m_Name: EnemyShooter4WayShotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -475,7 +476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementDirection: {x: 0, y: 0, z: 0}
-  movementSpeed: 5
+  movementSpeed: 10
   movementChangeSpeed: 5
   rb: {fileID: 0}
 --- !u!54 &6935448203046852442
@@ -513,20 +514,18 @@ MonoBehaviour:
   deathEffect: {fileID: 8457978493270944543, guid: ba721e7bc9df6064fa6cdf67f272aa42, type: 3}
   damageEffect: {fileID: 8974671989784390187, guid: 42d562fb7a525fa45adca4edb9cfc943, type: 3}
   deathDecal: {fileID: 7260845352483027405, guid: 6f2ed228c17338b429b4ec782d82c2d0, type: 3}
---- !u!136 &4067082640400488950
-CapsuleCollider:
+--- !u!114 &6284909201480957919
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5993817333502248022}
-  m_Material: {fileID: 13400000, guid: 0b90609f26766f843ab1971df4e871c9, type: 2}
-  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.7
-  m_Height: 1.8
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.55, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1713b70baa483334398dc543d66fe78f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &3230287304328705790
 Animator:
   serializedVersion: 4
@@ -547,6 +546,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &4067082640400488950
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5993817333502248022}
+  m_Material: {fileID: 13400000, guid: 0b90609f26766f843ab1971df4e871c9, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.7
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.55, z: 0}
 --- !u!114 &1225746332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574,7 +587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b5fd427442472149a0b46f8ce5c0f6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: {fileID: 11400000, guid: 2d18d1a3a13eae34897040e23d42057f, type: 2}
+  weaponType: {fileID: 11400000, guid: 0bd4225b75b4dff459416274069c946a, type: 2}
   myPool: {fileID: 0}
   bullet: {fileID: 6641427923098496259, guid: 5ce7aa9bc8ddf4d4f89a084d90b334b2, type: 3}
   shootingDirection: {x: 0, y: 0, z: 0}
@@ -718,7 +731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21a10982c7e9c9548a88f0e04d1b2677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetFoundState: {fileID: 449079734678152155}
+  targetFoundState: {fileID: 1389011330188093595}
 --- !u!114 &8913710122785356708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -732,23 +745,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idleState: {fileID: 1715304123684342389}
---- !u!114 &449079734678152155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5993817333502248022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9b1bbf57ae75194f8bad3bdec78802a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deathState: {fileID: 8913710122785356708}
-  idleState: {fileID: 1715304123684342389}
-  actionState: {fileID: -1396395167172202401}
-  actionRadius: 30
-  actionInterval: 0
 --- !u!114 &-1396395167172202401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -763,7 +759,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathState: {fileID: 8913710122785356708}
   idleState: {fileID: 1715304123684342389}
-  stayInRangeDistance: 0
+  stayInRangeDistance: 15
+--- !u!114 &1389011330188093595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5993817333502248022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3b30756e81c58b4a91127a30ab95e91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathState: {fileID: 8913710122785356708}
+  idleState: {fileID: 1715304123684342389}
+  actionState: {fileID: -1396395167172202401}
+  actionRadius: 15
+  actionInterval: 0
+  directionChangeDistance: 5
 --- !u!1 &6091517831549281873
 GameObject:
   m_ObjectHideFlags: 0

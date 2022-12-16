@@ -36,14 +36,19 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private int totalEnemies;
     [SerializeField] private int maxEnemiesAtTheSameTime = 100;
     [SerializeField] private int enemyCounter = 0;
+    [SerializeField] private int phaseValue = 100;
+    [SerializeField] private int valueSpawned;
+    [SerializeField] private float prevTime = 0.0f;
+    [SerializeField] private bool active;
+    private int currentPhaseValue;
+    private int currentEnemyValueAddition = 2;
+    
 
     
 
-    private float prevTime = 0.0f;
-
     private int requestedPoolSize = 50;
     private int enemiesKilled;
-    private int enemiesAlive;
+    [SerializeField] private int enemiesAlive;
 
     private float spawnPerimeterX;
     private float spawnPerimeterZ;
@@ -55,7 +60,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Awake()
     {
-        gameManager = GameObjectDependencyManager.instance.GetGameObject("GameManager").GetComponent<GameManager>();
+        gameManager = GameObjectDependencyManager.instance.GetGameObject("GameManager").GetComponent<GameManager>();        
     }
     void Start()
     {
@@ -73,10 +78,29 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if (gameManager.gameStarted && !gameManager.gameOver && enemyCounter < enemyOrder.Count && Time.time >= prevTime + interval && totalEnemies < maxEnemiesAtTheSameTime)
+        if (active &&
+            gameManager.gameStarted &&
+            !gameManager.gameOver &&
+            enemyCounter < enemyOrder.Count &&
+            Time.time >= prevTime + interval &&
+            totalEnemies < maxEnemiesAtTheSameTime)
         {
             prevTime = Time.time;
             SpawnEnemy();
+        }
+
+        if(valueSpawned >= currentPhaseValue)
+        {
+            active = false;
+        }
+
+        if (!active && totalEnemies <= 0)
+        {
+            active = true;
+            currentPhaseValue = currentPhaseValue + phaseValue;
+            currentEnemyValueAddition++;
+            valueSpawned = 0;
+            interval *= .9f;
         }
     }
 
@@ -173,6 +197,7 @@ public class EnemySpawner : MonoBehaviour
             newEnemy.GetComponent<EnemyController>().mySpawner = this;
             totalEnemies++;
             enemyCounter++;
+            valueSpawned++;
         }
         else Debug.Log("ENEMY NULL!");
     }
@@ -188,7 +213,7 @@ public class EnemySpawner : MonoBehaviour
         totalEnemies--;
         
         enemiesKilled++;
-        totalEnemyValue += 3;
+        totalEnemyValue += currentEnemyValueAddition;
 
 
         CreateEnemyOrder(); // This is a bit hardcore maybe.

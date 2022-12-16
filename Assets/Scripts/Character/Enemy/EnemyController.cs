@@ -6,13 +6,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] private EnemyState enemyState;
     public EnemyState previousEnemyState;
-    private EnemyState lastExecutedEnemyState;
+    public EnemyState lastExecutedEnemyState;
     public GameObject meleeWeapon;
 
     public Object weapon;
@@ -21,9 +22,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] bool melee;
     public MeleeComponent meleeWeaponComponent;
 
-
-    private bool canShoot = true;
-    private Vector3 shootingDirection = Vector3.zero;
+    public bool canShoot = true;
+    public Vector3 shootingDirection = Vector3.zero;
     public EnemySpawner mySpawner;
     private GameManager gameManager;
 
@@ -35,7 +35,7 @@ public class EnemyController : MonoBehaviour
     public IMovement movementComponent;
     public bool attackActivated = false;
     public bool dead = false;
-
+    public bool enterState = true;
     // Maybe these should be inside the state machine
     public float attackInterval = 1.0f;
     public float lastAttackTime = 0.0f;
@@ -67,33 +67,22 @@ public class EnemyController : MonoBehaviour
         if (enemyState != null)
         {
             lastExecutedEnemyState = enemyState;
+
+            if(enterState)
+            {
+                enemyState.EnterState();
+                enterState = false;
+            }
+
             enemyState.Execute(ref enemyState);
 
             if(lastExecutedEnemyState!=enemyState)
             {
                 previousEnemyState = lastExecutedEnemyState;
-            }
+                lastExecutedEnemyState.ExitState();
+                enterState = true;
+            }           
         }
-        /*
-        if (targetGameObject != null)
-        { 
-            MovementLogicFollow();
-        
-            if (melee && attackActivated)
-            {
-                AttackLogicCloseCombatMelee();
-            }
-            if (shooter && canShoot && attackActivated)
-            {
-                AttackLogicStopAndShoot();
-            }
-        }
-        else
-        {
-            movementComponent.movementDirection = Vector3.zero;
-            SetNearestPlayerAsTarget();
-        }
-        */
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -151,7 +140,6 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    
     public void TargetDeath()
     {
         targetGameObject.GetComponent<IDamageable>().EventDead -= TargetDeath;
@@ -176,25 +164,6 @@ public class EnemyController : MonoBehaviour
         }
        */
     }
-
-    void AttackLogicCloseCombatMelee()
-        {
-            if(meleeWeapon!=null && Time.time >= lastAttackTime+meleeWeaponComponent.RateOfFire)
-        {
-            if(Vector3.Distance(targetTransform.position, myTransform.position) < meleeWeaponComponent.attackDistance)
-            {
-             
-                lastAttackTime = Time.time;
-                meleeWeaponComponent.Attack(targetTransform.position - transform.position);
-            }
-        }
-     }
-
-    void MovementLogicFollow()
-    {
-        movementComponent.movementDirection = (targetTransform.position-myTransform.position).normalized;
-    }
-
     public void HasShot()
     {
         shootingComponent.fire = false;

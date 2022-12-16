@@ -32,18 +32,25 @@ public class ShootingComponent : MonoBehaviour, IShooting
     public UnityEvent hasShot;
     private Vector3 weaponPosition = new Vector3(0, 0.55f, 0);
     private float weaponDistance = 0.2f;
-    private float bulletsLeft;
+    [SerializeField] private int bulletsLeft;
     private GameObject shootingEffect;
     private int bulletSequencePosition;
+    private bool reloading;
     void Start()
     {
         InitializeWeapon();
     }
     void FixedUpdate()
     {
-        if (fire)
+        if (nextShotTime <= Time.time)
         {
-            if (nextShotTime <= Time.time)
+            if (reloading)
+            {
+                reloading = false;
+                bulletsLeft = weaponType.clipSize;
+            }
+            
+            if (fire)
             {
                 //Correct timing if continuously shooting
                 if (prevFired)
@@ -59,7 +66,7 @@ public class ShootingComponent : MonoBehaviour, IShooting
 
                     if (bulletsLeft <= 0)
                     {
-                        bulletsLeft = weaponType.clipSize;
+                        reloading = true;
                         nextShotTime = Time.time + weaponType.reloadTime - timingCorrection;
                     }
                     else
@@ -110,7 +117,6 @@ public class ShootingComponent : MonoBehaviour, IShooting
                 newBullet.SetActive(true);
                 newBulletBulletComponent.SpawnFromPool();
                 newBulletBulletComponent.velocity = weaponType.bulletSpeed * (Quaternion.Euler(0, localInaccuracy+bulletSequencePosition*weaponType.bulletSequenceAngleDifference+weaponType.bulletAngle, 0) * shootingDirection);
-                Debug.Log(newBulletBulletComponent.velocity);
                 newBulletBulletComponent.damage = weaponType.damage;
 
                 bulletSequencePosition++;
@@ -151,5 +157,8 @@ public class ShootingComponent : MonoBehaviour, IShooting
             InitializeWeapon();
         }
     }
-
+    int IShooting.bulletsLeft
+    {
+        get => bulletsLeft;
+    }
 }

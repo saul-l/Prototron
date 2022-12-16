@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b673f15e888213447ab33f7315df4ae2, type: 3}
-  m_Name: PlayerWeaponTrifle
+  m_Name: PlayerWeaponUzi
   m_EditorClassIdentifier: 
-  attackRate: 4
-  bulletSpeed: 3
+  attackRate: 7
+  bulletSpeed: 2
   damage: 1
-  inaccuracy: 3
-  pooledBullets: 16
-  clipSize: 8
+  inaccuracy: 2
+  pooledBullets: 10
+  clipSize: 10
   reloadTime: 1
   bulletsPerShot: 1
   shootingEffect: {fileID: 2257903972720718003, guid: 82ac673a514d7e44681a46663e5c2111, type: 3}
   shootingAudioEvent: Play_weapon_pistol_shoot
-  bulletAngle: 15
-  bulletSequenceLength: 2
-  bulletSequenceAngleDifference: -30
+  bulletAngle: 0
+  bulletSequenceLength: 0
+  bulletSequenceAngleDifference: 0

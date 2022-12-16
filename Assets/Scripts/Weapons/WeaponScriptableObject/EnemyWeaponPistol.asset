@@ -16,9 +16,12 @@ MonoBehaviour:
   bulletSpeed: 1
   damage: 1
   inaccuracy: 0.1
-  pooledBullets: 4
-  clipSize: 0
-  reloadTime: 0
+  pooledBullets: 25
+  clipSize: 1
+  reloadTime: 4
   bulletsPerShot: 1
   shootingEffect: {fileID: 7260845352483027405, guid: c1d9f62959eb213428f4549377695b27, type: 3}
   shootingAudioEvent: Play_enemy_shoot
+  bulletAngle: 0
+  bulletSequenceLength: 0
+  bulletSequenceAngleDifference: 0
