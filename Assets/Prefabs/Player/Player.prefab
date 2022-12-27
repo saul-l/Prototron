@@ -103,8 +103,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7569796107671719673}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 2
+  m_Mass: 15
+  m_Drag: 0.1
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -140,6 +140,7 @@ MonoBehaviour:
   FireEvent:
     m_PersistentCalls:
       m_Calls: []
+  isDead: 0
 --- !u!114 &103913049835960774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,14 +343,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b5fd427442472149a0b46f8ce5c0f6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: {fileID: 11400000, guid: dbbafa65fa0fccd419c0fa3c13deaf97, type: 2}
+  weaponType: {fileID: 11400000, guid: a7560c3cf0fe8504d9cbcae97ddc60b6, type: 2}
   myPool: {fileID: 0}
   bullet: {fileID: 6641427923098496259, guid: f60e99df7df94084d8fc3dbf5db018d2, type: 3}
   shootingDirection: {x: 0, y: 0, z: 0}
   newShootingDirection: {x: 0, y: 0, z: 0}
   prevShootingDirection: {x: 0, y: 0, z: 0}
   totalShootingDirectionValue: 0
-  angle: 0
   fire: 0
   hasShot:
     m_PersistentCalls:
@@ -378,6 +378,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  bulletsLeft: 0
 --- !u!114 &6476357762918511915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,8 +391,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b198558ee05a1742a51264507ef733e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 8
-  rotationSpeedShoot: 25
+  rotationSpeed: 10.8
+  rotationSpeedShoot: 39.6
   shootingDirectionResetTime: 0.5
 --- !u!114 &4501438282179230414
 MonoBehaviour:
@@ -405,7 +406,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1713b70baa483334398dc543d66fe78f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugValue: 0
 --- !u!82 &2059973504
 AudioSource:
   m_ObjectHideFlags: 0

@@ -7,12 +7,6 @@ public class IdleFindTargetPlayerEnemyState : EnemyState
     // Idle state where enemy tries to find player target
 
     [SerializeField] private EnemyState targetFoundState;
-    private EnemyController enemyController;
-
-    private void Start()
-    {
-        enemyController = GetComponent<EnemyController>();
-    }
 
     public override void Execute(ref EnemyState nextState)
     {

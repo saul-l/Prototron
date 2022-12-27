@@ -4,7 +4,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
-
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using static CustomExtension;
@@ -36,6 +36,11 @@ public class ShootingComponent : MonoBehaviour, IShooting
     private GameObject shootingEffect;
     private int bulletSequencePosition;
     private bool reloading;
+    
+    void Awake()
+    {
+        bullet = weaponType.bulletType;
+    }
     void Start()
     {
         InitializeWeapon();

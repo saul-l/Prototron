@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     public ButtonControl pressedButton;
     Directions.Direction aimingDirection;
     [SerializeField] UnityEvent FireEvent;
-    private bool isDead = false;
+    [SerializeField] private bool isDead = false;
     GameManager gameManager;
     public UniqueStack<Directions.Direction> aimFireBuffer = new UniqueStack<Directions.Direction>();
     void Start()

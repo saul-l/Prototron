@@ -18,5 +18,6 @@ public class WeaponRangedScriptableObject : ScriptableObject
     public float bulletAngle;
     public float bulletSequenceLength;
     public float bulletSequenceAngleDifference;
+    public GameObject bulletType;
 }
 

@@ -7,8 +7,6 @@ using UnityEngine.UIElements;
 
 public class Follow4DirectionMovementEnemyState : EnemyState
 {
-    [SerializeField] private EnemyState deathState;
-    [SerializeField] private EnemyState idleState;
     [SerializeField] private EnemyState actionState;
     [SerializeField] private float actionRadius;
     [SerializeField] private float actionInterval;
@@ -19,12 +17,6 @@ public class Follow4DirectionMovementEnemyState : EnemyState
     private bool directionX;
     private float xTarget;
     private float yTargeT;
-    private EnemyController enemyController;
-    
-    private void Start()
-    {
-        enemyController = GetComponent<EnemyController>();
-    }
 
     public override void EnterState()
     {
@@ -45,7 +37,6 @@ public class Follow4DirectionMovementEnemyState : EnemyState
         if (enemyController.dead)
         {
             nextState = deathState;
-            gameObject.SetActive(false);
         }
         else if (enemyController.targetGameObject == null)
         {            

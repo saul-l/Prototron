@@ -5,6 +5,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Transactions;
 using Unity.IO.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -39,7 +40,9 @@ public class EnemyController : MonoBehaviour
     // Maybe these should be inside the state machine
     public float attackInterval = 1.0f;
     public float lastAttackTime = 0.0f;
-    
+
+    public bool knockBack = false;
+    public float knockBackTime = 0.0f;
     void Awake()
     {
         movementComponent = this.GetComponent<IMovement>();
@@ -64,6 +67,11 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        // ensin last executedista tulee enemystate
+        // sitten jos last executed on sama kuin enemystate
+        // niin previousista tulee lastexecuted
+        // 
         if (enemyState != null)
         {
             lastExecutedEnemyState = enemyState;
@@ -73,11 +81,10 @@ public class EnemyController : MonoBehaviour
                 enemyState.EnterState();
                 enterState = false;
             }
-
             enemyState.Execute(ref enemyState);
-
-            if(lastExecutedEnemyState!=enemyState)
+            if (lastExecutedEnemyState!=enemyState)
             {
+            //    Debug.Log("enemyState " + enemyState + " last executed = " + lastExecutedEnemyState + " previous " + previousEnemyState);
                 previousEnemyState = lastExecutedEnemyState;
                 lastExecutedEnemyState.ExitState();
                 enterState = true;
@@ -88,82 +95,41 @@ public class EnemyController : MonoBehaviour
     {
         if(!attackActivated && other.CompareTag("EnemyAttackActivation"))
         {
+            gameObject.layer = LayerMask.NameToLayer("ActivatedEnemies");
             attackActivated = true;
             lastAttackTime = Time.time;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (attackActivated && other.CompareTag("EnemyAttackActivation"))
+        {
+            attackActivated = false;
+            gameObject.layer = LayerMask.NameToLayer("DeactivatedEnemies");
         }
     }
     private void OnDisable()
     {
         attackActivated = false;
-
+        gameObject.layer = LayerMask.NameToLayer("DeactivatedEnemies");
         if (mySpawner != null)
         {
             mySpawner.EnemyDied();
         }
     }
 
-    void SetNearestPlayerAsTarget()
-    {
-
-        List<GameObject> players = GameObjectDependencyManager.instance.GetGameObjects("Player");
-        if (players != null)
-        {
-            float distanceToPlayer;
-            float? previousDistanceToPlayer = null;
-
-            int asdf = 0;
-
-            foreach (GameObject playerTmp in players)
-            {
-                Debug.Log("players size: " + asdf + "gameobject " + gameObject.name);
-                asdf++;
-                distanceToPlayer = Mathf.Abs((playerTmp.GetComponent<Transform>().position - transform.position).sqrMagnitude);
-
-                if (previousDistanceToPlayer.HasValue)
-                {
-                    if (distanceToPlayer < previousDistanceToPlayer)
-                    {
-                        previousDistanceToPlayer = distanceToPlayer;
-                        targetTransform = playerTmp.transform;
-                        targetGameObject = playerTmp.gameObject;
-                    }
-                }
-                else
-                {
-                    previousDistanceToPlayer = distanceToPlayer;
-                    targetTransform = playerTmp.transform;
-                    targetGameObject = playerTmp.gameObject;
-                }
-            }
-
-
-        }
-    }
-
     public void TargetDeath()
     {
-        targetGameObject.GetComponent<IDamageable>().EventDead -= TargetDeath;
+        if(targetGameObject!=null)
+        { 
+            targetGameObject.GetComponent<IDamageable>().EventDead -= TargetDeath;
+        }
+
         targetGameObject = null;
         targetTransform = null;
     }
 
-    void AttackLogicStopAndShoot()
-    {
-        if(Time.time >= lastAttackTime+attackInterval)
-        {
-            shootingDirection = (targetTransform.position - myTransform.position).normalized;
-            shootingDirection.y = 0.0f;
-            shootingComponent.shootingDirection = shootingDirection;
-            shootingComponent.fire = true;
-            lastAttackTime = Time.time;
-            canShoot = false;            
-        }
-       /* else
-        {
-            shootingComponent.shootingDirection = Vector3.zero;
-        }
-       */
-    }
     public void HasShot()
     {
         shootingComponent.fire = false;

@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     private List<InputDevice> activeGamepads = new List<InputDevice>();
     void Awake()
     {
+        Application.targetFrameRate = 60;
         Physics.autoSyncTransforms = true;
     }
 

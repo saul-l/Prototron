@@ -23,9 +23,14 @@ public class MovementComponent : MonoBehaviour, IMovement
     public float movementChangeSpeed;
     public Rigidbody rb;
 
-    void Start()
+    void Awake()
     {
         rb=this.GetComponent<Rigidbody>();
+    }
+
+    void OnEnable()
+    {
+        rb.velocity = Vector3.zero;
     }
 
     void FixedUpdate()

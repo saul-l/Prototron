@@ -7,30 +7,27 @@ using UnityEngine.UIElements;
 
 public class FollowEnemyState : EnemyState
 {
-    [SerializeField] private EnemyState deathState;
-    [SerializeField] private EnemyState idleState;
     [SerializeField] private EnemyState actionState;
     [SerializeField] private float actionRadius;
     [SerializeField] private float actionInterval;
 
     private float previousActionTime;
-    private EnemyController enemyController;
-    
-    private void Start()
-    {
-        enemyController = GetComponent<EnemyController>();
-    }
 
+    
     public override void EnterState()
     {
         previousActionTime = Time.time;
     }
     public override void Execute(ref EnemyState nextState)
     {
+        
         if (enemyController.dead)
         {
             nextState = deathState;
-            gameObject.SetActive(false);
+        }
+        else if (enemyController.knockBack)
+        {
+            nextState = knockBackState;
         }
         else if (enemyController.targetGameObject == null)
         {            
@@ -38,7 +35,7 @@ public class FollowEnemyState : EnemyState
         }
         else 
         {            
-            if(Time.time >= (previousActionTime + actionInterval ) && Vector3.Distance(enemyController.targetTransform.position, enemyController.myTransform.position) <= actionRadius)
+            if(enemyController.attackActivated && Time.time >= (previousActionTime + actionInterval ) && Vector3.Distance(enemyController.targetTransform.position, enemyController.myTransform.position) <= actionRadius)
             {        
                 nextState = actionState;
             }

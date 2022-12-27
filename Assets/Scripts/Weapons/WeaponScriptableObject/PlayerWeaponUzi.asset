@@ -25,3 +25,4 @@ MonoBehaviour:
   bulletAngle: 0
   bulletSequenceLength: 0
   bulletSequenceAngleDifference: 0
+  bulletType: {fileID: 6641427923098496259, guid: f60e99df7df94084d8fc3dbf5db018d2, type: 3}
