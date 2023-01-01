@@ -44,7 +44,7 @@ public class Follow4DirectionMovementEnemyState : EnemyState
         }
         else 
         {            
-            if(Time.time >= (previousActionTime + actionInterval ) && Vector3.Distance(enemyController.targetTransform.position, enemyController.myTransform.position) <= actionRadius)
+            if(enemyController.attackActivated && Time.time >= (previousActionTime + actionInterval ) && Vector3.Distance(enemyController.targetTransform.position, enemyController.myTransform.position) <= actionRadius)
             {        
                 nextState = actionState;
             }

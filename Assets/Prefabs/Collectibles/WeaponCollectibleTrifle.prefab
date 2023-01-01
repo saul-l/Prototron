@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 1270172707832336858}
   - component: {fileID: -8706831815056622049}
   - component: {fileID: 3721034894793169799}
-  - component: {fileID: 5811851645443845753}
-  - component: {fileID: -1829383932657641672}
+  - component: {fileID: -6721475104152235957}
+  - component: {fileID: -3284109921753595696}
   m_Layer: 10
-  m_Name: WeaponCollectibleUzi
+  m_Name: WeaponCollectibleTrifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cf529907ad7ffef469a66fda5aa2cabe, type: 2}
+  - {fileID: 2100000, guid: 8704a4c4d5a646046b0905c8acaf8d50, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5811851645443845753
+--- !u!114 &-6721475104152235957
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCollectibleList: []
-  weaponType: {fileID: 11400000, guid: 580e1c56c3a846d448cdc486cc22e18b, type: 2}
---- !u!65 &-1829383932657641672
+  weaponType: {fileID: 11400000, guid: dbbafa65fa0fccd419c0fa3c13deaf97, type: 2}
+--- !u!65 &-3284109921753595696
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

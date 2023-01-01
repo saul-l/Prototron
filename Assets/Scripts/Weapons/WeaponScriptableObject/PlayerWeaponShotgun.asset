@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRate: 20
   bulletSpeed: 1
-  damage: 1
-  inaccuracy: 0.5
+  damage: 2
+  inaccuracy: 5
   pooledBullets: 10
   clipSize: 2
   reloadTime: 0.8
   bulletsPerShot: 5
   shootingEffect: {fileID: 2257903972720718003, guid: 82ac673a514d7e44681a46663e5c2111, type: 3}
   shootingAudioEvent: Play_weapon_pistol_shoot
-  bulletAngle: 0
-  bulletSequenceLength: 0
-  bulletSequenceAngleDifference: 0
+  bulletAngle: 20
+  bulletSequenceLength: 5
+  bulletSequenceAngleDifference: -10
   bulletType: {fileID: 6641427923098496259, guid: f60e99df7df94084d8fc3dbf5db018d2, type: 3}

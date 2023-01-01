@@ -37,10 +37,7 @@ public class ShootingComponent : MonoBehaviour, IShooting
     private int bulletSequencePosition;
     private bool reloading;
     
-    void Awake()
-    {
-        bullet = weaponType.bulletType;
-    }
+
     void Start()
     {
         InitializeWeapon();
@@ -135,6 +132,7 @@ public class ShootingComponent : MonoBehaviour, IShooting
 
     void InitializeWeapon()
     {
+        bullet = weaponType.bulletType;
         bulletsLeft = weaponType.clipSize;
         myPool = GameObjectDependencyManager.instance.GetGameObject("PoolHandler").GetComponent<PoolHandler>().GetPool(bullet.gameObject.name, PoolType.ForcedRecycleObjectPool);
         myPool.PopulatePool(bullet, weaponType.pooledBullets);

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRate: 30
   bulletSpeed: 1
-  damage: 1
-  inaccuracy: 5
+  damage: 2
+  inaccuracy: 10
   pooledBullets: 16
   clipSize: 1
   reloadTime: 4

@@ -510,7 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596b557ab8dbe5a478533c2369ca1ef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
+  health: 5
   destroyComponentsOnDeath: 0
   destroyOnDeath: []
   sendMessageOnDamage: 0
