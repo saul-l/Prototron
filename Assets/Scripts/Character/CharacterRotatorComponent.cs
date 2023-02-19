@@ -33,8 +33,6 @@ public class CharacterRotatorComponent : MonoBehaviour
             lookAtTarget = Quaternion.LookRotation(lookAtDirection, Vector3.up);
             lastShotTime = Time.time;
             rotationSpeedShootApplied = rotationSpeedShoot;
-
-            Debug.Log(frame + "shooting rotation");
         }
         else
         {

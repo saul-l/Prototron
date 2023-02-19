@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour
     public EnemyState previousEnemyState;
     public EnemyState lastExecutedEnemyState;
     public GameObject meleeWeapon;
-
+    
     public Object weapon;
     
     [SerializeField] bool shooter;
@@ -37,10 +37,11 @@ public class EnemyController : MonoBehaviour
     public bool attackActivated = false;
     public bool dead = false;
     public bool enterState = true;
+    public int maximumAmount = 10;
     // Maybe these should be inside the state machine
     public float attackInterval = 1.0f;
     public float lastAttackTime = 0.0f;
-
+    
     public bool knockBack = false;
     public float knockBackTime = 0.0f;
     void Awake()
@@ -75,19 +76,13 @@ public class EnemyController : MonoBehaviour
         if (enemyState != null)
         {
             lastExecutedEnemyState = enemyState;
-
-            if(enterState)
-            {
-                enemyState.EnterState();
-                enterState = false;
-            }
+            
             enemyState.Execute(ref enemyState);
             if (lastExecutedEnemyState!=enemyState)
             {
-            //    Debug.Log("enemyState " + enemyState + " last executed = " + lastExecutedEnemyState + " previous " + previousEnemyState);
                 previousEnemyState = lastExecutedEnemyState;
                 lastExecutedEnemyState.ExitState();
-                enterState = true;
+                enemyState.EnterState();
             }           
         }
     }

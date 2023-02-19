@@ -13,9 +13,15 @@ public class GameManager : MonoBehaviour
     public int amountOfAlivePlayers;
     public bool gameStarted;
     public bool keyboardPlayer;
+
     private Vector3 SpawnPosition;
     [SerializeField] GameObject player;
     private List<InputDevice> activeGamepads = new List<InputDevice>();
+
+    public delegate void GameStateEvent();
+    public GameStateEvent gameOverEvent;
+    public GameStateEvent gameStartEvent;
+
     void Awake()
     {
         Application.targetFrameRate = 60;
@@ -71,6 +77,10 @@ public class GameManager : MonoBehaviour
             
         if (amountOfAlivePlayers<1 && gameStarted)
         {
+            if(gameOverEvent!=null)
+            {
+                gameOverEvent.Invoke();
+            }
             gameOver = true;
             UpdateUI();
         }
@@ -96,6 +106,11 @@ public class GameManager : MonoBehaviour
         amountOfAlivePlayers++;
         if (!gameStarted)
         {
+            if(gameStartEvent!=null)
+            {
+                gameStartEvent.Invoke();
+            }
+
             gameStarted = true;
             UpdateUI();
         }

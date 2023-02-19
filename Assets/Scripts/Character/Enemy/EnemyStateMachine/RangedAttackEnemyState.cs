@@ -9,7 +9,13 @@ using UnityEngine.UIElements;
 public class RangedAttackEnemyState : EnemyState
 {
     [SerializeField] private float stayInRangeDistance;
+    [SerializeField] private float aimTime = 0.5f;
+    private float shootTime;
 
+    public override void EnterState()
+    {
+        shootTime = Time.time + aimTime;
+    }
     public override void Execute(ref EnemyState nextState)
     {
         if (enemyController.dead)
@@ -20,14 +26,14 @@ public class RangedAttackEnemyState : EnemyState
         {
             nextState = idleState;
         }
-        else
+        else 
         {
             enemyController.movementComponent.movementDirection = Vector3.zero;
             enemyController.shootingDirection = (enemyController.targetTransform.position - enemyController.myTransform.position).normalized;
             enemyController.shootingDirection.y = 0.0f;
             enemyController.shootingComponent.shootingDirection = enemyController.shootingDirection;
 
-            if (enemyController.shootingComponent.bulletsLeft > 0)
+            if (enemyController.shootingComponent.bulletsLeft > 0 && Time.time > shootTime)
             {
                 enemyController.shootingComponent.fire = true;
             }

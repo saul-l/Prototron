@@ -530,7 +530,7 @@ CapsuleCollider:
   m_Radius: 0.7
   m_Height: 1.8
   m_Direction: 1
-  m_Center: {x: 0, y: 0.55, z: 0}
+  m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!95 &3230287304328705790
 Animator:
   serializedVersion: 4
@@ -760,7 +760,7 @@ MonoBehaviour:
   deathState: {fileID: 0}
   idleState: {fileID: 0}
   actionState: {fileID: -1396395167172202401}
-  actionRadius: 15
+  actionRadius: 16
   actionInterval: 0
 --- !u!114 &-1396395167172202401
 MonoBehaviour:
@@ -778,7 +778,8 @@ MonoBehaviour:
   knockBackState: {fileID: 0}
   deathState: {fileID: 0}
   idleState: {fileID: 0}
-  stayInRangeDistance: 16
+  stayInRangeDistance: 21
+  aimTime: 1
 --- !u!114 &-67285556055043676
 MonoBehaviour:
   m_ObjectHideFlags: 0

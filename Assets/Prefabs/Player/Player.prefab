@@ -141,6 +141,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isDead: 0
+  fourWay: 0
 --- !u!114 &103913049835960774
 MonoBehaviour:
   m_ObjectHideFlags: 0

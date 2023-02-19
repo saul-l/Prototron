@@ -10,7 +10,6 @@ public class FollowEnemyState : EnemyState
     [SerializeField] private EnemyState actionState;
     [SerializeField] private float actionRadius;
     [SerializeField] private float actionInterval;
-
     private float previousActionTime;
 
     

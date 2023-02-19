@@ -461,6 +461,7 @@ MonoBehaviour:
   attackActivated: 0
   dead: 0
   enterState: 1
+  maximumAmount: 50
   attackInterval: 1
   lastAttackTime: 0
   knockBack: 0
@@ -529,7 +530,7 @@ CapsuleCollider:
   m_Radius: 0.7
   m_Height: 1.8
   m_Direction: 1
-  m_Center: {x: 0, y: 0.55, z: 0}
+  m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!95 &3230287304328705790
 Animator:
   serializedVersion: 4

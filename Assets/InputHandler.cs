@@ -233,6 +233,17 @@ public partial class @InputHandler : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""16aa0a7c-0a59-411a-85a6-5a5e0ad1b516"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""FireLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""80477ef4-a4e7-49c1-8eaa-32da6fa0e178"",
                     ""path"": ""<Keyboard>/numpad6"",
                     ""interactions"": """",
@@ -260,6 +271,17 @@ public partial class @InputHandler : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
+                    ""action"": ""FireRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e9dcedf6-366a-4ed5-857a-71c0ac172135"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
                     ""action"": ""FireRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -299,6 +321,17 @@ public partial class @InputHandler : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""9b5ff765-24bf-45af-bb6c-961b76a5caee"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""FireUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""604332a3-f2d7-4f9f-b21b-1c54fb9b11f0"",
                     ""path"": ""<Keyboard>/numpad2"",
                     ""interactions"": """",
@@ -323,6 +356,28 @@ public partial class @InputHandler : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""b4103f4b-a4a3-4b71-b2ff-ee59725c2587"",
                     ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FireDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e12c025a-37f3-4603-9304-26a4770414f6"",
+                    ""path"": ""<Keyboard>/numpad5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FireDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""85eb09c5-df6e-468f-bc63-cbca7e1361f3"",
+                    ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

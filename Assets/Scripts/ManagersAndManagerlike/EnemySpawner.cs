@@ -18,36 +18,37 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
     public GameManager gameManager;
-    [HideInInspector] public Pool[] myPool;
+    public Pool[] myPool;
     [SerializeField] private Transform spawnPerimeter;
     [SerializeField] private GameObject[] enemyType;
     [Range(1, 100)]
-    [SerializeField] private int[] enemyValues;
-    [SerializeField] private float totalEnemyValue;
+    [SerializeField] private int[] enemyPointValues;
+    private List<int> enemySpawnAmounts = new();
+    private List<int> enemyMaxAmounts = new();
+    [SerializeField] private float totalEnemyPointValue;
     [SerializeField] private float interval = 3.0f;
     [SerializeField] private List<int> enemyOrder;
-    [SerializeField] private int minimumEnemiesBeforeNextPhase = 0;
     [SerializeField] private int totalEnemies;
     [SerializeField] private int maxEnemiesAtTheSameTime = 100;
-    [SerializeField] private int enemyCounter = 0;
-    [SerializeField] private int phaseValue = 100;
+    
     [SerializeField] private int valueSpawned;
     [SerializeField] private float prevTime = 0.0f;
     [SerializeField] private bool active;
-    private int currentPhaseValue;
+
+    [SerializeField] private int enemyPointsLeft;
+    [SerializeField] private int phasePointValue = 100;
+
+    private int currentPhaseEnemyValue;
     private int currentEnemyValueAddition = 2;
     
-
-    
-
-    private int requestedPoolSize = 50;
-    private int enemiesKilled;
     [SerializeField] private int enemiesAlive;
 
     private float spawnPerimeterX;
@@ -56,7 +57,6 @@ public class EnemySpawner : MonoBehaviour
     private Vector3 spawnPerimeterCenter;
 
 
-    [SerializeField] GameObject nextSpawner;
 
     private void Awake()
     {
@@ -65,31 +65,30 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
       
-        Array.Sort(enemyValues, enemyType);
+        Array.Sort(enemyPointValues, enemyType);
 
         spawnPerimeterCenter = spawnPerimeter.position;
         spawnPerimeterX = spawnPerimeter.localScale.x;
         spawnPerimeterY = spawnPerimeter.position.y;
         spawnPerimeterZ = spawnPerimeter.localScale.z;
 
-        CreateEnemyOrder();
         CreatePools();
     }
 
     void Update()
     {
+        // this is horrible
         if (active &&
             gameManager.gameStarted &&
             !gameManager.gameOver &&
-            enemyCounter < enemyOrder.Count &&
             Time.time >= prevTime + interval &&
             totalEnemies < maxEnemiesAtTheSameTime)
-        {
-            prevTime = Time.time;
-            SpawnEnemy();
-        }
+            {
+                prevTime = Time.time;
+                SpawnRandomEnemy();
+            }
 
-        if(valueSpawned >= currentPhaseValue)
+        if(enemyPointsLeft <= 0)
         {
             active = false;
         }
@@ -97,56 +96,45 @@ public class EnemySpawner : MonoBehaviour
         if (!active && totalEnemies <= 0)
         {
             active = true;
-            currentPhaseValue = currentPhaseValue + phaseValue;
+            currentPhaseEnemyValue = currentPhaseEnemyValue + phasePointValue;
             currentEnemyValueAddition++;
+            enemyPointsLeft = currentPhaseEnemyValue;
             valueSpawned = 0;
             interval *= .9f;
         }
     }
 
-
-    void CreateEnemyOrder()
+    void SpawnRandomEnemy()
     {
-        int[] enemyAmount = new int[enemyType.Length];
-
         int randomVal;
         int randomMax = enemyType.Length;
-        //randomize enemies to enemyOrder[] 
-        while (totalEnemyValue >= enemyValues[0] && randomMax > 0)
+        randomVal = UnityEngine.Random.Range(0, randomMax);
+        Vector3 spawnPosition = CalculatePointOnSpawnPerimeter();
+        GameObject newEnemy = myPool[randomVal].GetPooledObject();
+
+        if (newEnemy != null)
         {
-            randomVal = UnityEngine.Random.Range(0, randomMax);
-
-            // If enemy value exceeds total value left we need to decrease randomMax until we don't hit the ceiling
-
-            if (enemyValues[randomVal] > totalEnemyValue)
-            {
-
-                while (enemyValues[randomMax - 1] > totalEnemyValue)
-                {
-                    randomMax--;
-
-                    if (randomMax < 0) break;
-                }
-            }
-            else
-            {
-                enemyOrder.Add(randomVal);
-                enemyAmount[randomVal]++;
-                totalEnemyValue -= enemyValues[randomVal];
-            }
+            newEnemy.transform.position = spawnPosition;
+            newEnemy.transform.rotation = Quaternion.identity;
+            newEnemy.SetActive(true);
+            newEnemy.GetComponent<EnemyController>().mySpawner = this;
+            totalEnemies++;
+            enemyPointsLeft -= enemyPointValues[randomVal];
         }
+
     }
 
     void CreatePools()
     { 
         // Pools for enemies
         myPool = new Pool[enemyType.Length];
-
         for (int i = 0; i < enemyType.Length; i++)
         {
-            myPool[i] = GameObjectDependencyManager.instance.GetGameObject("PoolHandler").GetComponent<PoolHandler>().GetPool(enemyType[i].gameObject.name, PoolType.NormalPool);
-            
-            myPool[i].PopulatePool(enemyType[i], requestedPoolSize);
+            enemyMaxAmounts.Add(enemyType[i].GetComponent<EnemyController>().maximumAmount);
+            enemySpawnAmounts.Add(0);
+
+            myPool[i] = GameObjectDependencyManager.instance.GetGameObject("PoolHandler").GetComponent<PoolHandler>().GetPool(enemyType[i].gameObject.name, PoolType.NormalPool);        
+            myPool[i].PopulatePool(enemyType[i], enemyMaxAmounts[i]);
         }
     }
 
@@ -183,24 +171,6 @@ public class EnemySpawner : MonoBehaviour
         return new Vector3(spawnPointX, spawnPerimeterY, spawnPointZ) + spawnPerimeterCenter;
 
     }
-    void SpawnEnemy()
-    {
-        Vector3 spawnPosition = CalculatePointOnSpawnPerimeter();
-
-        GameObject newEnemy = myPool[enemyOrder[enemyCounter]].GetPooledObject();
-        
-        if (newEnemy != null)
-        {
-            newEnemy.transform.position = spawnPosition;
-            newEnemy.transform.rotation = Quaternion.identity;
-            newEnemy.SetActive(true);
-            newEnemy.GetComponent<EnemyController>().mySpawner = this;
-            totalEnemies++;
-            enemyCounter++;
-            valueSpawned++;
-        }
-        else Debug.Log("ENEMY NULL!");
-    }
 
     public void EnemyDied()
     {
@@ -212,20 +182,7 @@ public class EnemySpawner : MonoBehaviour
 
         totalEnemies--;
         
-        enemiesKilled++;
-        totalEnemyValue += currentEnemyValueAddition;
 
-
-        CreateEnemyOrder(); // This is a bit hardcore maybe.
-
-        /* Sequential spawner things.
-        if (nextSpawner != null)
-        {
-            if (totalEnemies <= minimumEnemiesBeforeNextPhase)
-            {
-                nextSpawner.SetActive(true);
-            }
-        }
-        */
+        totalEnemyPointValue += currentEnemyValueAddition;       
     }
 }

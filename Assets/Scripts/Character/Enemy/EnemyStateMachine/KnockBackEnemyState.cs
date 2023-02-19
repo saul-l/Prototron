@@ -9,7 +9,6 @@ public class KnockBackEnemyState : EnemyState
 
     public override void EnterState()
     {
-        Debug.Log("Enterstate " + Time.time);
         enemyController.knockBackTime = Time.time + knockBackTime;
         enemyController.knockBack = false;
         enemyController.movementComponent.movementDirection = Vector3.zero;

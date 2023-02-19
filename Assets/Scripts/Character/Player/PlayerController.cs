@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     Directions.Direction aimingDirection;
     [SerializeField] UnityEvent FireEvent;
     [SerializeField] private bool isDead = false;
+    [SerializeField] private bool fourWay = true;
     GameManager gameManager;
     public UniqueStack<Directions.Direction> aimFireBuffer = new UniqueStack<Directions.Direction>();
     void Start()
@@ -71,25 +72,48 @@ public class PlayerController : MonoBehaviour
 
     public void FireLeft(InputAction.CallbackContext context)
     {
-      if(context.started) aimFireBuffer.AddNode(Directions.Direction.Left);
-      if (context.canceled) aimFireBuffer.RemoveNode(Directions.Direction.Left);
+        if (context.started)
+        {
+            aimFireBuffer.AddNode(Directions.Direction.Left);
+            shootingDirection.x -= 1.0f;
+        }
+        if (context.canceled)
+        {
+            aimFireBuffer.RemoveNode(Directions.Direction.Left);
+            shootingDirection.x += 1.0f;
+        }
 
       CalculateShootingDirectionAndFire();
     }
 
     public void FireRight(InputAction.CallbackContext context)
     {
-        if (context.started) aimFireBuffer.AddNode(Directions.Direction.Right);
-        if (context.canceled) aimFireBuffer.RemoveNode(Directions.Direction.Right);
+        if (context.started)
+        {
+            aimFireBuffer.AddNode(Directions.Direction.Right);
+            shootingDirection.x += 1.0f;
+        }
+        if (context.canceled)
+        {
+            aimFireBuffer.RemoveNode(Directions.Direction.Right);
+            shootingDirection.x -= 1.0f;
+        }
 
         CalculateShootingDirectionAndFire();
     }
 
     public void FireUp(InputAction.CallbackContext context)
     {
-        shootingComponent.shootingDirection = Vector3.up;
-        if (context.started) aimFireBuffer.AddNode(Directions.Direction.Up);
-        if (context.canceled) aimFireBuffer.RemoveNode(Directions.Direction.Up);
+        if (context.started)
+        {
+            aimFireBuffer.AddNode(Directions.Direction.Up);
+            shootingDirection.z += 1.0f;
+        }
+        if (context.canceled)
+        {
+            aimFireBuffer.RemoveNode(Directions.Direction.Up);
+            shootingDirection.z -= 1.0f;
+        }
 
         CalculateShootingDirectionAndFire();
     }
@@ -98,10 +122,14 @@ public class PlayerController : MonoBehaviour
     {
         if (context.started)
         {
-      
             aimFireBuffer.AddNode(Directions.Direction.Down);
+            shootingDirection.z -= 1.0f;
         }
-        if (context.canceled) aimFireBuffer.RemoveNode(Directions.Direction.Down);
+        if (context.canceled)
+        {
+            aimFireBuffer.RemoveNode(Directions.Direction.Down);
+            shootingDirection.z += 1.0f;
+        }
 
         CalculateShootingDirectionAndFire();
     }
@@ -110,26 +138,32 @@ public class PlayerController : MonoBehaviour
     {
         if (!isDead)
         {
-            if (aimFireBuffer.returnFirstNodeValue() == Directions.Direction.Up)
-            {
-                shootingComponent.shootingDirection = Vector3.forward;
-            }
+            if(fourWay)
+            { 
+                if (aimFireBuffer.returnFirstNodeValue() == Directions.Direction.Up)
+                {
+                    shootingComponent.shootingDirection = Vector3.forward;
+                }
 
-            if (aimFireBuffer.returnFirstNodeValue() == Directions.Direction.Down)
-            {
-                shootingComponent.shootingDirection = Vector3.back;
-            }
+                if (aimFireBuffer.returnFirstNodeValue() == Directions.Direction.Down)
+                {
+                    shootingComponent.shootingDirection = Vector3.back;
+                }
 
-            if (aimFireBuffer.returnFirstNodeValue() == Directions.Direction.Left)
-            {
-                shootingComponent.shootingDirection = Vector3.left;
-            }
+                if (aimFireBuffer.returnFirstNodeValue() == Directions.Direction.Left)
+                {
+                    shootingComponent.shootingDirection = Vector3.left;
+                }
 
-            if (aimFireBuffer.returnFirstNodeValue() == Directions.Direction.Right)
-            {
-                shootingComponent.shootingDirection = Vector3.right;
+                if (aimFireBuffer.returnFirstNodeValue() == Directions.Direction.Right)
+                {
+                    shootingComponent.shootingDirection = Vector3.right;
+                }
             }
-
+            else
+            {
+                shootingComponent.shootingDirection = shootingDirection;
+            }
             if (aimFireBuffer.returnFirstNodeValue() == Directions.Direction.None)
             {
                 shootingComponent.shootingDirection = Vector3.zero;

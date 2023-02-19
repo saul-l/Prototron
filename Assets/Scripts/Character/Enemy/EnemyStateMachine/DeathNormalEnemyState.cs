@@ -6,18 +6,23 @@ using UnityEngine.UIElements;
 
 public class DeathNormalEnemyState : EnemyState
 {
-    public override void Execute(ref EnemyState nextState)
+    public override void EnterState()
     {
         if (enemyController.targetGameObject != null)
         {
             enemyController.targetGameObject.GetComponent<IDamageable>().EventDead -= enemyController.TargetDeath;
             enemyController.targetGameObject = null;
         }
-            nextState = idleState;
-            enemyController.targetTransform = null;
-            enemyController.dead = false;
-            enemyController.knockBack = false;
-            gameObject.layer = LayerMask.NameToLayer("DeactivatedEnemies");
-            gameObject.SetActive(false);               
+
+        enemyController.targetTransform = null;
+        enemyController.dead = false;
+        enemyController.knockBack = false;
+        gameObject.layer = LayerMask.NameToLayer("DeactivatedEnemies");
+        gameObject.SetActive(false);
+    }
+
+    public override void Execute(ref EnemyState nextState)
+    {
+        nextState = idleState;
     }
 }

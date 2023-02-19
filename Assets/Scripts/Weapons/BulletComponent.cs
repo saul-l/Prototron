@@ -53,7 +53,6 @@ public class BulletComponent : MonoBehaviour, ISpawnable
         }
         else
         {
-            Debug.DrawLine(transform.position, newPosition, Color.red, 25);
             prevFramePosition = transform.position;
             transform.position = newPosition;
         }

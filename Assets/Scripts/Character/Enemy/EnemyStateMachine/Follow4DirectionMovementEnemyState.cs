@@ -30,7 +30,6 @@ public class Follow4DirectionMovementEnemyState : EnemyState
         {
             directionX = false;
         }
-
     }
     public override void Execute(ref EnemyState nextState)
     {
