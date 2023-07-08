@@ -1,6 +1,6 @@
 # Prototron
 
-Work in progress Robotron inspired game project on Unity 2021
+Work in progress Robotron inspired game project on Unity 2022.1
 
 Designed for WebGL. Windows build untested.
 
