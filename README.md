@@ -6,3 +6,6 @@ Designed for WebGL. Windows build untested.
 
 Audio and texture data uses Git LFS, so direct download link from GitHub doesn't work.  
 Install Git LFS and Use git clone.
+
+Known issues:
+- Throws couple of Unity blitter changes related obsolete function warnings
